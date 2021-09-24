@@ -1,0 +1,7 @@
+out/
+default-template.tex
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+__*_temp.tex

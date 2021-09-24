@@ -1,0 +1,22 @@
+# Metadata
+title: tbd.
+# subtitle:
+keywords:
+  - reactive programming
+  - reactive debugging
+  - human computer interaction
+  - user centered design
+
+# Abstract
+abstract: |
+  tbd.
+
+# Common Configuration
+lang: en-US
+link-citations: true
+csl: templates/transactions-on-programming-languages-and-systems
+reference-section-title: References
+bibliography: bibliography.bib
+
+
+author: Manuel Alabor

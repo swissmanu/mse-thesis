@@ -1,0 +1,329 @@
+@inproceedings{Salvaneschi_Mezini_2016,
+  place     = {Austin, Texas},
+  title     = {Debugging for reactive programming},
+  isbn      = {978-1-4503-3900-1},
+  url       = {http://dl.acm.org/citation.cfm?doid=2884781.2884815},
+  doi       = {10.1145/2884781.2884815},
+  booktitle = {Proceedings of the 38th International Conference on Software Engineering - ICSE ’16},
+  publisher = {ACM Press},
+  author    = {Salvaneschi, Guido and Mezini, Mira},
+  year      = {2016},
+  pages     = {796–807}
+}
+
+@article{Perez_Nilsson_2017,
+  title        = {Testing and debugging functional reactive programming},
+  volume       = {1},
+  issn         = {2475-1421},
+  doi          = {10.1145/3110246},
+  abstractnote = {Many types of interactive applications, including video games, raise particular challenges when it comes to testing and debugging. Reasons include de-facto lack of reproducibility and difficulties of automatically generating suitable test data. This paper demonstrates that certain variants of Functional Reactive Programming (FRP) implemented in pure functional languages can mitigate such difficulties by offering referential transparency at the level of whole programs. This opens up for a multi-pronged approach for assisting with testing and debugging that works across platforms, including assertions based on temporal logic, recording and replaying of runs (also from deployed code), and automated random testing using QuickCheck. The approach has been validated on real, non-trivial games implemented in the FRP system Yampa through a tool providing a convenient Graphical User Interface that allows the execution of the code under scrutiny to be controlled, moving along the execution time line, and pin-pointing of violations of assertions on PCs as well as mobile platforms.},
+  number       = {ICFP},
+  journal      = {Proceedings of the ACM on Programming Languages},
+  author       = {Perez, Ivan and Nilsson, Henrik},
+  year         = {2017},
+  month        = {Aug},
+  pages        = {1–27}
+}
+
+
+@inproceedings{Salvaneschi_Hintz_Mezini_2014,
+  place     = {Lugano, Switzerland},
+  title     = {REScala: bridging between object-oriented and functional style in reactive applications},
+  isbn      = {978-1-4503-2772-5},
+  url       = {http://dl.acm.org/citation.cfm?doid=2577080.2577083},
+  doi       = {10.1145/2577080.2577083},
+  booktitle = {Proceedings of the 13th international conference on Modularity - MODULARITY ’14},
+  publisher = {ACM Press},
+  author    = {Salvaneschi, Guido and Hintz, Gerold and Mezini, Mira},
+  year      = {2014},
+  pages     = {25–36}
+}
+
+
+
+ @article{OCallahan_Jones_Froyd_Huey_Noll_Partush_2017,
+  title        = {Engineering Record And Replay For Deployability: Extended Technical Report},
+  url          = {http://arxiv.org/abs/1705.05937},
+  abstractnote = {The ability to record and replay program executions with low overhead enables many applications, such as reverse-execution debugging, debugging of hard-to-reproduce test failures, and “black box” forensic analysis of failures in deployed systems. Existing record-and-replay approaches limit deployability by recording an entire virtual machine (heavyweight), modifying the OS kernel (adding deployment and maintenance costs), requiring pervasive code instrumentation (imposing significant performance and complexity overhead), or modifying compilers and runtime systems (limiting generality). We investigated whether it is possible to build a practical record-and-replay system avoiding all these issues. The answer turns out to be yes - if the CPU and operating system meet certain non-obvious constraints. Fortunately modern Intel CPUs, Linux kernels and user-space frameworks do meet these constraints, although this has only become true recently. With some novel optimizations, our system ‘rr’ records and replays real-world low-parallelism workloads with low overhead, with an entirely user-space implementation, using stock hardware, compilers, runtimes and operating systems. “rr” forms the basis of an open-source reverse-execution debugger seeing significant use in practice. We present the design and implementation of ‘rr’, describe its performance on a variety of workloads, and identify constraints on hardware and operating system design required to support our approach.},
+  note         = {arXiv: 1705.05937},
+  journal      = {arXiv:1705.05937 [cs]},
+  author       = {O’Callahan, Robert and Jones, Chris and Froyd, Nathan and Huey, Kyle and Noll, Albert and Partush, Nimrod},
+  year         = {2017},
+  month        = {May}
+}
+
+ @inproceedings{Alabor_Stolze_2020,
+  place        = {New York, NY, USA},
+  series       = {REBLS 2020},
+  title        = {Debugging of RxJS-Based Applications},
+  isbn         = {978-1-4503-8188-8},
+  url          = {https://doi.org/10.1145/3427763.3428313},
+  doi          = {10.1145/3427763.3428313},
+  abstractnote = {RxJS is a popular library to implement data-flow-oriented applications with JavaScript using reactive programming principles. This way of programming bears new challenges for traditional debuggers: Their focus on imperative programming limits their applicability to problems originated in the declarative programming paradigm. The goals of this paper are: (i) to understand how software engineers debug RxJS-based applications, what tools do they use, what techniques they apply; (ii) to understand what are the most prevalent challenges they face while doing so; and (iii) to provide a course of action to resolve these challenges in a future iteration on the topic. We learned about the debugging habits of ten professionals using interviews, and hands-on war story reports. Based on this data, we designed and executed an observational study with four subjects to verify that engineers predominantly augment source code with manual trace logs instead of using specialized debugging utilities. In the end, we identified the lack of fully integrated RxJS-specific debugging solutions in existing development environments as the most significant reason why engineers do not make use of such tools. We decided to elaborate on how to resolve this situation in our future work.},
+  note         = {event-place: Virtual, USA},
+  booktitle    = {Proceedings of the 7th ACM SIGPLAN International Workshop on Reactive and Event-Based Languages and Systems},
+  publisher    = {Association for Computing Machinery},
+  author       = {Alabor, Manuel and Stolze, Markus},
+  year         = {2020},
+  pages        = {15–24},
+  collection   = {REBLS 2020}
+}
+
+ @misc{Alabor_2020,
+  title        = {User Journey: Debugging of RxJS-Based Applications},
+  url          = {https://alabor.me/research/user-journey-debugging-of-rxjs-based-applications/},
+  abstractnote = {This document describes two user journeys of Frank Flow, a software engineer working on an application implemented using RxJS. The application has a web-based user interface and was part of a study by Alabor et al. Frank will use different debugging techniques and utilities to solve the task given to him. The journeys follow the debugging process model proposed by Layman et al.},
+  author       = {Alabor, Manuel},
+  year         = {2020},
+  month        = {Dec}
+}
+
+ @inproceedings{McDirmid_2013,
+  place     = {Indianapolis, Indiana, USA},
+  title     = {Usable live programming},
+  isbn      = {978-1-4503-2472-4},
+  url       = {http://dl.acm.org/citation.cfm?doid=2509578.2509585},
+  doi       = {10.1145/2509578.2509585},
+  booktitle = {Proceedings of the 2013 ACM international symposium on New ideas, new paradigms, and reflections on programming & software - Onward! ’13},
+  publisher = {ACM Press},
+  author    = {McDirmid, Sean},
+  year      = {2013},
+  pages     = {53–62}
+}
+
+ @inproceedings{Salvaneschi_Mezini_2016_Inspector,
+  place     = {Austin, Texas},
+  title     = {Debugging reactive programming with reactive inspector},
+  isbn      = {978-1-4503-4205-6},
+  url       = {http://dl.acm.org/citation.cfm?doid=2889160.2893174},
+  doi       = {10.1145/2889160.2893174},
+  booktitle = {Proceedings of the 38th International Conference on Software Engineering Companion - ICSE ’16},
+  publisher = {ACM Press},
+  author    = {Salvaneschi, Guido and Mezini, Mira},
+  year      = {2016},
+  pages     = {728–730}
+}
+
+ @inproceedings{Banken_Meijer_Gousios_2018,
+  place     = {Gothenburg Sweden},
+  title     = {Debugging data flows in reactive programs},
+  isbn      = {978-1-4503-5638-1},
+  url       = {https://dl.acm.org/doi/10.1145/3180155.3180156},
+  doi       = {10.1145/3180155.3180156},
+  booktitle = {Proceedings of the 40th International Conference on Software Engineering},
+  publisher = {ACM},
+  author    = {Banken, Herman and Meijer, Erik and Gousios, Georgios},
+  year      = {2018},
+  month     = {May},
+  pages     = {752–763}
+}
+
+@online{Angular_RxJS,
+  author       = {Google},
+  title        = {Angular - Observables in Angular},
+  url          = {https://angular.io/guide/observables-in-angular},
+  year         = {2020},
+  lastaccessed = {24-Apr-2020},
+  note         = {Versioned as \url{https://github.com/angular/angular/blob/64ac1062489bbc97a0d4b95af5ce9566091fe044/aio/content/guide/observables-in-angular.md}}
+}
+
+ @inproceedings{Layman_Diep_Nagappan_Singer_Deline_Venolia_2013,
+  place     = {Baltimore, Maryland},
+  title     = {Debugging Revisited: Toward Understanding the Debugging Needs of Contemporary Software Developers},
+  isbn      = {978-0-7695-5056-5},
+  url       = {http://ieeexplore.ieee.org/document/6681382/},
+  doi       = {10.1109/ESEM.2013.43},
+  booktitle = {2013 ACM / IEEE International Symposium on Empirical Software Engineering and Measurement},
+  publisher = {IEEE},
+  author    = {Layman, Lucas and Diep, Madeline and Nagappan, Meiyappan and Singer, Janice and Deline, Robert and Venolia, Gina},
+  year      = {2013},
+  month     = {Oct},
+  pages     = {383–392}
+}
+
+ @book{Mogk_Weisenburger_Haas_Richer_Salvaneschi_Mezini_2018,
+  title        = {From Debugging Towards Live Tuning of Reactive Applications},
+  abstractnote = {Directly visualizing the effect of changes to applications improves developers productivity as they gain immediate insights on the resulting application behavior. Yet, immediate feedback requires a representation of the dataflow in the application to correctly propagate and apply the effect of the changes.
+Reactive programming is a programming paradigm which di- rectly expresses applications dataflow in a declarative way. Recently, researchers developed dedicated debugging techniques for reactive programming that use the dataflow graph to enable inspections and visualization.
+In this paper, we adopt reactive debugging as a basis for live modifications and tuning of reactive applications. To this end we extend the debugger to allow live modifications to the dataflow graph in a structured manner to change the application behavior. We also suggest how developers of reactive applications can use such extension to enable flexible tuning of applications at run time. Our early experience shows that the combination of reactive pro- gramming and live programming allows modifications and tuning of applications while ensuring safety and consistency guarantees.},
+  author       = {Mogk, Ragnar and Weisenburger, Pascal and Haas, Julian and Richer, David and Salvaneschi, Guido and Mezini, Mira},
+  year         = {2018}
+}
+
+ @book{IEEE_Glossary,
+  title       = {IEEE Standard Glossary of Software Engineering Terminology},
+  year        = {1990},
+  isbn        = {9780738103914},
+  url         = {http://ieeexplore.ieee.org/document/159342/},
+  doi         = {10.1109/IEEESTD.1990.101064},
+  institution = {IEEE}
+}
+
+ @inproceedings{Layman_Diep_Nagappan_Singer_Deline_Venolia_2013,
+  place     = {Baltimore, Maryland},
+  title     = {Debugging Revisited: Toward Understanding the Debugging Needs of Contemporary Software Developers},
+  isbn      = {978-0-7695-5056-5},
+  url       = {http://ieeexplore.ieee.org/document/6681382/},
+  doi       = {10.1109/ESEM.2013.43},
+  booktitle = {2013 ACM / IEEE International Symposium on Empirical Software Engineering and Measurement},
+  publisher = {IEEE},
+  author    = {Layman, Lucas and Diep, Madeline and Nagappan, Meiyappan and Singer, Janice and Deline, Robert and Venolia, Gina},
+  year      = {2013},
+  month     = {Oct},
+  pages     = {383–392}
+}
+
+ @inproceedings{Salvaneschi_Hintz_Mezini_2014,
+  place     = {Lugano, Switzerland},
+  title     = {REScala: bridging between object-oriented and functional style in reactive applications},
+  isbn      = {978-1-4503-2772-5},
+  url       = {http://dl.acm.org/citation.cfm?doid=2577080.2577083},
+  doi       = {10.1145/2577080.2577083},
+  booktitle = {Proceedings of the 13th international conference on Modularity - MODULARITY ’14},
+  publisher = {ACM Press},
+  author    = {Salvaneschi, Guido and Hintz, Gerold and Mezini, Mira},
+  year      = {2014},
+  pages     = {25–36}
+}
+
+@book{Wharton_Rieman_Clayton_Polson_1994,
+  title       = {The Cognitive Walkthrough: A practitioner’s guide},
+  institution = {Institute of Cognitive Science, University of Colorado},
+  author      = {Wharton, Cathleen and Rieman, John and Clayton, Lewis and Polson, Peter},
+  year        = {1994}
+}
+
+@inproceedings{Nielsen_1994,
+  title     = {Usability inspection methods},
+  booktitle = {Conference companion on Human factors in computing systems},
+  author    = {Nielsen, Jakob},
+  year      = {1994},
+  pages     = {413–414}
+}
+
+@article{Boren_Ramey_2000,
+  title   = {Thinking aloud: reconciling theory and practice},
+  volume  = {43},
+  issn    = {03611434},
+  doi     = {10.1109/47.867942},
+  number  = {3},
+  journal = {IEEE Transactions on Professional Communication},
+  author  = {Boren, T. and Ramey, J.},
+  year    = {2000},
+  month   = {Sep},
+  pages   = {261–278}
+}
+
+@inproceedings{Norgaard_Hornbaek_2006,
+  place     = {University Park, PA, USA},
+  title     = {What do usability evaluators do in practice?: an explorative study of think-aloud testing},
+  isbn      = {978-1-59593-367-6},
+  url       = {http://portal.acm.org/citation.cfm?doid=1142405.1142439},
+  doi       = {10.1145/1142405.1142439},
+  booktitle = {Proceedings of the 6th ACM conference on Designing Interactive systems  - DIS ’06},
+  publisher = {ACM Press},
+  author    = {Nørgaard, Mie and Hornbæk, Kasper},
+  year      = {2006},
+  pages     = {209}
+}
+
+@inproceedings{Andreasen_Nielsen_Schroder_Stage_2007,
+  place     = {San Jose, California, USA},
+  title     = {What happened to remote usability testing?: an empirical study of three methods},
+  isbn      = {978-1-59593-593-9},
+  url       = {http://dl.acm.org/citation.cfm?doid=1240624.1240838},
+  doi       = {10.1145/1240624.1240838},
+  booktitle = {Proceedings of the SIGCHI Conference on Human Factors in Computing Systems  - CHI ’07},
+  publisher = {ACM Press},
+  author    = {Andreasen, Morten Sieker and Nielsen, Henrik Villemann and Schrøder, Simon Ormholt and Stage, Jan},
+  year      = {2007},
+  pages     = {1405–1414}
+}
+
+@book{Adlin_Pruitt_2010,
+  place        = {Amsterdam; Boston},
+  title        = {The essential persona lifecycle: your guide to building and using personas},
+  isbn         = {978-0-12-381419-7},
+  url          = {http://www.books24x7.com/marc.asp?bookid=37227},
+  abstractnote = {Personas play an essential role in the development of successful products. Without creating profiles of target customers and studying them throughout your product development lifecycle, it’s impossible to truly understand user need, context, and pain points. The Essential Persona Lifecycle is an easy-to-reference guide on persona creation, use, and evaluation. Whether you are a student or a UX practitioner, if you are developing products that people are intended to use, this book is for you. *Practical and immediately applicable how-to reference guide for.},
+  publisher    = {Morgan Kaufmann},
+  author       = {Adlin, Tamara and Pruitt, John},
+  year         = {2010}
+}
+
+@inbook{Madsen_Nielsen_2010,
+  place      = {Berlin, Heidelberg},
+  series     = {IFIP Advances in Information and Communication Technology},
+  title      = {Exploring Persona-Scenarios - Using Storytelling to Create Design Ideas},
+  volume     = {316},
+  isbn       = {978-3-642-11761-9},
+  url        = {http://link.springer.com/10.1007/978-3-642-11762-6_5},
+  doi        = {10.1007/978-3-642-11762-6_5},
+  booktitle  = {Human Work Interaction Design: Usability in Social, Cultural and Organizational Contexts},
+  publisher  = {Springer Berlin Heidelberg},
+  author     = {Madsen, Sabine and Nielsen, Lene},
+  editor     = {Katre, Dinesh and Orngreen, Rikke and Yammiyavar, Pradeep and Clemmensen, Torkil},
+  year       = {2010},
+  pages      = {57–66},
+  collection = {IFIP Advances in Information and Communication Technology}
+}
+
+@article{Nielsen_Participants_1994,
+  title        = {Estimating the number of subjects needed for a thinking aloud test},
+  volume       = {41},
+  issn         = {10715819},
+  doi          = {10.1006/ijhc.1994.1065},
+  abstractnote = {Two studies of using the thinking aloud method for user interface testing showed that experimenters who were not usability specialists could use the method. However, they found only 28-30% of known usability problems when running a single test subject. Running more test subjects increased the number of problems found, but with progressively diminishing returns; after five test subjects 77-85% of the problems had been found.},
+  number       = {3},
+  journal      = {International Journal of Human-Computer Studies},
+  author       = {Nielsen, Jakob},
+  year         = {1994},
+  month        = {Sep},
+  pages        = {385–397}
+}
+
+ @inproceedings{Nielsen_Landauer_1993,
+  place     = {Amsterdam, The Netherlands},
+  title     = {A mathematical model of the finding of usability problems},
+  isbn      = {978-0-89791-575-5},
+  url       = {http://portal.acm.org/citation.cfm?doid=169059.169166},
+  doi       = {10.1145/169059.169166},
+  booktitle = {Proceedings of the SIGCHI conference on Human factors in computing systems  - CHI ’93},
+  publisher = {ACM Press},
+  author    = {Nielsen, Jakob and Landauer, Thomas K.},
+  year      = {1993},
+  pages     = {206–213}
+}
+
+@article{OCallahan_Jones_Froyd_Huey_Noll_Partush_2017,
+  title        = {Engineering Record And Replay For Deployability: Extended Technical Report},
+  url          = {http://arxiv.org/abs/1705.05937},
+  abstractnote = {The ability to record and replay program executions with low overhead enables many applications, such as reverse-execution debugging, debugging of hard-to-reproduce test failures, and “black box” forensic analysis of failures in deployed systems. Existing record-and-replay approaches limit deployability by recording an entire virtual machine (heavyweight), modifying the OS kernel (adding deployment and maintenance costs), requiring pervasive code instrumentation (imposing significant performance and complexity overhead), or modifying compilers and runtime systems (limiting generality). We investigated whether it is possible to build a practical record-and-replay system avoiding all these issues. The answer turns out to be yes - if the CPU and operating system meet certain non-obvious constraints. Fortunately modern Intel CPUs, Linux kernels and user-space frameworks do meet these constraints, although this has only become true recently. With some novel optimizations, our system ‘rr’ records and replays real-world low-parallelism workloads with low overhead, with an entirely user-space implementation, using stock hardware, compilers, runtimes and operating systems. “rr” forms the basis of an open-source reverse-execution debugger seeing significant use in practice. We present the design and implementation of ‘rr’, describe its performance on a variety of workloads, and identify constraints on hardware and operating system design required to support our approach.},
+  note         = {arXiv: 1705.05937},
+  journal      = {arXiv:1705.05937 [cs]},
+  author       = {O’Callahan, Robert and Jones, Chris and Froyd, Nathan and Huey, Kyle and Noll, Albert and Partush, Nimrod},
+  year         = {2017},
+  month        = {May}
+}
+
+@article{Pothier_Tanter_2009,
+  title   = {Back to the Future: Omniscient Debugging},
+  volume  = {26},
+  issn    = {0740-7459},
+  doi     = {10.1109/MS.2009.169},
+  number  = {6},
+  journal = {IEEE Software},
+  author  = {Pothier, Guillaume and Tanter, Éric},
+  year    = {2009},
+  month   = {Nov},
+  pages   = {78–85}
+}
+
+@book{Goodwin_2009,
+  place     = {Indianapolis, IN},
+  title     = {Designing for the digital age: how to create human-centered products and services},
+  isbn      = {978-0-470-22910-1},
+  publisher = {Wiley Pub},
+  author    = {Goodwin, Kim},
+  year      = {2009}
+}
