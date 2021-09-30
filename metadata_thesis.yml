@@ -23,5 +23,5 @@ link-citations: true
 csl: templates/transactions-on-programming-languages-and-systems
 reference-section-title: References
 bibliography: bibliography.bib
-
+papersize: A4
 
