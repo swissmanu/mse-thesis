@@ -426,6 +426,7 @@ $endif$
 
     \textbf{$author$}
 
+
     \vfill
 
     A thesis presented for the degree of\\
@@ -442,6 +443,14 @@ $endif$
     \end{minipage}
 
     \large
+
+    \begin{tabular}{rl}
+      $if(advisor)$Advisor & $advisor$\\$endif$
+      $if(expertReviewer)$Expert Reviewer & $expertReviewer$\\$endif$
+    \end{tabular}
+
+    \vspace{0.5cm}
+
     $department$\\
     $institution$\\
     $country$\\
