@@ -16,23 +16,29 @@ keywords:
   - human computer interaction
   - user centered design
 
-# Common Configuration
-lang: en-US
+# Review Mode: Show line numbers
 review: true
-link-citations: true
-csl: templates/transactions-on-programming-languages-and-systems
-reference-section-title: References
-bibliography: bibliography.bib
+
+# Document:
+lang: en-US
 papersize: A4
-numbersections: true
+
+# Table of Contents:
 toc: true
 toc-title: Table of Contents
+numbersections: true
 
-# Abstract
+# References and Citations:
+reference-section-title: References
+csl: templates/transactions-on-programming-languages-and-systems
+link-citations: true
+bibliography: bibliography.bib
+
+# Abstract:
 abstract: |
   This is the
   abstract.
 
-# Acknowledgments
+# Acknowledgments:
 # acknowledgments: |
 #   Thank you.
