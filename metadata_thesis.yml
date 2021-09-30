@@ -15,10 +15,6 @@ keywords:
   - human computer interaction
   - user centered design
 
-# Abstract
-# abstract: |
-#   tbd.
-
 # Common Configuration
 lang: en-US
 link-citations: true
@@ -26,4 +22,15 @@ csl: templates/transactions-on-programming-languages-and-systems
 reference-section-title: References
 bibliography: bibliography.bib
 papersize: A4
+numbersections: true
+toc: true
+toc-title: Table of Contents
 
+# Abstract
+abstract: |
+  This is my
+  abstract.
+
+# Acknowledgments
+acknowledgments: |
+  Thank you.

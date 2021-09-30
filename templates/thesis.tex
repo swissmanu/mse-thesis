@@ -404,6 +404,7 @@ $endif$
 
 %%%%%% ADDED BEGIN
 \usepackage{graphicx}
+\usepackage{ccicons}
 %%%%%% END BEGIN
 
 \begin{document}
@@ -459,8 +460,42 @@ $endif$
     $if(version)${\small $version$}$endif$
   \end{center}
 \end{titlepage}
-%%%%%% ADDED END
 
+\section*{Declaration}
+
+I hereby declare that this submission is my own work and to the best of my knowledge it contains no materials previously
+published or written by another person, or substantial proportions of material which have been accepted for the award of
+any other degree or diploma at $institution$ or any other educational institution, except where due acknowledgement is
+made in the thesis.
+
+I further declare that the intellectual content of this thesis is the product of my own work, except to the extent that
+assistance from others in the project's design and conception or in style, presentation and linguistic expression is
+acknowledged.
+
+\hfill $author$, $publicationMonth$
+
+\vfill
+
+\ccby\thinspace\thinspace This work is licensed under a \href{https://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0 International License}.
+
+\newpage
+
+$if(abstract)$
+\section*{Abstract}
+
+$abstract$
+
+\newpage
+$endif$
+
+$if(acknowledgments)$
+\section*{Acknowledgments}
+
+$acknowledgments$
+
+\newpage
+$endif$
+%%%%%% ADDED END
 
 $for(include-before)$
 $include-before$
@@ -484,6 +519,7 @@ $if(colorlinks)$
 $endif$
 \setcounter{tocdepth}{$toc-depth$}
 \tableofcontents
+\newpage %%%%%%%%%%%%%%%%%% ADDED
 }
 $endif$
 $endif$
@@ -504,6 +540,7 @@ $body$
 $if(has-frontmatter)$
 \backmatter
 $endif$
+
 $if(natbib)$
 $if(bibliography)$
 $if(biblio-title)$
@@ -531,6 +568,7 @@ $if(beamer)$
   \printbibliography[heading=none]
 \end{frame}
 $else$
+\newpage %%%%%%%%%%%% ADDED
 \printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
 $endif$
 

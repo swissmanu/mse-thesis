@@ -1,14 +1,3 @@
-# Declaration of Originality
-
-- Necessary?
-- Text?
-
-# Abstract
-
-- "Management Summary"
-- What this is about
-- Highlight contributions
-
 # Introduction
 
 - Background/Context
