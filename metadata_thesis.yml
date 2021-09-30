@@ -1,6 +1,12 @@
 # Metadata
-title: tbd.
-# subtitle:
+title: Thesis Title tbd.
+subtitle: Thesis Sub Title tbd.
+author: Manuel Alabor
+degree: Master of Science in Engineering
+department: Information and Communication Technologies
+institution: Eastern Switzerland University of Applied Sciences
+country: Switzerland
+publicationMonth: January 2022
 keywords:
   - reactive programming
   - reactive debugging
@@ -8,8 +14,8 @@ keywords:
   - user centered design
 
 # Abstract
-abstract: |
-  tbd.
+# abstract: |
+#   tbd.
 
 # Common Configuration
 lang: en-US
@@ -19,4 +25,3 @@ reference-section-title: References
 bibliography: bibliography.bib
 
 
-author: Manuel Alabor

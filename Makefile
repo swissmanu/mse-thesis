@@ -16,6 +16,7 @@ build: build_thesis_pdf
 build_thesis_pdf:
 	@echo "Build out/${thesis_filename}.pdf"
 	@pandoc \
+    --template=./templates/thesis.tex \
     --lua-filter=lib/lua-filters/include-files/include-files.lua \
     --metadata-file=./metadata_thesis.yml \
     -f markdown+raw_tex \
