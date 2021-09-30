@@ -9,6 +9,7 @@ department: Information and Communication Technologies
 institution: Eastern Switzerland University of Applied Sciences
 country: Switzerland
 publicationMonth: January 2022
+license: \ccby\thinspace\thinspace This work is licensed under a \href{https://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0 International License}.
 keywords:
   - reactive programming
   - reactive debugging
@@ -17,6 +18,7 @@ keywords:
 
 # Common Configuration
 lang: en-US
+review: true
 link-citations: true
 csl: templates/transactions-on-programming-languages-and-systems
 reference-section-title: References
@@ -25,13 +27,12 @@ papersize: A4
 numbersections: true
 toc: true
 toc-title: Table of Contents
-review: true
 
 # Abstract
 abstract: |
-  This is my
+  This is the
   abstract.
 
 # Acknowledgments
-acknowledgments: |
-  Thank you.
+# acknowledgments: |
+#   Thank you.
