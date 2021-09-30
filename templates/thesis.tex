@@ -405,6 +405,12 @@ $endif$
 %%%%%% ADDED BEGIN
 \usepackage{graphicx}
 \usepackage{ccicons}
+
+$if(review)$
+\usepackage{lineno}
+\usepackage{color}
+\renewcommand{\linenumberfont}{\normalfont\tiny\color{red}}
+$endif$
 %%%%%% END BEGIN
 
 \begin{document}
@@ -535,7 +541,10 @@ $endif$
 $if(has-frontmatter)$
 \mainmatter
 $endif$
+
+$if(review)$\begin{linenumbers}$endif$
 $body$
+$if(review)$\end{linenumbers}$endif$
 
 $if(has-frontmatter)$
 \backmatter
