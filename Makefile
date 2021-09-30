@@ -18,6 +18,7 @@ build_thesis_pdf:
 	@pandoc \
     --template=./templates/thesis.tex \
     --lua-filter=lib/lua-filters/include-files/include-files.lua \
+    --metadata=version=${VERSION} \
     --metadata-file=./metadata_thesis.yml \
     -f markdown+raw_tex \
     --citeproc \

@@ -17,12 +17,19 @@ jobs:
         with:
           submodules: recursive
 
+      # Following Step run only on version tags:
+      - name: Extract Version from Tag
+        id: get_version
+        if: ${{ github.ref != 'refs/heads/main' }}
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+
       - name: Build PDFs
         uses: docker://ghcr.io/swissmanu/pandoc:latest
+        env:
+          VERSION: ${{steps.get_version.outputs.VERSION}}
         with:
           args: make
 
-      # This step runs only on the main branch:
       - uses: actions/upload-artifact@v2
         if: ${{ github.ref == 'refs/heads/main' }}
         with:
@@ -30,10 +37,6 @@ jobs:
           path: out/*.pdf
 
       # Following Steps run only on version tags:
-      # - name: Extract Version from Tag
-      #   id: get_version
-      #   if: ${{ github.ref != 'refs/heads/main' }}
-      #   run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
       # - name: Add Version to PDF filename
       #   if: ${{ github.ref != 'refs/heads/main' }}
       #   run: |
