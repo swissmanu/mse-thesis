@@ -1,6 +1,6 @@
 # Metadata
-title: Thesis Title tbd.
-subtitle: Thesis Sub Title tbd.
+title: Debugging Support for Reactive Programming with RxJS
+subtitle: tbd
 author: Manuel Alabor
 advisor: Markus Stolze
 expertReviewer: Jane Doe
@@ -35,9 +35,7 @@ link-citations: true
 bibliography: bibliography.bib
 
 # Abstract:
-abstract: |
-  This is the
-  abstract.
+abstract: Over the course of the
 
 # Acknowledgments:
 # acknowledgments: |

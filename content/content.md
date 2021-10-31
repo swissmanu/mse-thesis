@@ -3,13 +3,31 @@
 - Background/Context
 - Problem/Justification
 - Structure of this thesis
+- Open Research
+	- Why?
+	- Where?
 
 # Related Work
 
-- Salvaneschi [@Salvaneschi_Mezini_2016]
-- Banken [@Banken_Meijer_Gousios_2018]
+- Main
+	- Salvaneschi [@Salvaneschi_Mezini_2016]
+	- Banken [@Banken_Meijer_Gousios_2018]
+	- Alabor [@Alabor_Stolze_2020]
+- Other sources which might be interesting, but did not make it into my own papers.
+- More recent research/products since the latest paper?
+	- https://www.replay.io
+	- ... others?
 
 # Research Process
+
+- Find the right abstraction level for this section!
+	- Necessary to go "deep"?
+	- Keep bullets only?
+	- Use some graphical representation of the process?
+		- Timeline?
+	- Highlight main aspects of different project phases:
+		- HCI / UCD
+		- Empirical Software Engineering
 
 - Interviewes
 - War stories
@@ -30,6 +48,10 @@
 # Future Work
 
 - Where to pick things up
+- Sustainability of Work
+	- Testing
+	- Open Source Community
+- Project ideas for other student contributors?
 
 # Conclusion
 
