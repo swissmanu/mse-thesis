@@ -2,14 +2,17 @@
 
  
 
-
-
 - Background/Context
 - Problem/Justification
+- Research Questions
+  - RQ 1 What challenges do software engineers face when debugging RxJS-based applications?
+  - RQ 2 How can the experience of software engineers during the debugging process of RxJS-based applications be improved?
+  - RQ 3 What is the impact of proposed solutions on the debugging experience of software engineers?
+
 - Structure of this thesis
 - Open Research
-	- Why?
-	- Where?
+  - Why?
+  - Where?
 
 # Related Work
 
