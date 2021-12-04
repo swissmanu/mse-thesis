@@ -405,6 +405,7 @@ $endif$
 %%%%%% ADDED BEGIN
 \usepackage{graphicx}
 \usepackage{ccicons}
+\usepackage{pdfpages}
 
 $if(review)$
 \usepackage{lineno}
@@ -587,4 +588,34 @@ $for(include-after)$
 $include-after$
 
 $endfor$
+
+
+\newpage
+
+\appendix
+
+\section{Paper ``Debugging of RxJS-Based Applications''}
+
+This paper was published with the proceedings of the 7th ACM SIGPLAN International Workshop
+on Reactive and Event-Based Languages and Systems (REBLS '20), 16th November 2020.
+
+\includepdf[pages=-]{content/papers/3427763.3428313.pdf}
+
+\section{Paper ``Debugging Support for Reactive Programming''}
+
+This paper was submitted with its supplementary material to the Technical Track at the 44th International Conference on
+Software Engineering (ICSE 2022). It was rejected by the  in the process of the double-anonymous review.
+
+\subsection{Paper}
+\includepdf[pages=-]{content/papers/icse/paper.pdf}
+
+\subsection{Supplementary Material}
+\includepdf[pages=-]{content/papers/icse/reports.pdf}
+
+\subsection{Double-Anonymous Review Results}
+
+This is the untouched reproduction of the original review results and our own rebuttal.
+
+\includepdf[pages=-]{out/icse-review.pdf}
+
 \end{document}
