@@ -244,8 +244,38 @@ $endif$
 $if(listings)$
 \usepackage{listings}
 \newcommand{\passthrough}[1]{#1}
-\lstset{defaultdialect=[5.3]Lua}
-\lstset{defaultdialect=[x86masm]Assembler}
+
+%%%%%% ADDED BEGIN
+\lstdefinelanguage{TypeScript}{
+	keywords={typeof, new, true, false, catch, function, return, null, catch, switch, for, var, const, let, if, in, while, do, else, case, break, goto},
+	keywordstyle=\color{blue}\bfseries,
+	commentstyle=\color{olive}\ttfamily,
+	stringstyle=\color{brown}\ttfamily,
+	ndkeywords={class, export, boolean, throw, implements, import, this, from, type, interface},
+	sensitive=false,
+	comment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	morestring=[b]',
+	morestring=[b]",
+	morestring=[b]`,
+}
+
+\lstset{
+	language=TypeScript,
+	tabsize=1,
+	numbers=left,
+	numberstyle=\tiny,
+	numbersep=1.2em,
+	basicstyle=\small,
+	captionpos=b,
+	%frame=single,
+	aboveskip=\bigskipamount,
+	belowskip=\bigskipamount,
+	%flexiblecolumns=true,
+	floatplacement=b
+}
+
+%%%%%% ADDED END
 $endif$
 $if(lhs)$
 \lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
@@ -412,6 +442,8 @@ $if(review)$
 \usepackage{color}
 \renewcommand{\linenumberfont}{\normalfont\tiny\color{red}}
 $endif$
+
+\usepackage[labelfont=bf,textfont=md]{caption}
 %%%%%% END BEGIN
 
 \begin{document}

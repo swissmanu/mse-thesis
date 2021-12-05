@@ -2,11 +2,13 @@
 
 *Goal: Make this thesis sound plausible to the common computer science guy. They should think: That sounds plausible... Good stuff!*
 
+## Programming Paradigms
+
 While mutliple programming language paradigms evolved over the years since the research community established the field of computer sciences, most of todays mainstream languages are based either on the imperative and/or declarative paradigm[@CITE SOME SOURCE]^[Two examples for multi-paradigm languages are Scala or ECMAScript.]. Traditionally, a program implemented with an imperative language (e.g., Fortran, Pascal, or C) modifies implicit state using side-effects through a sequence of commands [@Hudak_1989]. The basic assignment statement binds a value to a variable (i.e. modifies state) whereas the execution-flow of the program is modified using conditional (e.g., `if`, `while`, or `for`) and unconditional (i.e., `goto`) control-flow statements.
 
 ```{
-	caption="A program implemented in C producing the 10th element of the Fibonacci sequence, 34. Implicit state is stored in the variables `fib` and `i` and modified in a `for` loop control-flow statement."
-	.C
+	caption="A program implemented in C producing the 10th element of the Fibonacci sequence, 34. Implicit state is stored in the variables fib and i and modified in a for-loop control-flow statement."
+	language=C
 }
 #include <stdio.h>
 
@@ -19,7 +21,6 @@ int main() {
 	for (i = 2; i <= 9; i++) {
 		fib[i] = fib[i - 1] + fib[i - 2];
 	}
-
 	// fib[9] contains now the desired result: 34
 }
 ```
@@ -27,8 +28,8 @@ int main() {
 With a declarative programming language, computational results must be carried explicitly from one part of the program to the next, hence it does not have any implicit state [@Hudak_1989]. The source code of a program implemented with a declarative language is the blueprint of *what* the program is expected to accomplish eventually, whereas its imperative sibling resembles a precise step-by-step instruction on *how* the expected result must be achieved. A functional programming (FP) language (like e.g., Erlang or Haskell) is a specific type of declarative language. Its execution model is based on function and expression evaluation [@CITE FP EXECUTION MODEL], the programs result is the value of its evaluation rather than the value assigned to a state variable. Imperative loop statements are usually substituted with recursive function calls and conditional statements replaced^[Even though FP languages often provide an `if` expression (e.g., Scala), this is not equivalent with the imperative conditional statement. Being an expression, `if` is gets simply evaluated to a value rather than branching off to a guarded sequence of commands.] by mechanisms like pattern matching [@CITE PATTERN MATCHING CONDITIONALS].
 
 ```{
-	caption="A (naive) implementation of the Fibonacci sequence in Haskell, producing its 10th element. All elements for `n < 9` are calculated using recursive calls of `fib`."
-	.Haskell
+	caption="A (naive) implementation of the Fibonacci sequence in Haskell, producing its 10th element. All elements for n < 9 are calculated using recursive calls of fib."
+	language=Haskell
 }
 fib :: Integer -> Integer
 fib 0 = 0
@@ -36,6 +37,8 @@ fib 1 = 1
 fib n = fib (n-1) + fib (n-2)
 fib 9 -- Yields 34
 ```
+
+## Tooling
 
 
 
