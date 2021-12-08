@@ -1,50 +1,14 @@
 # Introduction
 
-*Goal: Make this thesis sound plausible to the common computer science guy. They should think: That sounds plausible... Good stuff!*
+A program implemented in an imperative language (e.g., Fortran, Pascal, or C) modifies implicit state using side-effects, achieved with assignment and various flow control statements like `while` or `if` [@Hudak_1989]. With a declarative programming language, computational results (i.e., state) is carried explicitly from one unit of the program to the next [@Hudak_1989]. The source code of such a declaratively implemented program is the blueprint of *what* the program is expected to accomplish eventually, whereas its imperative sibling resembles the precise step-by-step instruction on *how* the expected result must be achieved.
 
-## Programming Language Paradigms
+The Functional (FP) as well as the Data-Flow Programming (DFP) paradigms belong to the family of declarative languages.
 
-While multiple programming language paradigms evolved over the years, most of todays mainstream languages are based either on the imperative and/or declarative paradigm[@CITE SOME SOURCE]^[Two examples for multi-paradigm languages are Scala or ECMAScript.]. Traditionally, a program implemented with an imperative language (e.g., Fortran, Pascal, or C) modifies implicit state using side-effects through a sequence of commands [@Hudak_1989]. The basic assignment statement binds a value to a variable (i.e., modifies state) whereas the execution-flow of the program is controlled using conditional (e.g., `if`, `while`, or `for`) and unconditional (i.e., `goto`) control-flow statements.
+FP is based on the concept of expression evaluation: Flow control statements are replaced by recursive function calls and conditional expressions [@Hudak_1989]. Thus, a programs final outcome is the result of its full evaluation rather than its implicit state. With DFP, a program is modeled as a directed graph where a node represents an instruction of the program. The graph's edges describe how the data flows between its nodes [@Johnston_Hanna_Millar_2004].
 
-```{
-	caption="A program implemented in C producing the 10th element of the Fibonacci sequence, 34. Implicit state is stored in the variables fib and i and modified in a for-loop control-flow statement."
-	language=C
-}
-#include <stdio.h>
-
-int main() {
-	int fib[10];
-	fib[0] = 0;
-	fib[1] = 1;
-	int i;
-	
-	for (i = 2; i <= 9; i++) {
-		fib[i] = fib[i - 1] + fib[i - 2];
-	}
-	// fib[9] contains now the desired result: 34
-}
-```
-
-With a declarative programming language, computational results must be carried explicitly from one unit of the program to the next, hence it lacks of any implicit state [@Hudak_1989]. The source code of a program implemented with a declarative language is the blueprint of *what* the program is expected to accomplish eventually, whereas its imperative sibling resembles a precise step-by-step instruction on *how* the expected result must be achieved.
+Functional Reactive Programming (RP) combines FP and DFP, forming a new paradigm: Software engineers describe a data-flow graph using Domain Specific Languages (DSL) enabled by FP. DFP provides the execution model to process data using that graph accordingly.
 
 
-
-A functional programming (FP) language (e.g., Erlang or Haskell) belongs to the family of declarative languages. Its execution model is based on function evaluation [@CITE FP EXECUTION MODEL], thus the programs result is the value of its evaluation rather than the value assigned to a state variable. Imperative loop statements are substituted with recursive function calls and conditional statements replaced^[Even though FP languages often provide an `if` expression (e.g., Scala), this is not equivalent with the imperative conditional statement. Being an expression, `if` is gets simply evaluated to a value rather than branching off to a guarded sequence of commands.] by mechanisms like pattern matching [@CITE PATTERN MATCHING CONDITIONALS].
-
-```{
-	caption="A (naive) implementation of the Fibonacci sequence in Haskell, producing its 10th element. All elements for n < 9 are calculated using recursive calls of fib."
-	language=Haskell
-}
-fib :: Integer -> Integer
-fib 0 = 0
-fib 1 = 1
-fib n = fib (n-1) + fib (n-2)
-fib 9 -- Yields 34
-```
-
-Dataflow
-
-## Debug Tooling
 
 
 
