@@ -6,9 +6,15 @@ Imperative programming languages like Java, C#, or Python dominated the mainstre
 
 This experience degrades rapidly when software engineers start using programming languages and tools based on different programming paradigms. Because traditional debugging utilities apparently cannot provide answers to what engineers are interested in, engineers tend to use simpler debugging techniques instead.
 
-Within the scope of this master thesis, I examined this situation specifically for software engineers struggling with debugging programs based on RxJS, a functional reactive programming library for JavaScript. I documented the  
+Within the scope of my master studies research, I examined the necessity of paradigm-specific debugging utilities, when software engineers debug programs based on RxJS, a functional reactive programming library for JavaScript. During my research, I explored how professionals debug RxJS programs, what tools and techniques they employ, and why most of them prefer to use print statements instead of specialized debugging utilities. In doing so, I identified a key factor for the success of a debugging tool: It needs to be "ready to hand", or its users will not use it at all.
 
+Based on the premise of "readiness to hand", I developed a practical debugging tool for reactive programming with RxJS, which makes manual print statements in this context obsolete. 
 
+TODO
+
+This debugger was developed using an iterative, user-centered design process, which ensures  A usability inspection and a usability test The resulting extension integrates with Visual Studio Code and provides a proof by existence o
+
+In this summative thesis, 
 
 
 
