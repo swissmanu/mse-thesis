@@ -1,14 +1,33 @@
 # Introduction
 
-A program implemented in an imperative language (e.g., Fortran, Pascal, or C) modifies implicit state using side-effects, achieved with assignment and various flow control statements like `while` or `if` [@Hudak_1989]. With a declarative programming language, computational results (i.e., state) is carried explicitly from one unit of the program to the next [@Hudak_1989]. The source code of such a declaratively implemented program is the blueprint of *what* the program is expected to accomplish eventually, whereas its imperative sibling resembles the precise step-by-step instruction on *how* the expected result must be achieved.
+Debugging is an important part of a software engineers daily job. Various techniques, some better suited for the task than others, help engineers to explore the functionality of an unknown program. Rather traditional debugging is done by the interpretation of memory dumps or the analysis of log entries.  Modern debugging solutions hook into a program at runtime and allow more involved inspection and control.
 
-The Functional (FP) as well as the Data-Flow Programming (DFP) paradigms belong to the family of declarative languages.
+Imperative programming languages like Java, C#, or Python dominated the mainstream software engineering industry over the last decades [@CITE]. Because of the prevalence of imperative programming langugaes, integrated development environments (IDE) like Eclipse, Idea, or Visual Studio provide specialized debugging utilities specifically tailored to imperative programming languages. This results in an excellent, fully integrated developer experience, where tool supported debugging is only one or two clicks away.
 
-FP is based on the concept of expression evaluation: Flow control statements are replaced by recursive function calls and conditional expressions [@Hudak_1989]. Thus, a programs final outcome is the result of its full evaluation rather than its implicit state. With DFP, a program is modeled as a directed graph where a node represents an instruction of the program. The graph's edges describe how the data flows between its nodes [@Johnston_Hanna_Millar_2004].
+This experience degrades rapidly when software engineers start using programming languages and tools based on different programming paradigms. Because traditional debugging utilities apparently cannot provide answers to what engineers are interested in, engineers tend to use simpler debugging techniques instead.
 
-Functional Reactive Programming (RP) combines FP and DFP, forming a new paradigm: Software engineers describe a data-flow graph using Domain Specific Languages (DSL) enabled by FP. DFP provides the execution model to process data using that graph accordingly.
+Within the scope of this master thesis, I examined this situation specifically for software engineers struggling with debugging programs based on RxJS, a functional reactive programming library for JavaScript. I documented the  
 
 
+
+
+
+
+
+
+## Programming Paradigms
+
+A program implemented in an imperative language (e.g., Java or C#) modifies implicit state using side-effects, achieved with assignment and various flow control statements like `while` or `if` [@Hudak_1989]. With a declarative programming language, computational results (i.e., state) are carried explicitly from one unit of the program to the next [@Hudak_1989]. The source code of such a declaratively implemented program is the blueprint of *what* the program is expected to accomplish eventually, whereas its imperative sibling resembles the precise step-by-step instruction on *how* the expected result must be achieved.
+
+The Functional (FP) as well as the Data-Flow Programming (DFP) paradigm belongs to the family of declarative languages.
+
+FP languages (e.g., Haskell or Erlang) are based on the concept of expression evaluation: Flow control statements are replaced with recursive function calls and conditional expressions [@Hudak_1989]. Thus, a programs final outcome is the result of its full evaluation rather than its implicit state. With DFP, a program is modeled as a directed graph where a node represents an instruction of the program. The graph's edges describe how the data flows between its nodes [@Johnston_Hanna_Millar_2004].
+
+Functional Reactive Programming (RP) combines FP and DFP, forming a new paradigm: Software engineers describe a data-flow graph using Domain Specific Languages (DSL) enabled by FP. DFP provides the execution model to process data using that graph accordingly. These two components are often not part of programming languages themselves and are provided as libraries  instead (e.g., REScala for Scala or RxJS for JavaScript).
+
+## Debugging Concepts
+
+Debuggers traditionally part of modern IDE's are meant to work with an interpret imperatively implemented programs. 
 
 
 
@@ -47,7 +66,7 @@ Functional Reactive Programming (RP) combines FP and DFP, forming a new paradigm
 		- HCI / UCD
 		- Empirical Software Engineering
 
-- Interviewes
+- Interviews
 - War stories
 - Remote observational study
 - *First paper published *[@Alabor_Stolze_2020]
@@ -60,10 +79,16 @@ Functional Reactive Programming (RP) combines FP and DFP, forming a new paradigm
 - Release first minor version of extension
   - nodejs
   - Log points for RxJS operator
-- *Second paper published (hopefully)*
+- Second paper submitted to ICSE, got rejected. See appendix for full review.
 - Release first major version of extension
+	- Webpack support
 
 # Future Work
+
+
+
+## Sustainability of Work
+
 
 - Where to pick things up
 - Sustainability of Work
