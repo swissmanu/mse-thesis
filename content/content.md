@@ -8,15 +8,9 @@ This experience degrades rapidly when software engineers start using programming
 
 Within the scope of my master studies research, I examined the necessity of paradigm-specific debugging utilities, when software engineers debug programs based on RxJS, a functional reactive programming library for JavaScript. During my research, I explored how professionals debug RxJS programs, what tools and techniques they employ, and why most of them prefer to use print statements instead of specialized debugging utilities. In doing so, I identified a key factor for the success of a debugging tool: It needs to be "ready to hand", or its users will not use it at all.
 
-Based on the premise of "readiness to hand", I developed a practical debugging tool for reactive programming with RxJS, which makes manual print statements in this context obsolete. 
+Based on the premise of "readiness to hand", I developed a practical debugging tool for reactive programming with RxJS, which makes manual print statements in this context obsolete.
 
-TODO
-
-This debugger was developed using an iterative, user-centered design process, which ensures  A usability inspection and a usability test The resulting extension integrates with Visual Studio Code and provides a proof by existence o
-
-In this summative thesis, 
-
-
+In this summative thesis, I consolidate my research results documented and published in research papers. I will conclude the introduction with an overview on relevant programming paradigms and the specific debugging challenges they carry. In *@sec:related-work
 
 
 
@@ -50,7 +44,7 @@ Debuggers traditionally part of modern IDE's are meant to work with an interpret
   - Why?
   - Where?
 
-# Related Work
+# Related Work {#sec:related-work}
 
 - Main
 	- Salvaneschi [@Salvaneschi_Mezini_2016]
