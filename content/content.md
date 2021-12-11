@@ -10,10 +10,7 @@ Within the scope of my master studies research, I examined the necessity of para
 
 Based on the premise of "readiness to hand", I developed a practical debugging tool for reactive programming with RxJS, which makes manual print statements in this context obsolete.
 
-In this summative thesis, I consolidate my research results documented and published in research papers. I will conclude the introduction with an overview on relevant programming paradigms and the specific debugging challenges they carry. In [@sec:related-work]
-
-
-
+In this summative thesis, I consolidate my research results documented and published in two research papers. I will complete this introduction with an overview on relevant programming paradigms and the specific debugging challenges they carry. Relevant work will be discussed in [@sec:related-work], followed by an overview on the full research process and its results in [@sec:research-process]. [@sec:future-work] presents a list of opportunities for future work and highlights provisions taken to ensure sustainability of the demonstrated results. Before the reader is left with the study of the research papers in the appendix, I will wrap up on the topic of debugging support for reactive programming with RxJS in [@sec:conclusion].
 
 ## Programming Paradigms
 
@@ -40,9 +37,6 @@ Debuggers traditionally part of modern IDE's are meant to work with an interpret
   - RQ 3 Is it feasible to implement the proposed solution in order to improve the debugging experience of software engineers?
 
 - Structure of this thesis
-- Open Science
-  - Why?
-  - Where?
 
 # Related Work {#sec:related-work}
 
@@ -55,7 +49,7 @@ Debuggers traditionally part of modern IDE's are meant to work with an interpret
 	- https://www.replay.io
 	- ... others?
 
-# Research Process
+# Research Process {#sec:research-process}
 
 - Find the right abstraction level for this section!
 	- Necessary to go "deep"?
@@ -83,20 +77,24 @@ Debuggers traditionally part of modern IDE's are meant to work with an interpret
 - Release first major version of extension
 	- Webpack support
 
-# Future Work
+# Future Work {#sec:future-work}
+
+
 
 
 
 ## Sustainability of Work
 
-
+- Open Science
+	- Why?
+	- Where to get data?
 - Where to pick things up
 - Sustainability of Work
 	- Testing
 	- Open Source Community
 - Project ideas for other student contributors?
 
-# Conclusion
+# Conclusion {#sec:conclusion}
 
 - Recap
 - Contributions
