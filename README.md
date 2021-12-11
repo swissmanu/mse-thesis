@@ -1,4 +1,6 @@
-# Thesis
+# Debugging Support for Reactive Programming with RxJS
+
+> A summative master thesis presented for the degree of Master of Science in Engineering
 
 ## Build in Docker Container
 
