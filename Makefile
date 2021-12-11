@@ -19,13 +19,12 @@ build_thesis_pdf:
 	@echo "Build out/${thesis_filename}.pdf"
 	@pandoc \
     --template=./templates/thesis.tex \
-    --lua-filter=lib/lua-filters/include-files/include-files.lua \
     --metadata=version=${VERSION} \
     --metadata-file=./metadata_thesis.yml \
-    -f markdown+raw_tex \
+    --from markdown+raw_tex \
+    --lua-filter=lib/lua-filters/include-files/include-files.lua \
+    --filter pandoc-crossref \
     --citeproc \
-    --listings \
-    --standalone \
 		--output=out/${thesis_filename}.pdf \
 		${thesis_source}
 

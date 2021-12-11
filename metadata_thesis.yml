@@ -34,9 +34,18 @@ csl: templates/transactions-on-programming-languages-and-systems
 link-citations: true
 bibliography: bibliography.bib
 
+# pandoc-crossref:
+# https://lierdakil.github.io/pandoc-crossref/#general-options
+figPrefix:
+  - Figure
+  - Figures
+secPrefix:
+  - Section
+  - Sections
+
 # Abstract:
 abstract: Over the course of the
-
 # Acknowledgments:
 # acknowledgments: |
 #   Thank you.
+

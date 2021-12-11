@@ -10,7 +10,7 @@ Within the scope of my master studies research, I examined the necessity of para
 
 Based on the premise of "readiness to hand", I developed a practical debugging tool for reactive programming with RxJS, which makes manual print statements in this context obsolete.
 
-In this summative thesis, I consolidate my research results documented and published in research papers. I will conclude the introduction with an overview on relevant programming paradigms and the specific debugging challenges they carry. In *@sec:related-work
+In this summative thesis, I consolidate my research results documented and published in research papers. I will conclude the introduction with an overview on relevant programming paradigms and the specific debugging challenges they carry. In [@sec:related-work]
 
 
 
