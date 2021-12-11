@@ -9,7 +9,7 @@ name: Build PDFs
 
 jobs:
   build:
-    name: Build
+    name: Build PDF
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -36,6 +36,7 @@ jobs:
         with:
           name: snapshot
           path: out/*.pdf
+          retention-days: 10
 
       # Following Steps run only on version tags:
       # - name: Add Version to PDF filename
