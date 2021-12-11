@@ -53,33 +53,47 @@ RxJS is the JavaScript-based implementation of the ReactiveX API specification. 
 	- https://www.replay.io
 	- ... others?
 
+
 # Research Process {#sec:research-process}
 
-- Find the right abstraction level for this section!
-	- Necessary to go "deep"?
-	- Keep bullets only?
-	- Use some graphical representation of the process?
-		- Timeline?
-	- Highlight main aspects of different project phases:
-		- HCI / UCD
-		- Empirical Software Engineering
+![Research Process Phases](./figures/process.png)
 
+## Exploration
+
+- Focus: Empirical Software Engineering
 - Interviews
 - War stories
 - Remote observational study
-- *First paper published *[@Alabor_Stolze_2020]
+- *First paper published* [@Alabor_Stolze_2020]
+
+## Proof Of Concept
+
+- Phase Focus: Empirical Software Engineering, HCI
 - Sketching a solution
 - Proof of concept extension
+- User Journey
 - Cognitive Walkthrough [@Wharton_Rieman_Clayton_Polson_1994]
+
+## Prototype
+
+- Phase Focus: User-Centered Design
 - Prototype extension
 - Remote user testing
 - Prototype refinement
 - Release first minor version of extension
   - nodejs
   - Log points for RxJS operator
+
+## Release
+
+- Phase Focus: User-Centered Design
 - Second paper submitted to ICSE, got rejected. See appendix for full review.
 - Release first major version of extension
 	- Webpack support
+
+
+
+
 
 # Future Work {#sec:future-work}
 
@@ -96,6 +110,7 @@ RxJS is the JavaScript-based implementation of the ReactiveX API specification. 
 - Sustainability of Work
 	- Testing
 	- Open Source Community
+	- Analytics Data Collection
 - Project ideas for other student contributors?
 
 # Conclusion {#sec:conclusion}
