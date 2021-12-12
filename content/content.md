@@ -66,7 +66,7 @@ The research process, documented in two research papers, is structured in four d
 
 ## Exploration
 
-The exploration phase was all about empirical software engineering. Based on the data collected from five informal interviews and the sentiment of five written "war story" reports, I set up a remote observational study with four subjects. The study was designed to verify what kind of debugging tools and techniques the subjects actually use when being confronted with an unknown, malfunctioning RxJS program. As [@fig:result-observational-study] shows, all of the subjects used manual code modifications (i.e., print statements) to understand the behavior of the presented problems. Over the half of them tried to use a traditional, imperative debugger. It was surprising that, even though two subjects stated to know about specialized RxJS debugging tools, none of them used such during the study.
+The Exploration phase was all about empirical software engineering. Based on the data collected from five informal interviews and the sentiment of five written "war story" reports, I set up a remote observational study with four subjects. The study was designed to verify what kind of debugging tools and techniques the subjects actually use when being confronted with an unknown, malfunctioning RxJS program. As shown in [@fig:result-observational-study], all of the subjects used manual code modifications (i.e., print statements) to understand the behavior of the presented problems. Over the half of them tried to use a traditional, imperative debugger. It was surprising that, even though two subjects stated to know about specialized RxJS debugging tools, none of them used such during the study.
 
 ```{.include}
 content/figures/result-observational-study.tex
@@ -82,11 +82,9 @@ on Reactive and Event-Based Languages and Systems (REBLS '20) and available in [
 
 ## Proof Of Concept
 
-- Phase Focus: Empirical Software Engineering, HCI
-- Sketching a solution
-- Proof of concept extension
-- User Journey
-- Cognitive Walkthrough [@Wharton_Rieman_Clayton_Polson_1994]
+Based on the learnings from the first phase, I started to compile ideas to help software engineers in the process of debugging RxJS programs. It was essential that a potential solution (i) integrates with an IDE and (ii) requires minimal to no additional learning effort for its users.
+
+Imperative debuggers provide log points, a utility to print a log statement once the program execution processes as specific statement in the source code. I adopted this established concept and transferred it to the world of RP with RxJS: An *operator log point*, enabled for a specific operator in an Observables `pipe` shows in realtime, when related operator emits relevant events. I did a proof of concept (PoC) implementation in form of an extension to Microsoft Visual Studio Code. To verify that the PoC actually solves the problem of manual code modifications in order to debug RxJS programs, I used a cognitive walkthrough [@Wharton_Rieman_Clayton_Polson_1994], which is available in [Appendix @sec:paper-2-supplementary]. Further, I created a user journey comparing the debugging workflow with and without the PoC debugging extension (see [Appendix @sec:user-journey].
 
 ```{.include}
 content/tables/phase-2-artifacts.tex
