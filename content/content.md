@@ -58,21 +58,23 @@ RxJS is the JavaScript-based implementation of the ReactiveX API specification. 
 
 ![Research Process Phases](./content/figures/process.png)
 
-The overall research process, documented in two research papers, is structured in four distinct phases: (i) Exploration, (ii) Proof of Concept, (iii) Prototype, and (iv) Delivery. This section gives an overview of every stage, presents the most important insights, and lists the resulting artifacts.
+The research process, documented in two research papers, is structured in four distinct phases: (i) Exploration, (ii) Proof of Concept, (iii) Prototype, and (iv) Delivery. This section gives an overview of every stage, presents the most important insights, and lists the resulting artifacts.
 
 ## Exploration
 
-The exploration phase was all about empirical software engineering. Based on the data collected from five informal interviews and the sentiment of five written "war story" reports, I set up a remote observational study with four subjects. The study was designed to verify what kind of debugging tools and techniques a subject actually uses, when being confronted with an unknown, malfunctioning RxJS program. [@fig:result-observational-study]
+The exploration phase was all about empirical software engineering. Based on the data collected from five informal interviews and the sentiment of five written "war story" reports, I set up a remote observational study with four subjects. The study was designed to verify what kind of debugging tools and techniques the subjects actually use when being confronted with an unknown, malfunctioning RxJS program. As [@fig:result-observational-study] shows, all of the subjects used manual code modifications (i.e., print statements) to understand the behavior of the presented problems. Over the half of them tried to use a traditional, imperative debugger. It was surprising that, even though two subjects stated to know about specialized RxJS debugging tools, none of them used such during the study.
 
 ```{.include}
 content/figures/result-observational-study.tex
 ```
 
-- Focus: Empirical Software Engineering
-- Interviews
-- War stories
-- Remote observational study
-- *First paper published* [@Alabor_Stolze_2020]
+The results of the interviews, the analysis of the war story reports, and the interpretation of the observed behaviors during the observational study combined lead to the following two key take-aways:
+
+1. The most significant challenge software engineers face when debugging RxJS-based programs, is to know *when* they should apply *what* tool to resolve their current problem in the *most efficient way*.
+2. Can one find a way to improve the developer experience by providing RxJS-specific debugging utilities where software engineers expect them the most, ready to hand, and fully integrated, with their IDE?
+
+The main artifact produced during the Exploration phase is the research paper "Debugging of RxJS-Based Applications", published in the proceedings of This paper was published with the proceedings of the 7th ACM SIGPLAN International Workshop
+on Reactive and Event-Based Languages and Systems (REBLS '20) and available in [@sec:paper-1].
 
 ```{.include}
 content/tables/phase-1-artifacts.tex
