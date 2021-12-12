@@ -1,0 +1,38 @@
+\begin{figure}
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      height=5cm,
+      width=0.8\linewidth,
+      xbar, xmin=0, xtick={0,1,2,3,4},
+      symbolic y coords={Additional Tools,Debugger,Trace Logs}, ytick=data, enlarge y limits=0.3,
+      nodes near coords, nodes near coords align={horizontal},
+      legend pos=south east,
+      legend style={fill=none,at={(0.5,-0.2)},anchor=north},
+      legend cell align={left},
+      reverse legend
+    ]
+
+    \addlegendentry{\# of subjects were observed using}
+    \addplot[
+        fill=black,
+        draw=black
+      ]
+      coordinates {
+        (0,Additional Tools) (4,Trace Logs) (2,Debugger)
+      };
+
+    \addlegendentry{\# of subjects typically use}
+    \addplot[
+        pattern=north east lines,
+        pattern color=gray,
+        draw=black
+      ]
+      coordinates {
+        (2,Additional Tools) (4,Trace Logs) (3,Debugger)
+      };
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Comparison of what debugging techniques subjects stated to usually use, and what they were observed actually using during the observational study.}
+  \label{fig:result-observational-study}
+\end{figure}

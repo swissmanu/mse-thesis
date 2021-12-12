@@ -16,7 +16,7 @@ In this summative thesis, I consolidate my research results documented and publi
 
 A program implemented in an imperative language (e.g., Java or C#) modifies implicit state using side-effects, achieved with assignment and various flow control statements like `while` or `if` [@Hudak_1989]. With a declarative programming language, computational results (i.e., state) are carried explicitly from one unit of the program to the next [@Hudak_1989]. The source code of a declaratively implemented program is the blueprint of *what* the program is expected to accomplish eventually, whereas its imperative sibling resembles the precise step-by-step instruction on *how* the expected result must be achieved.
 
-![Programming Paradigm Taxonomy](./figures/paradigm-taxonomy.png)
+![Programming Paradigm Taxonomy](./content/figures/paradigm-taxonomy.png)
 
 The Functional (FP) as well as the Data-Flow Programming (DFP) paradigm belongs to the family of declarative languages.
 
@@ -38,7 +38,7 @@ Functional Reactive Programming (FRP) [@Wan_Hudak_2000] combines FP and DFP in o
 
 ## Reactive Programming with RxJS
 
-RxJS is the JavaScript-based implementation of the ReactiveX API specification. The core concept of this API, the *Observable*, is "[..] a combination of the best ideas from the Observer pattern, the Iterator pattern, and functional programming"[@reactivex]. Like the Observer pattern [@gof], is the *Observable* an abstraction for notifying observers about changed state of the subject. 
+RxJS is the JavaScript-based implementation of the ReactiveX API specification. The core concept of this API, the *Observable*, is "[..] a combination of the best ideas from the Observer pattern, the Iterator pattern, and functional programming"[@reactivex]. Like the Observer pattern [@gof], is the *Observable* an abstraction for notifying observers about changed state of the subject.
 
 
 
@@ -56,15 +56,17 @@ RxJS is the JavaScript-based implementation of the ReactiveX API specification. 
 
 # Research Process {#sec:research-process}
 
-![Research Process Phases](./figures/process.png)
+![Research Process Phases](./content/figures/process.png)
 
 The overall research process, documented in two research papers, is structured in four distinct phases: (i) Exploration, (ii) Proof of Concept, (iii) Prototype, and (iv) Delivery. This section gives an overview of every stage, presents the most important insights, and lists the resulting artifacts.
 
 ## Exploration
 
-The exploration phase was all about empirical software engineering. Based on the data collected from five informal interviews and the sentiment of five written "war story" reports, I set up a remote observational study with four subjects. The study was designed to verify what kind of debugging tools and techniques a subject actually uses, when being confronted with an unknown, malfunctioning RxJS program.
+The exploration phase was all about empirical software engineering. Based on the data collected from five informal interviews and the sentiment of five written "war story" reports, I set up a remote observational study with four subjects. The study was designed to verify what kind of debugging tools and techniques a subject actually uses, when being confronted with an unknown, malfunctioning RxJS program. [@fig:result-observational-study]
 
-
+```{.include}
+content/figures/result-observational-study.tex
+```
 
 - Focus: Empirical Software Engineering
 - Interviews
