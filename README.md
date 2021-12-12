@@ -5,5 +5,9 @@
 ## Build in Docker Container
 
 ```shell
+# Once:
 docker run -it --rm -v `pwd`:/data ghcr.io/swissmanu/pandoc make
+
+# Continously on change (requires nodemon):
+nodemon --watch "content" --ext md,tex --exec "docker run --rm -v `pwd`:/data ghcr.io/swissmanu/pandoc make
 ```
