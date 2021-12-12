@@ -56,7 +56,9 @@ RxJS is the JavaScript-based implementation of the ReactiveX API specification. 
 
 # Research Process {#sec:research-process}
 
-![Research Process Phases](./content/figures/process.png)
+```{.include}
+content/figures/research-process.tex
+```
 
 The research process, documented in two research papers, is structured in four distinct phases: (i) Exploration, (ii) Proof of Concept, (iii) Prototype, and (iv) Delivery. This section gives an overview of every stage, presents the most important insights, and lists the resulting artifacts.
 
