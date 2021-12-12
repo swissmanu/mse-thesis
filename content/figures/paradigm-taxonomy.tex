@@ -1,0 +1,14 @@
+\begin{figure}
+  \centering
+  \begin{tikzpicture}
+    \node {Paradigms}
+      [edge from parent fork down]
+      child {node {Imperative}}
+      child {node {Declarative}
+        child[child anchor=north east] {node {Functional}}
+        child {node {Data-Flow}}
+      };
+  \end{tikzpicture}
+  \caption{Programming Paradigm Taxonomy}
+  \label{fig:paradigm-taxonomy}
+\end{figure}

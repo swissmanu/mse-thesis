@@ -16,7 +16,9 @@ In this summative thesis, I consolidate my research results documented and publi
 
 A program implemented in an imperative language (e.g., Java or C#) modifies implicit state using side-effects, achieved with assignment and various flow control statements like `while` or `if` [@Hudak_1989]. With a declarative programming language, computational results (i.e., state) are carried explicitly from one unit of the program to the next [@Hudak_1989]. The source code of a declaratively implemented program is the blueprint of *what* the program is expected to accomplish eventually, whereas its imperative sibling resembles the precise step-by-step instruction on *how* the expected result must be achieved.
 
-![Programming Paradigm Taxonomy](./content/figures/paradigm-taxonomy.png)
+```{.include}
+content/figures/paradigm-taxonomy.tex
+```
 
 The Functional (FP) as well as the Data-Flow Programming (DFP) paradigm belongs to the family of declarative languages.
 
