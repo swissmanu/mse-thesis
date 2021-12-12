@@ -74,9 +74,9 @@ content/figures/result-observational-study.tex
 - Remote observational study
 - *First paper published* [@Alabor_Stolze_2020]
 
-| Result | Description |
-|--------|-------------|
-| Workshop Paper | Test    |
+```{.include}
+content/tables/phase-1-artifacts.tex
+```
 
 
 ## Proof Of Concept
@@ -86,6 +86,10 @@ content/figures/result-observational-study.tex
 - Proof of concept extension
 - User Journey
 - Cognitive Walkthrough [@Wharton_Rieman_Clayton_Polson_1994]
+
+```{.include}
+content/tables/phase-2-artifacts.tex
+```
 
 ## Prototype
 
@@ -97,6 +101,10 @@ content/figures/result-observational-study.tex
   - nodejs
   - Log points for RxJS operator
 
+```{.include}
+content/tables/phase-3-artifacts.tex
+```
+
 ## Delivery
 
 - Phase Focus: User-Centered Design
@@ -104,7 +112,9 @@ content/figures/result-observational-study.tex
 - Release first major version of extension
 	- Webpack support
 
-
+```{.include}
+content/tables/phase-4-artifacts.tex
+```
 
 
 

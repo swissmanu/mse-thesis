@@ -28,6 +28,12 @@ toc: true
 toc-title: Table of Contents
 numbersections: true
 
+# List of Figures
+lof: true
+
+# List of Tables:
+lot: true
+
 # References and Citations:
 reference-section-title: References
 csl: templates/transactions-on-programming-languages-and-systems
