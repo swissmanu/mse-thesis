@@ -1,7 +1,7 @@
 # sections = $(wildcard content/*/*.md)
 thesis_source = content/content.md
 thesis_filename = thesis
-icse_review_source = content/papers/icse/review.md
+icse_review_source = content/pdfs/icse/review.md
 icse_review_filename = icse-review
 
 .PHONY: default clean build build_thesis_pdf
