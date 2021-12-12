@@ -20,7 +20,7 @@ A program implemented in an imperative language (e.g., Java or C#) modifies impl
 
 The Functional (FP) as well as the Data-Flow Programming (DFP) paradigm belongs to the family of declarative languages.
 
-FP languages (e.g., Haskell or Erlang) are based on the concept of expression evaluation: Flow control statements are replaced with recursive function calls and conditional expressions [@Hudak_1989]. Thus, a programs final outcome is the result of its full evaluation rather than its implicit state. With DFP, a program is modeled as a directed graph where a node represents an instruction of the program. The graph's edges describe how the data flows between its nodes [@Johnston_Hanna_Millar_2004]. Examples for DFP can be found in visual programming environments like Node-RED^[https://nodered.org/].
+FP languages (e.g., Haskell or Erlang) are based on the concept of expression evaluation: Flow control statements are replaced with recursive function calls and conditional expressions [@Hudak_1989]. Thus, a programs final outcome is the result of its full evaluation rather than its implicit state. With DFP, a program is modeled as a directed graph where a node represents an instruction of the program. The graph's edges describe how the data flows between its nodes [@Johnston_Hanna_Millar_2004]. Examples for DFP can be found in visual programming environments like Node-RED[^https://nodered.org/].
 
 
 
@@ -58,13 +58,24 @@ RxJS is the JavaScript-based implementation of the ReactiveX API specification. 
 
 ![Research Process Phases](./figures/process.png)
 
+The overall research process, documented in two research papers, is structured in four distinct phases: (i) Exploration, (ii) Proof of Concept, (iii) Prototype, and (iv) Delivery. This section gives an overview of every stage, presents the most important insights, and lists the resulting artifacts.
+
 ## Exploration
+
+The exploration phase was all about empirical software engineering. Based on the data collected from five informal interviews and the sentiment of five written "war story" reports, I set up a remote observational study with four subjects. The study was designed to verify what kind of debugging tools and techniques a subject actually uses, when being confronted with an unknown, malfunctioning RxJS program.
+
+
 
 - Focus: Empirical Software Engineering
 - Interviews
 - War stories
 - Remote observational study
 - *First paper published* [@Alabor_Stolze_2020]
+
+| Result | Description |
+|--------|-------------|
+| Workshop Paper | Test    |
+
 
 ## Proof Of Concept
 
@@ -84,7 +95,7 @@ RxJS is the JavaScript-based implementation of the ReactiveX API specification. 
   - nodejs
   - Log points for RxJS operator
 
-## Release
+## Delivery
 
 - Phase Focus: User-Centered Design
 - Second paper submitted to ICSE, got rejected. See appendix for full review.
