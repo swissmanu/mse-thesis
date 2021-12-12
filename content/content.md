@@ -2,7 +2,7 @@
 
 Debugging is an important part of a software engineers daily job. Various techniques, some better suited for the task than others, help engineers to explore the functionality of an unknown program. Rather traditional debugging is done by the interpretation of memory dumps or the analysis of log entries.  Modern debugging solutions hook into a program at runtime and allow more involved inspection and control.
 
-Imperative programming languages like Java, C#, or Python dominated the mainstream software engineering industry over the last decades [@CITE]. Because of the prevalence of imperative programming langugaes, integrated development environments (IDE) like Eclipse, Idea, or Visual Studio provide specialized debugging utilities specifically tailored to imperative programming languages. This results in an excellent, fully integrated developer experience, where tool supported debugging is only one or two clicks away.
+Imperative programming languages like Java, C#, or Python dominated the mainstream software engineering industry over the last decades [@CITE]. Because of the prevalence of imperative programming languages, integrated development environments (IDE) like Eclipse, Idea, or Visual Studio provide specialized debugging utilities specifically tailored to imperative programming languages. This results in an excellent, fully integrated developer experience, where tool supported debugging is only one or two clicks away.
 
 This experience degrades rapidly when software engineers start using programming languages and tools based on different programming paradigms. Because traditional debugging utilities apparently cannot provide answers to what engineers are interested in, engineers tend to use simpler debugging techniques instead.
 
@@ -73,13 +73,8 @@ The results of the interviews, the analysis of the war story reports, and the in
 1. The most significant challenge software engineers face when debugging RxJS-based programs, is to know *when* they should apply *what* tool to resolve their current problem in the *most efficient way*.
 2. Can one find a way to improve the developer experience by providing RxJS-specific debugging utilities where software engineers expect them the most, ready to hand, and fully integrated, with their IDE?
 
-The main artifact produced during the Exploration phase is the research paper "Debugging of RxJS-Based Applications", published in the proceedings of This paper was published with the proceedings of the 7th ACM SIGPLAN International Workshop
-on Reactive and Event-Based Languages and Systems (REBLS '20) and available in [@sec:paper-1].
-
-```{.include}
-content/tables/phase-1-artifacts.tex
-```
-
+The main artifact produced during the Exploration phase is the research paper "Debugging of RxJS-Based Applications," [@Alabor_Stolze_2020] published with the proceedings of the 7th ACM SIGPLAN International Workshop
+on Reactive and Event-Based Languages and Systems (REBLS '20) and available in [Appendix @sec:paper-1].
 
 ## Proof Of Concept
 
