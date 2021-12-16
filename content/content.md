@@ -62,7 +62,7 @@ RxJS is the JavaScript-based implementation of the ReactiveX API specification. 
 content/figures/research-process.tex
 ```
 
-The research process, documented in two research papers, is structured in four distinct phases: (i) Exploration, (ii) Proof of Concept (PoC), (iii) Prototype, and (iv) Delivery. This section gives an overview of every stage, presents the most important insights, and lists the resulting artifacts.
+The iterative research process follows the principles of empirical software engineering and applies methods of the user-centered design approach. Its results are documented in two research papers. The process is structured in four distinct phases: (i) Exploration, (ii) Proof of Concept (PoC), (iii) Prototype, and (iv) Delivery. This section gives an overview of every stage, presents the most important insights, and lists the developed artifacts.
 
 ```{.include}
 content/tables/artifact-overview.tex
@@ -78,7 +78,7 @@ content/figures/result-observational-study.tex
 
 The results of the interviews, the analysis of the war story reports, and the interpretation of the observed behaviors during the observational study combined lead to the following two key take-aways:
 
-1. The most significant challenge software engineers face when debugging RxJS-based programs, is to know *when* they should apply *what* tool to resolve their current problem in the *most efficient way*.
+1. The most significant challenge software engineers face when debugging RxJS-based programs, is to know *when* they should apply *what* tool to resolve their current problem in the *most efficient way*
 2. Can one find a way to improve the developer experience by providing RxJS-specific debugging utilities where software engineers expect them the most, ready to hand, and fully integrated, with their IDE?
 
 The main artifact produced during the Exploration phase is the research paper "Debugging of RxJS-Based Applications," [@Alabor_Stolze_2020] published with the proceedings of the 7th ACM SIGPLAN International Workshop
@@ -97,11 +97,13 @@ Using the two inspection methods, I could successfully verify that operator log 
 
 ## Prototype
 
-After I had confidence in the concept of operator log points, I started to rebuild the PoC debugging extension from ground up focusing on user-centered design, maintainability, and extensibility. This resulted in the v0.1.0 release of "RxJS Debugging for Visual Studio Code" [@rxjs-debugging], the first fully integrated RxJS debugger for vscode.
+After I had confidence in the concept of operator log points, I started to rebuild the PoC debugging extension from ground up focusing on functionality, maintainability, and extensibility. This resulted in the v0.1.0 release of "RxJS Debugging for Visual Studio Code" [@rxjs-debugging], the first fully integrated RxJS debugger for vscode.
 
 The initial version of the extension enables engineers to debug RxJS-based applications running with Node.js. There are no additional setup steps necessary: Once the extension is installed, it suggests operator log points with a small, diamond-shaped icon next to the respective operator. The engineer launches their application using the built-in JavaScript debugger. By doing so, the RxJS debugger augments RxJS automatically to provide life-cycle events to vscode. The extension displays these life-cycle events for operators having an enabled log point in-line with the operator in the source code editor.
 
 TODO Screenshot of Prototype
+
+There were various interesting challenges and tasks to solve during the Prototype phase. The following two sub-sections present two highlights.
 
 ### Communicate with Node.js
 
@@ -119,11 +121,9 @@ content/figures/architecture.tex
 
 ### Moderated Remote Usability Test
 
-TODO Add Architecture Diagram
+Once I got the main elements of the new debugger working, I conducted a remote usability test with three subjects. The goals of this study were (i) to verify that the operator log point utility can replace manual print statements in an actual programming scenario, (ii) to identify usability issues not detected during development, and (iii) to collect feedback and ideas for the prototype and its further development.
 
-- vscode-jsdebug Contribution
-
-
+All three goals were successfully verified. No subject used manual print statements during the test sessions. Further, 10 usability issues were identified, four of them classified as "major" and fixed in later development cycles accordingly. Feedback and ideas were collected and found their way to the extensions task backlog on GitHub^[[https://github.com/swissmanu/rxjs-debugging-for-vscode/issues](https://github.com/swissmanu/rxjs-debugging-for-vscode/issues?q=is%3Aopen+is%3Aissue+label%3Afeature%2Cimprovement)]. The complete result set of the usability test is available in [Appendix @sec:paper-2-supplementary].
 
 ## Delivery
 
