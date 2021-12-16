@@ -2,7 +2,7 @@
 
 Debugging is an important part of a software engineers daily job. Various techniques, some better suited for the task than others, help engineers to explore the functionality of an unknown program. Rather traditional debugging is done by the interpretation of memory dumps or the analysis of log entries.  Modern debugging solutions hook into a program at runtime and allow more involved inspection and control.
 
-Imperative programming languages like Java, C#, or Python dominated the mainstream software engineering industry over the last decades [@CITE]. Because of the prevalence of imperative programming languages, integrated development environments (IDE) like Eclipse, Idea, or Visual Studio provide specialized debugging utilities specifically tailored to imperative programming languages. This results in an excellent, fully integrated developer experience, where tool supported debugging is only one or two clicks away.
+Imperative programming languages like Java, C#, or Python dominated the mainstream software engineering industry over the last decades [@CITE]. Because of the prevalence of imperative programming languages, integrated development environments (IDE) like Eclipse, Microsoft Visual Studio, or the JetBrains IDE platform provide specialized debugging utilities specifically tailored to imperative programming languages. This results in an excellent, fully integrated developer experience, where tool supported debugging is only one or two clicks away.
 
 This experience degrades rapidly when software engineers start using programming languages and tools based on different programming paradigms. Because traditional debugging utilities apparently cannot provide answers to what engineers are interested in, engineers tend to use simpler debugging techniques instead.
 
@@ -86,27 +86,42 @@ on Reactive and Event-Based Languages and Systems (REBLS '20) and available in [
 
 ## Proof Of Concept
 
-Based on the learnings from the first phase, I started to compile ideas to help software engineers in the process of debugging RxJS programs. It was essential that a potential solution (i) integrates with an IDE and (ii) requires minimal to no additional learning effort for its users.
+Based on the learnings from the first phase, I started to compile ideas to help software engineers in the process of debugging RxJS programs. It was essential that a potential solution: 
 
-Imperative debuggers provide log points, a utility to print a log statement once the program execution processes as specific statement in the source code. I adopted this established concept and transferred it to the world of RP with RxJS: An *operator log point*, enabled for a specific operator in an Observables `pipe` shows in realtime, when related operator emits relevant events. I did a proof of concept (PoC) implementation in form of an extension to Microsoft Visual Studio Code. To verify that the PoC actually solves the problem of manual code modifications in order to debug RxJS programs, I used a cognitive walkthrough [@Wharton_Rieman_Clayton_Polson_1994], which is available in [Appendix @sec:paper-2-supplementary]. Further, I created a user journey comparing the debugging workflow with and without the PoC debugging extension (see [Appendix @sec:user-journey]).
+1. Integrates with an IDE
+2. Requires minimal to no additional learning effort for its users
 
-```{.include}
-content/tables/phase-2-artifacts.tex
-```
+Imperative debuggers provide log points, a utility to print a log statement once the program execution processes as specific statement in the source code. I adopted this established concept and transferred it to the world of RP with RxJS: An *operator log point*, enabled for a specific operator in an Observables `pipe` shows in realtime, when related operator emits relevant events. I did a proof of concept (PoC) implementation in form of an extension to Microsoft Visual Studio Code (vscode). To verify that the PoC actually solves the problem of manual code modifications in order to debug RxJS programs, I used a cognitive walkthrough [@Wharton_Rieman_Clayton_Polson_1994] ([Appendix @sec:paper-2-supplementary]). Further, I created a user journey comparing the debugging workflow with and without the PoC debugging extension (see [Appendix @sec:user-journey]).
+
+Using the two inspection methods, I could successfully verify that operator log points fulfill the requirements stated at the beginning of this section. The cognitive walkthrough further revealed several usability issues as documented in [@tbl:poc-usability-issues]. These results provided valuable input for the upcoming Prototype phase.
+
+TODO Usability Issue Table
 
 ## Prototype
 
-- Phase Focus: User-Centered Design
-- Prototype extension
-- Remote user testing
-- Prototype refinement
-- Release first minor version of extension
-  - nodejs
-  - Log points for RxJS operator
+After I had confidence in the concept of operator log points, I started to rebuild the PoC debugging extension from ground up focusing on user-centered design, maintainability, and extensibility. This resulted in the v0.1.0 release of "RxJS Debugging for Visual Studio Code" [@rxjs-debugging], the first fully integrated RxJS debugger for vscode.
 
-```{.include}
-content/tables/phase-3-artifacts.tex
-```
+The initial version of the extension enables engineers to debug RxJS-based applications running with Node.js. There are no additional setup steps necessary: Once the extension is installed, it suggests operator log points with a small, diamond-shaped icon next to the respective operator. The engineer launches their application using the built-in JavaScript debugger. By doing so, the RxJS debugger augments RxJS automatically to provide life-cycle events to vscode. The extension displays these life-cycle events for operators having an enabled log point in-line with the operator in the source code editor.
+
+TODO Screenshot of Prototype
+
+### Communicate with Node.js
+
+One of the biggest challenges during the Prototype phase was to build a reliable way to communicate with RxJS running in Node.js. I used a WebSocket to exchange messages with the JavaScript runtime in the PoC. This proofed to be tedious in multiple was (e.g., how can the extension know the host and/or port where the WebSocket is running, or what if network infrastructure prevents WebSocket connections etc.) and so I wanted to replace this key element in my system.
+
+One of my main goals was to integrate the RxJS debugger with already known debugging tools seamlessly. What if I would not reuse only established UX patterns, but also already established communication ways? vscode-js-debug[^https://github.com/microsoft/vscode-js-debug], vscodes built-in JavaScript debugger, uses the Chrome DevTools Protocol[^https://chromedevtools.github.io/devtools-protocol/] (CDP) to communicate with arbitrary JavaScript runtimes. Unfortunately, vscode-js-debug did not offer its CDP connection to be reused by other extensions. I contributed this particular functionality to the project, which then was released with vscodes April 2021 [@vscode-cdp] release officially.
+
+Now that vscode-js-debug provides a way to reuse its CDP connection, my extension did no longer rely on any extraneous communication channels in order to exchange messages with the JavaScript runtime. A welcome side-effect of using CDP is that the RxJS debugger requires minimal integration efforts to support additional JavaScript runtimes, as long as they support CDP as well.
+
+TODO Architecture Diagram
+
+### Moderated Remote Usability Test
+
+TODO Add Architecture Diagram
+
+- vscode-jsdebug Contribution
+
+
 
 ## Delivery
 
@@ -114,10 +129,6 @@ content/tables/phase-3-artifacts.tex
 - Second paper submitted to ICSE, got rejected. See appendix for full review.
 - Release first major version of extension
 	- Webpack support
-
-```{.include}
-content/tables/phase-4-artifacts.tex
-```
 
 
 
