@@ -93,9 +93,7 @@ Based on the learnings from the first phase, I started to compile ideas to help 
 
 Imperative debuggers provide log points, a utility to print a log statement once the program execution processes as specific statement in the source code. I adopted this established concept and transferred it to the world of RP with RxJS: An *operator log point*, enabled for a specific operator in an Observables `pipe` shows in realtime, when related operator emits relevant events. I did a PoC implementation in form of an extension to Microsoft Visual Studio Code (vscode). To verify that the PoC actually solves the problem of manual code modifications in order to debug RxJS programs, I used a cognitive walkthrough [@Wharton_Rieman_Clayton_Polson_1994] ([Appendix @sec:paper-2-supplementary]). Further, I created a user journey comparing the debugging workflow with and without the PoC debugging extension (see [Appendix @sec:user-journey]).
 
-Using the two inspection methods, I could successfully verify that operator log points fulfill the requirements stated at the beginning of this section. The cognitive walkthrough further revealed several usability issues as documented in [@tbl:poc-usability-issues]. These results provided valuable input for the upcoming Prototype phase.
-
-TODO Usability Issue Table
+Using the two inspection methods, I could successfully verify that operator log points fulfill the requirements stated at the beginning of this section. The cognitive walkthrough further revealed several usability issues as documented in [Appendix @sec:paper-2-supplementary]. These results provided valuable input for the upcoming Prototype phase.
 
 ## Prototype
 
