@@ -48,6 +48,9 @@ figPrefix:
 secPrefix:
   - Section
   - Sections
+tblPrefix:
+  - Table
+  - Tables
 
 # Abstract:
 abstract: Over the course of the

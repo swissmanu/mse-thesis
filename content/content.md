@@ -62,7 +62,7 @@ RxJS is the JavaScript-based implementation of the ReactiveX API specification. 
 content/figures/research-process.tex
 ```
 
-The research process, documented in two research papers, is structured in four distinct phases: (i) Exploration, (ii) Proof of Concept, (iii) Prototype, and (iv) Delivery. This section gives an overview of every stage, presents the most important insights, and lists the resulting artifacts.
+The research process, documented in two research papers, is structured in four distinct phases: (i) Exploration, (ii) Proof of Concept (PoC), (iii) Prototype, and (iv) Delivery. This section gives an overview of every stage, presents the most important insights, and lists the resulting artifacts.
 
 ```{.include}
 content/tables/artifact-overview.tex
@@ -86,12 +86,12 @@ on Reactive and Event-Based Languages and Systems (REBLS '20) and available in [
 
 ## Proof Of Concept
 
-Based on the learnings from the first phase, I started to compile ideas to help software engineers in the process of debugging RxJS programs. It was essential that a potential solution: 
+Based on the learnings from the first phase, I started to compile ideas to help software engineers in the process of debugging RxJS programs. It was essential that a potential solution:
 
 1. Integrates with an IDE
 2. Requires minimal to no additional learning effort for its users
 
-Imperative debuggers provide log points, a utility to print a log statement once the program execution processes as specific statement in the source code. I adopted this established concept and transferred it to the world of RP with RxJS: An *operator log point*, enabled for a specific operator in an Observables `pipe` shows in realtime, when related operator emits relevant events. I did a proof of concept (PoC) implementation in form of an extension to Microsoft Visual Studio Code (vscode). To verify that the PoC actually solves the problem of manual code modifications in order to debug RxJS programs, I used a cognitive walkthrough [@Wharton_Rieman_Clayton_Polson_1994] ([Appendix @sec:paper-2-supplementary]). Further, I created a user journey comparing the debugging workflow with and without the PoC debugging extension (see [Appendix @sec:user-journey]).
+Imperative debuggers provide log points, a utility to print a log statement once the program execution processes as specific statement in the source code. I adopted this established concept and transferred it to the world of RP with RxJS: An *operator log point*, enabled for a specific operator in an Observables `pipe` shows in realtime, when related operator emits relevant events. I did a PoC implementation in form of an extension to Microsoft Visual Studio Code (vscode). To verify that the PoC actually solves the problem of manual code modifications in order to debug RxJS programs, I used a cognitive walkthrough [@Wharton_Rieman_Clayton_Polson_1994] ([Appendix @sec:paper-2-supplementary]). Further, I created a user journey comparing the debugging workflow with and without the PoC debugging extension (see [Appendix @sec:user-journey]).
 
 Using the two inspection methods, I could successfully verify that operator log points fulfill the requirements stated at the beginning of this section. The cognitive walkthrough further revealed several usability issues as documented in [@tbl:poc-usability-issues]. These results provided valuable input for the upcoming Prototype phase.
 
@@ -113,7 +113,11 @@ One of my main goals was to integrate the RxJS debugger with already known debug
 
 Now that vscode-js-debug provides a way to reuse its CDP connection, my extension did no longer rely on any extraneous communication channels in order to exchange messages with the JavaScript runtime. A welcome side-effect of using CDP is that the RxJS debugger requires minimal integration efforts to support additional JavaScript runtimes, as long as they support CDP as well.
 
-TODO Architecture Diagram
+A complete overview of the system components and communication channels is available in [@fig:architecture].
+
+```{.include}
+content/figures/architecture.tex
+```
 
 ### Moderated Remote Usability Test
 
