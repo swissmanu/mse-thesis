@@ -127,7 +127,7 @@ All three goals were successfully verified: No subject used manual print stateme
 
 ## Finalize
 
-With the results from the usability test and a roadmap^[[https://github.com/swissmanu/rxjs-debugging-for-vscode/milestone/2](https://github.com/swissmanu/rxjs-debugging-for-vscode/milestone/2?closed=1) for version 1.0.0 of my RxJS debugger, I was prepared for the last phase. The most crucial improvements I was able to implement included:
+With the results from the usability test and a roadmap^[[https://github.com/swissmanu/rxjs-debugging-for-vscode/milestone/2](https://github.com/swissmanu/rxjs-debugging-for-vscode/milestone/2?closed=1)] for version 1.0.0 of my RxJS debugger, I was prepared for the last phase. The most crucial improvements I was able to implement included:
 
 - Support for the latest RxJS 7.x versions (only 6.6.7 with the prototype)
 - Debugging of web applications bundled with Webpack (only Node.js with the prototype)
