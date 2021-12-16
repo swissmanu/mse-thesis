@@ -62,7 +62,7 @@ RxJS is the JavaScript-based implementation of the ReactiveX API specification. 
 content/figures/research-process.tex
 ```
 
-The iterative research process follows the principles of empirical software engineering and applies methods of the user-centered design approach. Its results are documented in two research papers. The process is structured in four distinct phases: (i) Exploration, (ii) Proof of Concept (PoC), (iii) Prototype, and (iv) Delivery. This section gives an overview of every stage, presents the most important insights, and lists the developed artifacts.
+The iterative research process follows the principles of empirical software engineering and applies methods of the user-centered design approach. Its results are documented in two research papers. The process is structured in four distinct phases: (i) Exploration, (ii) Proof of Concept (PoC), (iii) Prototype, and (iv) Finalize. This section gives an overview of every stage, presents the most important insights, and lists the developed artifacts.
 
 ```{.include}
 content/tables/artifact-overview.tex
@@ -123,16 +123,18 @@ content/figures/architecture.tex
 
 Once I got the main elements of the new debugger working, I conducted a remote usability test with three subjects. The goals of this study were (i) to verify that the operator log point utility can replace manual print statements in an actual programming scenario, (ii) to identify usability issues not detected during development, and (iii) to collect feedback and ideas for the prototype and its further development.
 
-All three goals were successfully verified. No subject used manual print statements during the test sessions. Further, 10 usability issues were identified, four of them classified as "major" and fixed in later development cycles accordingly. Feedback and ideas were collected and found their way to the extensions task backlog on GitHub^[[https://github.com/swissmanu/rxjs-debugging-for-vscode/issues](https://github.com/swissmanu/rxjs-debugging-for-vscode/issues?q=is%3Aopen+is%3Aissue+label%3Afeature%2Cimprovement)]. The complete result set of the usability test is available in [Appendix @sec:paper-2-supplementary].
+All three goals were successfully verified: No subject used manual print statements during the test sessions. Further, 10 usability issues were identified and I could compile valuable feedback which I translated to tasks for the feature backlog on GitHub^[[https://github.com/swissmanu/rxjs-debugging-for-vscode/issues](https://github.com/swissmanu/rxjs-debugging-for-vscode/issues?q=is%3Aopen+is%3Aissue+label%3Afeature%2Cimprovement)]. The complete result set of the usability test is available in [Appendix @sec:paper-2-supplementary].
 
-## Delivery
+## Finalize
 
-- Phase Focus: User-Centered Design
-- Second paper submitted to ICSE, got rejected. See appendix for full review.
-- Release first major version of extension
-	- Webpack support
+With the results from the usability test and a roadmap^[[https://github.com/swissmanu/rxjs-debugging-for-vscode/milestone/2](https://github.com/swissmanu/rxjs-debugging-for-vscode/milestone/2?closed=1) for version 1.0.0 of my RxJS debugger, I was prepared for the last phase. The most crucial improvements I was able to implement included:
 
+- Support for the latest RxJS 7.x versions (only 6.6.7 with the prototype)
+- Debugging of web applications bundled with Webpack (only Node.js with the prototype)
 
+The first major release v1.0.0 of "RxJS Debugging for Visual Studio Code" was finally released in Fall 2021, followed by three smaller bugfix releases.
+
+Beside the practical effort done, I wrote another research paper documenting the latest proceedings on RP debugging for RxJS. At the time of writing this thesis, the latest version of this paper, containing revisions based on the feedback of a double-blind review with three reviewers, was submitted to the technical papers track of the 31st ACM SIGSOFT International Symposium on Software Testing and Analysis 2022 (ISSTA). The paper, along with the submitted supplementary material, is available in [Appendix @sec:paper-2] as part of this thesis.
 
 # Future Work {#sec:future-work}
 
