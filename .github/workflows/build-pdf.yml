@@ -18,10 +18,10 @@ jobs:
           submodules: recursive
 
       - name: Extract Version from Tag
-        if: ${{ github.ref != 'refs/heads/main' }}
+        if: ${{ startsWith(github.ref, 'refs/tags/v') }}
         run: echo "VERSION=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
       - name: Extract Version from Commit
-        if: ${{ github.ref == 'refs/heads/main' }}
+        if: ${{ !startsWith(github.ref, 'refs/tags/v') }}
         run: echo "VERSION=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
 
       - name: Build PDFs
@@ -31,21 +31,20 @@ jobs:
         with:
           args: make
 
-      - uses: actions/upload-artifact@v2
-        if: ${{ github.ref == 'refs/heads/main' }}
+      - name: Add Version to PDF filename
+        run: |
+          sudo mv out/thesis.pdf out/thesis-${{ env.VERSION }}.pdf
+
+      - name: Add PDF as Snapshot Artifact
+        uses: actions/upload-artifact@v2
+        if: ${{ !startsWith(github.ref, 'refs/tags/v') }}
         with:
           name: snapshot
           path: out/*.pdf
           retention-days: 10
 
-      # Following Steps run only on version tags:
-      # - name: Add Version to PDF filename
-      #   if: ${{ github.ref != 'refs/heads/main' }}
-      #   run: |
-      #     mv out/paper.pdf out/paper-${{ steps.get_version.outputs.VERSION }}.pdf
-      #     mv out/reports.pdf out/reports-${{ steps.get_version.outputs.VERSION }}.pdf
-      - name: Release
-        if: ${{ github.ref != 'refs/heads/main' }}
+      - name: Add PDF to Release
+        if: ${{ startsWith(github.ref, 'refs/tags/v') }}
         uses: softprops/action-gh-release@v1
         with:
           files: |
