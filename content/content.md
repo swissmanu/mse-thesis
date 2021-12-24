@@ -1,14 +1,14 @@
 # Introduction
 
-Debugging is an important part of a software engineers daily job. Various techniques, some better suited for the task than others, help engineers to explore the functionality of an unknown program. Rather traditional debugging is done by the interpretation of memory dumps or the analysis of log entries.  Modern debugging solutions hook into a program at runtime and allow more involved inspection and control.
+Debugging is an important part of a software engineers daily job. Various techniques, some better suited for the task than others, help engineers to explore the functionality of an unknown and/or malfunctioning program. Rather traditional debugging is done by the interpretation of memory dumps or the analysis of log entries.  Modern debugging solutions hook into a program at runtime and allow more involved inspection and control.
 
 Imperative programming languages like Java, C#, or Python dominated the mainstream software engineering industry over the last decades [@CITE]. Because of the prevalence of imperative programming languages, integrated development environments (IDE) like Eclipse, Microsoft Visual Studio, or the JetBrains IDE platform provide specialized debugging utilities specifically tailored to imperative programming languages. This results in an excellent, fully integrated developer experience, where tool supported debugging is only one or two clicks away.
 
 This experience degrades rapidly when software engineers start using programming languages and tools based on different programming paradigms. Because traditional debugging utilities apparently cannot provide answers to what engineers are interested in, engineers tend to use simpler debugging techniques instead.
 
-Within the scope of my master studies research, I examined the necessity of paradigm-specific debugging utilities, when software engineers debug programs based on RxJS^[https://rxjs.dev/], a functional reactive programming library for JavaScript. During my research, I explored how professionals debug RxJS programs, what tools and techniques they employ, and why most of them prefer to use print statements instead of specialized debugging utilities. In doing so, I identified a key factor for the success of a debugging tool: It needs to be "ready to hand", or its users will not use it at all.
+Within the scope of my master studies research, I examined the necessity of paradigm-specific debugging utilities, when software engineers debug programs based on RxJS^[https://rxjs.dev/], a library for reactive programming in JavaScript. During my research, I explored how professionals debug RxJS programs, what tools and techniques they employ, and why most of them prefer to use print statements instead of specialized debugging utilities. In doing so, I identified a key factor for the success of a debugging tool: It needs to be "ready to hand", or its users will not use it at all.
 
-Based on the premise of "readiness to hand", I developed a practical debugging tool for reactive programming with RxJS, which makes manual print statements in this context obsolete.
+Based on the premise of "readiness to hand", I finally conceptualized with *operator log points* a novel debugging utility for reactive programming. The implementation of an extension for Microsoft Visual Studio named "RxJS Debugging vor Visual Studio Code", in conjunction with a usability inspection and a usability test allowed me to verify that the concept can successfully replace manual print statements for debugging RxJS-based applications and indeed is ready to the hands of software engineers.
 
 In this summative thesis, I consolidate my research results documented and published in two research papers. I will complete this introduction with an overview on relevant programming paradigms, the specific debugging challenges they carry, and a glance on reactive programming with RxJS. Relevant work will be discussed in [@sec:related-work], followed by an overview on the full research process and its results in [@sec:research-process]. [@sec:future-work] presents a list of opportunities for future work and highlights provisions taken to ensure sustainability of the demonstrated results. Before the reader is left with the study of the research papers in the appendix, I will wrap up on the topic of debugging support for reactive programming with RxJS in [@sec:conclusion].
 
@@ -16,32 +16,17 @@ In this summative thesis, I consolidate my research results documented and publi
 
 A program implemented in an imperative language (e.g., Java or C#) modifies implicit state using side-effects, achieved with assignment and various flow control statements like `while` or `if` [@Hudak_1989]. With a declarative programming language, computational results (i.e., state) are carried explicitly from one unit of the program to the next [@Hudak_1989]. The source code of a declaratively implemented program is the blueprint of *what* the program is expected to accomplish eventually, whereas its imperative sibling resembles the precise step-by-step instruction on *how* the expected result must be achieved.
 
-```{.include}
-content/figures/paradigm-taxonomy.tex
-```
-
 The Functional (FP) as well as the Data-Flow Programming (DFP) paradigm belongs to the family of declarative languages.
 
 FP languages (e.g., Haskell or Erlang) are based on the concept of expression evaluation: Flow control statements are replaced with recursive function calls and conditional expressions [@Hudak_1989]. Thus, a programs final outcome is the result of its full evaluation rather than its implicit state. With DFP, a program is modeled as a directed graph where a node represents an instruction of the program. The graph's edges describe how the data flows between its nodes [@Johnston_Hanna_Millar_2004]. Examples for DFP can be found in visual programming environments like Node-RED^[https://nodered.org/].
 
-
-
-
-NEEDS A REVISION! FRP !== RP
-
-
-
-Functional Reactive Programming (FRP) [@Wan_Hudak_2000] combines FP and DFP in order to describe Software engineers describe a data-flow graph using Domain Specific Languages (DSL) enabled by FP. DFP provides the execution model to process data using that graph accordingly. These two components are often not integrated within a programming language itself. Instead, optional libraries (e.g., REScala for Scala [@Salvaneschi_Hintz_Mezini_2014] or RxJS for JavaScript) provide FRP functionality to them.
-
-## Debugging Concepts
-
-
-
+Reactive Programming (RP) combines FP and DFP. Software engineers describe time-changing values and how they depend on each other [@Salvaneschi_Mezini_2016], i.e. a data-flow graph, using a Domain Specific Language (DSL). A runtime environment interprets the graph description and establishes a deterministic system state [@Bainomugisha_Carreton_Cutsem_Mostinckx_Meuter_2013] by executing necessary computations and propagating values through the data-flow graph [@Alabor_Stolze_2020]. RP is usually not part of programming languages themselves. Instead, libraries and language extensions (e.g., Fran for Haskell[Elliott_2009] or REScala for Scala [@Salvaneschi_Hintz_Mezini_2014]) provide RP features to their respective host programming language.
 
 ## Reactive Programming with RxJS
 
 RxJS is the JavaScript-based implementation of the ReactiveX API specification. The core concept of this API, the *Observable*, is "[..] a combination of the best ideas from the Observer pattern, the Iterator pattern, and functional programming"[@reactivex]. Like the Observer pattern [@gof], is the *Observable* an abstraction for notifying observers about changed state of the subject.
 
+## Debugging Challenges for RP
 
 
 # Related Work {#sec:related-work}
