@@ -134,7 +134,7 @@ With the results from the usability test and a roadmap^[[https://github.com/swis
 
 The first major release v1.0.0 of "RxJS Debugging for Visual Studio Code" was finally released in Fall 2021, followed by three smaller bugfix releases.
 
-Beside the practical effort done, I wrote another research paper documenting the latest proceedings on RP debugging for RxJS. At the time of writing this thesis, the latest version of this paper, containing revisions based on the feedback of a double-blind review with three reviewers, was submitted to the technical papers track of the 31st ACM SIGSOFT International Symposium on Software Testing and Analysis 2022 (ISSTA). The paper, along with the submitted supplementary material, is available in [Appendix @sec:paper-2] as part of this thesis.
+Beside the practical effort done, I wrote another research paper documenting the latest proceedings on RP debugging for RxJS. At the time of writing this thesis, the latest version of this paper, containing revisions based on the feedback of a double-blind review with three reviewers, was submitted to the technical papers track of the 31st ACM SIGSOFT International Symposium on Software Testing and Analysis 2022 (ISSTA). The paper, along with the relevant supplementary material, is available in [Appendix @sec:paper-2] as part of this thesis.
 
 # Future Work {#sec:future-work}
 
