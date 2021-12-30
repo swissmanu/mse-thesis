@@ -84,7 +84,7 @@ The stacktrace ([@fig:rxjs-stacktrace]) provided by the imperative debugger reve
 
 A common practice [@Alabor_Stolze_2020] to overcome this problem is the introduction of manual print statements as shown in [@lst:rp-program-with-print-statements]. Though often cumbersome to use, they allow to trace the behavior of an observable at program execution time.
 
-![(Shortened) stacktrace as provided by the Microsoft Visual Studio Code debugger, after pausing program execution within the anonymous function on Line 5 in [@lst:rp-program].](./content/figures/rxjs-stacktrace.png){width=60% #fig:rxjs-stacktrace}
+![(Shortened) stacktrace as provided by the Microsoft Visual Studio Code debugger, after pausing program execution within the anonymous function on Line 5 in [@lst:rp-program].](./content/figures/rxjs-stacktrace.png "RxJS stacktrace"){width=60% #fig:rxjs-stacktrace}
 
 ```{
 	#lst:rp-program-with-print-statements
@@ -117,7 +117,7 @@ content/figures/marble-diagram.tex
 
 ## Debugging as a Process
 
-I used the iterative process model after Layman et al. [@Layman_Diep_Nagappan_Singer_Deline_Venolia_2013] to conceptualize a new 
+I used the iterative process model after Layman et al. [@Layman_Diep_Nagappan_Singer_Deline_Venolia_2013] to conceptualize a new
 
 
 
