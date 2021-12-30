@@ -163,7 +163,7 @@ Using the two inspection methods, I could successfully verify that operator log 
 
 ## Prototype
 
-After I had confidence in the concept of operator log points, I started to rebuild the PoC debugging extension from ground up focusing on functionality, maintainability, and extensibility. This resulted in the 0.1.0 release of "RxJS Debugging for Visual Studio Code"^[https://marketplace.visualstudio.com/items?itemName=manuelalabor.rxjs-debugging-for-vs-code], the first fully integrated RxJS debugger for vscode.
+After I had confidence in the concept of operator log points, I started to rebuild the PoC debugging extension from ground up focusing on functionality, maintainability, and extensibility. This resulted in the 0.1.0 release of "RxJS Debugging for Visual Studio Code", the first fully integrated RxJS debugger for vscode.
 
 The initial version of the extension enables engineers to debug RxJS-based applications running with Node.js. There are no additional setup steps necessary: Once the extension is installed, it suggests operator log points with a small, diamond-shaped icon next to the respective operator. The engineer launches their application using the built-in JavaScript debugger. By doing so, the RxJS debugger augments RxJS automatically to provide life-cycle events to vscode. The extension displays these life-cycle events for operators having an enabled log point in-line with the operator in the source code editor.
 
