@@ -1,16 +1,16 @@
 # Introduction
 
-Debugging is an important part of a software engineers daily job. Various techniques, some better suited for the task than others, help engineers to explore the functionality of an unknown and/or malfunctioning program. Rather traditional debugging is done by the interpretation of memory dumps or the analysis of log entries.  Modern debugging solutions hook into a program at runtime and allow more involved inspection and control.
+Debugging [@CITE IEEE] is an important part of a software engineers daily job. Various techniques, some better suited for the task than others, help engineers to explore the functionality of an unknown and/or malfunctioning program. Rather traditional debugging is done by the interpretation of memory dumps or the analysis of log entries. Sophisticated debugging solutions hook into a program at runtime and allow more involved inspection and control.
 
 Imperative programming languages like Java, C#, or Python dominated the mainstream software engineering industry over the last decades [@CITE]. Because of the prevalence of imperative programming languages, integrated development environments (IDE) like Eclipse, Microsoft Visual Studio, or the JetBrains IDE platform provide specialized debugging utilities specifically tailored to imperative programming languages. This results in an excellent, fully integrated developer experience, where tool supported debugging is only one or two clicks away.
 
-This experience degrades rapidly when software engineers start using programming languages and tools based on different programming paradigms. Because traditional debugging utilities apparently cannot provide answers to what engineers are interested in, engineers tend to use simpler debugging techniques instead.
+This experience degrades rapidly when software engineers start using programming languages and tools based on different programming paradigms such as reactive programming (RP). Because traditional debugging utilities apparently cannot provide answers to what engineers are interested in, engineers tend to use simpler debugging techniques instead.
 
-Within the scope of my master studies research, I examined the necessity of paradigm-specific debugging utilities, when software engineers debug programs based on RxJS^[https://rxjs.dev/], a library for reactive programming in JavaScript. During my research, I explored how professionals debug RxJS programs, what tools and techniques they employ, and why most of them prefer to use print statements instead of specialized debugging utilities. In doing so, I identified a key factor for the success of a debugging tool: It needs to be "ready to hand", or its users will not use it at all.
+Within the scope of my master studies research, I examined the necessity of paradigm-specific debugging utilities, when software engineers debug programs based on RxJS^[https://rxjs.dev/], a library for RP in JavaScript. During my research, I explored how professionals debug RxJS programs, what tools and techniques they employ, and why most of them prefer to use print statements instead of specialized debugging utilities. In doing so, I identified a key factor for the success of a debugging tool: It needs to be "ready to hand", or its users will not use it at all.
 
-Based on the premise of "readiness to hand", I finally conceptualized with *operator log points* a novel debugging utility for reactive programming. The implementation of an extension for Microsoft Visual Studio named "RxJS Debugging vor Visual Studio Code", in conjunction with a usability inspection and a usability test allowed me to verify that the concept can successfully replace manual print statements for debugging RxJS-based applications and indeed is ready to the hands of software engineers.
+Based on the premise of "readiness to hand", I finally conceptualized with *operator log points* a novel debugging utility for RP. The implementation of an extension for Microsoft Visual Studio named "RxJS Debugging vor Visual Studio Code", in conjunction with a usability inspection and a usability test allowed me to verify that the concept can successfully replace manual print statements for debugging RxJS-based applications and indeed is ready to the hands of software engineers.
 
-In this summative thesis, I consolidate my research results documented and published in two research papers. I will complete this introduction with an overview on relevant programming paradigms, the specific debugging challenges they carry, and a glance on reactive programming with RxJS. Relevant work will be discussed in [@sec:related-work], followed by an overview on the full research process and its results in [@sec:research-process]. [@sec:future-work] presents a list of opportunities for future work and highlights provisions taken to ensure sustainability of the demonstrated results. Before the reader is left with the study of the research papers in the appendix, I will wrap up on the topic of debugging support for reactive programming with RxJS in [@sec:conclusion].
+In this summative thesis, I consolidate my research results documented and published in two research papers. I will complete this introduction with an overview on relevant programming paradigms, the specific debugging challenges they carry, and a glance on RP with RxJS. Relevant work will be discussed in [@sec:related-work], followed by an overview on the full research process and its results in [@sec:research-process]. [@sec:future-work] presents a list of opportunities for future work and highlights provisions taken to ensure sustainability of the demonstrated results. Before the reader is left with the study of the research papers in the appendix, I will wrap up on the topic of debugging support for RP with RxJS in [@sec:conclusion].
 
 ## Programming Paradigms
 
@@ -49,7 +49,37 @@ of(1, 2, 3, 4, 5, 6, 7, 8).pipe(
 ).subscribe(i => console.log(i)); // 4, 8, 12, 16
 ```
 
-## Debugging Challenges with Reactive Programming
+## Debugging Challenges of Reactive Programming
+
+[@lst:imperative-program] shows a basic JavaScript program written using an imperative programming style. Software engineers use imperative-oriented debuggers in IDE's to follow the execution path of the program. They pause the execution of the program at a specific point of interest using breakpoints. Every time the debugger pauses program execution, the stackframe inspector provides details on what function calls lead to the execution of the current stackframe. Further, the values of all variables, belonging to a stackframe, are shown. Using step controls, the engineer controls further program execution manually, or resume "normal" execution eventually.
+
+```{
+	label=imperative-program
+}
+for (let i = 0; i < 5; i++) {
+	if (i < 4) {
+		console.log(i * 2); // Logs: 0, 2, 4, 6
+	}
+}
+```
+
+[@lst:rp-program] is a reimplementation of [@lst:imperative-program] with RP using RxJS. Using the same, imperative debugging utilities as before reveals one of the main problems, when
+
+
+```{
+	label=rp-program
+}
+import { of, filter, map } from 'rxjs';
+
+of(0, 1, 2, 3, 4).pipe(
+	filter(i => i < 4),
+	map(i => i * 2)
+).subscribe(console.log) // Logs: 0, 2, 4, 6
+```
+
+
+
+
 
 
 
@@ -57,6 +87,7 @@ of(1, 2, 3, 4, 5, 6, 7, 8).pipe(
 # Related Work {#sec:related-work}
 
 - Main
+	- Debugging Process [Layman_Diep_Nagappan_Singer_Deline_Venolia_2013]
 	- Salvaneschi [@Salvaneschi_Mezini_2016]
 	- Banken [@Banken_Meijer_Gousios_2018]
 	- Alabor [@Alabor_Stolze_2020]
@@ -146,11 +177,13 @@ The first major release v1.0.0 of "RxJS Debugging for Visual Studio Code" was fi
 
 Beside the practical effort done, I wrote another research paper documenting the latest proceedings on RP debugging for RxJS. At the time of writing this thesis, the latest version of this paper, containing revisions based on the feedback of a double-blind review with three reviewers, was submitted to the technical papers track of the 31st ACM SIGSOFT International Symposium on Software Testing and Analysis 2022 (ISSTA). The paper, along with the relevant supplementary material, is available in [Appendix @sec:paper-2] as part of this thesis.
 
+# Community Reaction
+
+- Again: Verification that this is a problem
+- Showing new gaps
+- Verification that ux works
+
 # Future Work {#sec:future-work}
-
-
-
-
 
 ## Sustainability of Work
 
