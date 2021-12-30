@@ -202,7 +202,7 @@ The first major release 1.0.0 of "RxJS Debugging for Visual Studio Code" was fin
 
 ### Community Reception
 
-At the day of release, I announced the extension via its own Twitter account [@rxjsdebugging](https://twitter.com/rxjsdebugging) ([@fig:release-tweet]). Up until the 30th of December 2021, the tweet got a total of more than 77k impressions (views and clicks combined). Further, the extension was downloaded 954 times^[Source: [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=manuelalabor.rxjs-debugging-for-vs-code)], and counted 51 unique users^[Usage analytics are opt-in and were released with version 1.0.0. See [@sec:analytics] for more information.]. The extension was featured in a live Twitch stream by [@webdave_de](https://twitter.com/webdave_de), a Google Developer Export specialized on Angular, and was downloaded
+At the day of release, I announced the extension via its own Twitter account [\@rxjsdebugging](https://twitter.com/rxjsdebugging) ([@fig:release-tweet]). Up until the 30th of December 2021, the tweet got a total of more than 77k impressions (views and clicks combined). Further, the extension was downloaded 954 times ([Appendix @sec:marketplace]), and counted 51 unique users ([Appendixes @sec:analytics,sec:analytics-dashboard]). The extension was featured in a live Twitch stream by [\@webdave_de](https://twitter.com/webdave_de), a Google Developer Export specialized on Angular, and was downloaded
 
 ![Tweet announcing the major release of "RxJS Debugging for vscode"](./content/figures/release-tweet.png){#fig:release-tweet}
 
