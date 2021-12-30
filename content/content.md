@@ -202,16 +202,13 @@ The first major release 1.0.0 of "RxJS Debugging for Visual Studio Code" was fin
 
 ### Community Reception
 
-At the day of release, I announced the extension via its own Twitter account [\@rxjsdebugging](https://twitter.com/rxjsdebugging). Up until the 30th of December 2021, the tweet got a total of more than 77k impressions ([Appendix @sec:release-tweet-stats]). Further, the extension was downloaded 954 times ([Appendix @sec:marketplace]), and counted 51 unique users based on collected analytics data (see [Appendices @sec:analytics; Appendices @sec:analytics-dashboard] for more details). The extension was featured in a live Twitch stream by [\@webdave_de](https://twitter.com/webdave_de), a Google Developer Export specialized on Angular^[The recording of the stream is unavailable at this time, unfortunately.].
+At the day of release, I announced the extension via its own Twitter account [\@rxjsdebugging](https://twitter.com/rxjsdebugging). Up until the 30th of December 2021, the tweet got a total 77k impressions ([Appendix @sec:release-tweet-stats]). Further, the extension itself was downloaded 954 times ([Appendix @sec:marketplace]), counted 51 unique users based on collected analytics data (see [Appendices @sec:analytics; Appendices @sec:analytics-dashboard] for more details), and got featured in a live Twitch stream by [\@webdave_de](https://twitter.com/webdave_de), a Google Developer Expert specialized on Angular development^[The recording of the stream is unavailable at this time, unfortunately.].
 
+The overall response of the community allows for two interpretations: First, engineers effectivly long for a debugger that works with RxJS-specific RP abstractions, which is integrated with their IDE. Second, .... GAP ANALYSIS based ON FEEDBACK
 
-- Again: Verification that this is a problem
-- Showing new gaps
-- Verification that ux works
+### ISSTA `22 Research Paper
 
-### ISSTA Research Paper
-
-Beside the practical effort done, I wrote another research paper with Markus Stolze documenting the latest proceedings on RP debugging for RxJS. At the time of writing this thesis, the latest version of this paper, containing revisions based on the feedback of a double-blind review with three reviewers, was submitted to the technical papers track of the 31st ACM SIGSOFT International Symposium on Software Testing and Analysis 2022 (ISSTA). The paper, along with the relevant supplementary material, is available in [Appendix @sec:paper-2] as part of this thesis.
+Beside the practical effort done, I wrote another research paper with Markus Stolze documenting the latest proceedings on RP debugging for RxJS. At the time of writing this thesis, the latest version of this paper, containing revisions based on the feedback of a double-blind review with three reviewers, was submitted to the technical papers track of the 31st ACM SIGSOFT International Symposium on Software Testing and Analysis 2022 (ISSTA `22). The submitted review version of the paper, along with the relevant supplementary material, is available in [Appendix @sec:paper-2].
 
 # Future Work {#sec:future-work}
 
