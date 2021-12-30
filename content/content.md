@@ -202,7 +202,7 @@ The first major release 1.0.0 of "RxJS Debugging for Visual Studio Code" was fin
 
 ### Community Reception
 
-At the day of release, I announced the extension via its own Twitter account [\@rxjsdebugging](https://twitter.com/rxjsdebugging). Up until the 30th of December 2021, the tweet got a total of more than 77k impressions ([Appendix @sec:release-tweet-stats]). Further, the extension was downloaded 954 times ([Appendix @sec:marketplace]), and counted 51 unique users ([Appendices @sec:analytics; Appendices @sec:analytics-dashboard]). The extension was featured in a live Twitch stream by [\@webdave_de](https://twitter.com/webdave_de), a Google Developer Export specialized on Angular^[The recording of the stream is unavailable at this time, unfortunately.].
+At the day of release, I announced the extension via its own Twitter account [\@rxjsdebugging](https://twitter.com/rxjsdebugging). Up until the 30th of December 2021, the tweet got a total of more than 77k impressions ([Appendix @sec:release-tweet-stats]). Further, the extension was downloaded 954 times ([Appendix @sec:marketplace]), and counted 51 unique users based on collected analytics data (see [Appendices @sec:analytics; Appendices @sec:analytics-dashboard] for more details). The extension was featured in a live Twitch stream by [\@webdave_de](https://twitter.com/webdave_de), a Google Developer Export specialized on Angular^[The recording of the stream is unavailable at this time, unfortunately.].
 
 
 - Again: Verification that this is a problem
