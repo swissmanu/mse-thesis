@@ -117,8 +117,9 @@ content/figures/marble-diagram.tex
 
 ## Debugging as a Process
 
-I used the iterative process model after Layman et al. [@Layman_Diep_Nagappan_Singer_Deline_Venolia_2013] to conceptualize a new
+Layman et al. [@Layman_Diep_Nagappan_Singer_Deline_Venolia_2013]   looked into the details how engineers debug programs. Based on previous models and the analysis of their data, they formalized an iterative process model for the activity of debugging. Its goal is to define and refine a hypothesis on the cause that triggered an unexpected behavior in a program. Ultimately, the process seeks to proof that hypothesis. The debugging process after Layman et al. consists of three steps: Engineers start to (i) collect context information on the current situation (e.g. which particular piece of source code might be involved, what input causes the failure, etc.). This information allows the software engineers to formulate a hypothesis on how the failure situation might be resolved. With the intent to proof their hypothesis, they (ii) instrument the program accordingly (e.g. by adding breakpoints or modifying source code). They then (iii) test this modified system according to their debugging hypothesis. This either results in a proof that their hypothesis was correct, ending the debugging process, or in more information they can use for a new iteration of hypothesis refinement and testing.
 
+Throughout my own research, the debugging process model by Layman et al. helped me to design an observational study, understand how subjects tackle their tasks and to conceptualize and implement a new debugging utility.
 
 
 # Research Process {#sec:research-process}
