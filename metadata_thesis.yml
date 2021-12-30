@@ -34,6 +34,9 @@ lof: true
 # List of Tables:
 lot: true
 
+# List of Listings:
+lol: true
+
 # References and Citations:
 reference-section-title: References
 csl: templates/transactions-on-programming-languages-and-systems

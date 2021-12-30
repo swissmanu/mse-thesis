@@ -573,7 +573,10 @@ $endif$
 $if(lof)$
 \listoffigures
 $endif$
-\newpage %%%%%%%%%%%%%%%%%% BEGIN ADDED, lof and lot expected to be true
+$if(lol)$
+\listoflistings
+$endif$
+\newpage %%%%%%%%%%%%%%%%%% BEGIN ADDED, lof, lot, and lol expected to be true
 $if(linestretch)$
 \setstretch{$linestretch$}
 $endif$

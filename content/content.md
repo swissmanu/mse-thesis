@@ -37,9 +37,9 @@ Observables are push-based, thus the observable actively calls the callback hand
 We can compose observables with other observables using the `pipe` function and operators. An operator is a factory returning a function that subscribes to an observable, maps its events, and returns a new observable. Two basic operators, `filter` and `map`, are used in [@lst:example-rxjs] on Lines 4-5 to manipulate the stream of emitted values. There are more complex operators like `mergeMap`^[https://rxjs.dev/api/operators/mergeMap] allowing composition with higher-order observables or `retryWhen`^[https://rxjs.dev/api/operators/retryWhen] to recover an observable after it emitted an `error` event.
 
 ```{
-	caption="Example of an observable emitting the integers from 1 to 8. Two operators process the integers on the way to the subscriber, which eventually prints every value to the console."
-	label=example-rxjs
+	#lst:example-rxjs
 	.typescript
+	caption="Example of an observable emitting the integers from 1 to 8. Two operators process the integers on the way to the subscriber, which eventually prints every value to the console."
 }
 import { of, map, filter } from 'rxjs'
 
@@ -54,7 +54,9 @@ of(1, 2, 3, 4, 5, 6, 7, 8).pipe(
 [@lst:imperative-program] shows a basic JavaScript program written using an imperative programming style. Software engineers use imperative-oriented debuggers in IDE's to follow the execution path of the program. They pause the execution of the program at a specific point of interest using breakpoints. Every time the debugger pauses program execution, the stackframe inspector provides details on what function calls lead to the execution of the current stackframe. Further, the values of all variables, belonging to a stackframe, are shown. Using step controls, the engineer controls further program execution manually, or resume "normal" execution eventually.
 
 ```{
-	label=imperative-program
+	#lst:imperative-program
+	.typescript
+	caption=""
 }
 for (let i = 0; i < 5; i++) {
 	if (i < 4) {
@@ -63,11 +65,12 @@ for (let i = 0; i < 5; i++) {
 }
 ```
 
-[@lst:rp-program] is a reimplementation of [@lst:imperative-program] with RP using RxJS. Using the same, imperative debugging utilities as before reveals one of the main problems, when
-
+[@lst:rp-program] is a reimplementation of [@lst:imperative-program] with RP using RxJS. Using the same, imperative debugging techniques and utilities as before, we can add a breakpoint to the anonymous function passed to the `map` operator on Line 5 and start the program.
 
 ```{
-	label=rp-program
+	#lst:rp-program
+	.typescript
+	caption=""
 }
 import { of, filter, map } from 'rxjs';
 
@@ -77,11 +80,27 @@ of(0, 1, 2, 3, 4).pipe(
 ).subscribe(console.log) // Logs: 0, 2, 4, 6
 ```
 
+The stacktrace (see [@fig:rxjs-stacktrace]) provided by the imperative debugger reveals its major flaw when used with an RP program: The stacktrace does not match the (mental) model of the data-flow graph described using the DSL. Instead, it reveals the inner (imperative) implementation of the RP runtime (in this case, RxJS). Furthermore, the debuggers step controls render ineffective, since they operate on the imperative level as well. In this example, stepping to the next statement would not result in the debugger halting at Line 6, instead it would lead the engineer somewhere into the inner implementation details of RxJS.
 
+![(Shortened) stacktrace as provided by the Microsoft Visual Studio Code debugger, after pausing program execution within the anonymous function on Line 5 in [@lst:rp-program].](./content/figures/rxjs-stacktrace.png){#fig:rxjs-stacktrace}
 
+```{
+	#lst:rp-program-with-print-statements
+	.typescript
+	caption=""
+}
+import { of, filter, map, tap } from 'rxjs';
 
+of(0, 1, 2, 3, 4).pipe(
+	tap(i => console.log(`A: ${i}`)),
+	filter(i => i < 4),
+	tap(i => console.log(`B: ${i}`)),
+	map(i => i * 2),
+	tap(i => console.log(`C: ${i}`))
+).subscribe(console.log) // Logs: 0, 2, 4, 6
+```
 
-
+A common practice [@Alabor_Stolze_2020] to overcome this problem is the introduction of manual print statements (see [@lst:rp-program-with-print-statements]). Though often cumbersome to use, they allow to trace the behavior of an observable at program execution time.
 
 
 # Related Work {#sec:related-work}
