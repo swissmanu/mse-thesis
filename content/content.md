@@ -24,7 +24,32 @@ Reactive Programming (RP) combines FP and DFP. Software engineers describe time-
 
 ## Reactive Programming with RxJS
 
-RxJS is the JavaScript-based implementation of the ReactiveX API specification. The core concept of this API, the *Observable*, is "[..] a combination of the best ideas from the Observer pattern, the Iterator pattern, and functional programming"[@reactivex]. Like the Observer pattern [@gof], is the *Observable* an abstraction for notifying observers about changed state of the subject.
+RxJS provides RP features for JavaScript and TypeScript. It is an implementation of the ReactiveX API specification, where the *Observable*, "[..] a combination of the best ideas from the Observer pattern, the Iterator pattern, and functional programming" [@reactivex], is the core concept.
+
+Similar to the observer in the Observer pattern [@gof], an RxJS observer subscribes and consumes events emitted from an *Observable*:
+
+1. A `next` event carries a produced value, e.g., the result of an HTTP request
+2. The `complete` event indicates that the observable finished its processing and will not emit any other events in the future
+3. If the observable encountered a problem, the `error` event notifies its subscribers about the underlying error
+
+Observables are push-based, thus the observable actively calls the callback handler of its subscriber(s)^[The Iterator pattern is an example for pull-based processing. The consumer has to actively poll the iterators `next` function to receive a value.].
+
+We can compose observables with other observables using the `pipe` function and operators. An operator is a factory returning a function that subscribes to an observable, maps its events, and returns a new observable. Two basic operators, `filter` and `map`, are used in {#lst:example-rxjs} on Lines 4-5 to manipulate the stream of emitted values. There are more complex operators like `mergeMap`^[https://rxjs.dev/api/operators/mergeMap] allowing composition with higher-order observables or `retryWhen`^[https://rxjs.dev/api/operators/retryWhen] to recover an observable after it emitted an `error` event.
+
+```{
+	caption="Example of an observable emitting the integers from 1 to 8. Two operators process the integers on the way to the subscriber, which eventually prints every value to the console."
+	label=example-rxjs
+	float=b
+	.typescript
+}
+import { of, map, filter } from 'rxjs'
+
+of(1, 2, 3, 4, 5, 6, 7, 8).pipe(
+	filter(i => i % 2 === 0), // Skip odd numbers
+	map(i => i * 2),          // Multiply even numbers with 2
+).subscribe(i => console.log(i)); // 4, 8, 12, 16
+```
+
 
 ## Debugging Challenges for RP
 
