@@ -51,6 +51,9 @@ secPrefix:
 tblPrefix:
   - Table
   - Tables
+lstPrefix:
+	- Listing
+	- Listings
 
 # Abstract:
 abstract: Over the course of the
