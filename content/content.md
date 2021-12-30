@@ -39,14 +39,14 @@ We can compose observables with other observables using the `pipe` function and 
 ```{
 	#lst:example-rxjs
 	.typescript
-	caption="Example of an observable emitting the integers from 1 to 8. Two operators process the integers on the way to the subscriber, which eventually prints every value to the console."
+	caption="An observable emitting integers 1...8. Two operators process each integer before they are handed to subscriber, printing each to the console."
 }
 import { of, map, filter } from 'rxjs'
 
 of(1, 2, 3, 4, 5, 6, 7, 8).pipe(
-	filter(i => i % 2 === 0), // Skip odd numbers
-	map(i => i * 2),          // Multiply even numbers with 2
-).subscribe(i => console.log(i)); // 4, 8, 12, 16
+  filter(i => i % 2 === 0),       // Skip odd ints
+  map(i => i * 2),                // Multiply int with 2
+).subscribe(i => console.log(i)); // Logs: 4, 8, 12, 16
 ```
 
 ## Debugging Challenges of Reactive Programming
@@ -59,9 +59,9 @@ of(1, 2, 3, 4, 5, 6, 7, 8).pipe(
 	caption=""
 }
 for (let i = 0; i < 5; i++) {
-	if (i < 4) {
-		console.log(i * 2); // Logs: 0, 2, 4, 6
-	}
+  if (i < 4) {
+    console.log(i * 2); // Logs: 0, 2, 4, 6
+  }
 }
 ```
 
@@ -75,14 +75,16 @@ for (let i = 0; i < 5; i++) {
 import { of, filter, map } from 'rxjs';
 
 of(0, 1, 2, 3, 4).pipe(
-	filter(i => i < 4),
-	map(i => i * 2)
+  filter(i => i < 4),
+  map(i => i * 2)
 ).subscribe(console.log) // Logs: 0, 2, 4, 6
 ```
 
-The stacktrace (see [@fig:rxjs-stacktrace]) provided by the imperative debugger reveals its major flaw when used with an RP program: The stacktrace does not match the (mental) model of the data-flow graph described using the DSL. Instead, it reveals the inner (imperative) implementation of the RP runtime (in this case, RxJS). Furthermore, the debuggers step controls render ineffective, since they operate on the imperative level as well. In this example, stepping to the next statement would not result in the debugger halting at Line 6, instead it would lead the engineer somewhere into the inner implementation details of RxJS.
+The stacktrace ([@fig:rxjs-stacktrace]) provided by the imperative debugger reveals its major flaw when used with an RP program: The stacktrace does not match the (mental) model of the data-flow graph described using the DSL. Instead, it reveals the inner (imperative) implementation of the RP runtime (in this case, RxJS). Furthermore, the debuggers step controls render ineffective, since they operate on the imperative level as well. In this example, stepping to the next statement would not result in the debugger halting at Line 6, instead it would lead the engineer somewhere into the inner implementation details of RxJS.
 
-![(Shortened) stacktrace as provided by the Microsoft Visual Studio Code debugger, after pausing program execution within the anonymous function on Line 5 in [@lst:rp-program].](./content/figures/rxjs-stacktrace.png){#fig:rxjs-stacktrace}
+A common practice [@Alabor_Stolze_2020] to overcome this problem is the introduction of manual print statements as shown in [@lst:rp-program-with-print-statements]. Though often cumbersome to use, they allow to trace the behavior of an observable at program execution time.
+
+![(Shortened) stacktrace as provided by the Microsoft Visual Studio Code debugger, after pausing program execution within the anonymous function on Line 5 in [@lst:rp-program].](./content/figures/rxjs-stacktrace.png){width=60% #fig:rxjs-stacktrace}
 
 ```{
 	#lst:rp-program-with-print-statements
@@ -92,16 +94,13 @@ The stacktrace (see [@fig:rxjs-stacktrace]) provided by the imperative debugger 
 import { of, filter, map, tap } from 'rxjs';
 
 of(0, 1, 2, 3, 4).pipe(
-	tap(i => console.log(`A: ${i}`)),
-	filter(i => i < 4),
-	tap(i => console.log(`B: ${i}`)),
-	map(i => i * 2),
-	tap(i => console.log(`C: ${i}`))
-).subscribe(console.log) // Logs: 0, 2, 4, 6
+  tap(i => console.log(`A: ${i}`)), // <-- Added
+  filter(i => i < 4),
+  tap(i => console.log(`B: ${i}`)), // <-- Added
+  map(i => i * 2),
+  tap(i => console.log(`C: ${i}`))  // <-- Added
+).subscribe(console.log)
 ```
-
-A common practice [@Alabor_Stolze_2020] to overcome this problem is the introduction of manual print statements (see [@lst:rp-program-with-print-statements]). Though often cumbersome to use, they allow to trace the behavior of an observable at program execution time.
-
 
 # Related Work {#sec:related-work}
 
