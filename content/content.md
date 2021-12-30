@@ -80,7 +80,7 @@ of(0, 1, 2, 3, 4).pipe(
 ).subscribe(console.log) // Logs: 0, 2, 4, 6
 ```
 
-The stacktrace ([@fig:rxjs-stacktrace]) provided by the imperative debugger reveals its major flaw when used with an RP program: The stacktrace does not match the (mental) model of the data-flow graph described using the DSL. Instead, it reveals the inner (imperative) implementation of the RP runtime (in this case, RxJS). Furthermore, the debuggers step controls render ineffective, since they operate on the imperative level as well. In this example, stepping to the next statement would not result in the debugger halting at Line 6, instead it would lead the engineer somewhere into the inner implementation details of RxJS.
+The stacktrace ([@fig:rxjs-stacktrace]) provided by the imperative debugger reveals its major flaw when used with an RP program: The stacktrace does not match the model of the data-flow graph described using the DSL. Instead, it reveals the inner, imperative implementation of RxJS' RP runtime. Furthermore, the debuggers step controls render ineffective, since they operate on the imperative level as well. In this example, stepping to the next statement would not result in the debugger halting at Line 6, instead it would lead the engineer somewhere into the inner implementation details of RxJS.
 
 A common practice [@Alabor_Stolze_2020] to overcome this problem is the introduction of manual print statements as shown in [@lst:rp-program-with-print-statements]. Though often cumbersome to use, they allow to trace the behavior of an observable at program execution time.
 
@@ -102,17 +102,23 @@ of(0, 1, 2, 3, 4).pipe(
 ).subscribe(console.log)
 ```
 
+
 # Related Work {#sec:related-work}
 
-- Main
-	- Debugging Process [Layman_Diep_Nagappan_Singer_Deline_Venolia_2013]
-	- Salvaneschi [@Salvaneschi_Mezini_2016]
-	- Banken [@Banken_Meijer_Gousios_2018]
-	- Alabor [@Alabor_Stolze_2020]
-- Other sources which might be interesting, but did not make it into my own papers.
-- More recent research/products since the latest paper?
-	- https://www.replay.io
-	- ... others?
+## Reactive Debugging
+
+The mismatch between expected and actual of an imperative debugger when confronted with RP programs was subject various research efforts before. Salvaneschi et al. [@Salvaneschi_Mezini_2016, @Salvaneschi_Proksch_Amann_Nadi_Mezini_2017] coined the term *Reactive Debugging* and described a debugging utility and its requirements specifically tailored to work with RP programs for the first time. The further provided the first implementation of such a debugger for REScala with the name *Reactive Inspector* further.
+
+Banken et al. [@Banken_Meijer_Gousios_2018] transferred former findings to RxJS. Their browser-based visualizer *RxFiddle* takes a piece of isolated RxJS source code and allows software engineer to display its runtime behavior in two dimensions: A flow-graph shows when observables got created, and how they depend on and interact with each other. The utility further renders a marble diagram ([@fig:marble-diagram]) for each observable, showing what events got emitted at which point in time.
+
+```{.include}
+content/figures/marble-diagram.tex
+```
+
+## Debugging as a Process
+
+I used the iterative process model after Layman et al. [@Layman_Diep_Nagappan_Singer_Deline_Venolia_2013] to conceptualize a new 
+
 
 
 # Research Process {#sec:research-process}
