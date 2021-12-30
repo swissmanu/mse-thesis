@@ -56,7 +56,7 @@ of(1, 2, 3, 4, 5, 6, 7, 8).pipe(
 ```{
 	#lst:imperative-program
 	.typescript
-	caption=""
+	caption="JavaScript program using imperative programming style."
 }
 for (let i = 0; i < 5; i++) {
   if (i < 4) {
@@ -70,7 +70,7 @@ for (let i = 0; i < 5; i++) {
 ```{
 	#lst:rp-program
 	.typescript
-	caption=""
+	caption="JavaScript program using RP programming style with RxJS."
 }
 import { of, filter, map } from 'rxjs';
 
@@ -89,7 +89,7 @@ A common practice [@Alabor_Stolze_2020] to overcome this problem is the introduc
 ```{
 	#lst:rp-program-with-print-statements
 	.typescript
-	caption=""
+	caption="RxJS-based RP program showing manual print statements."
 }
 import { of, filter, map, tap } from 'rxjs';
 
