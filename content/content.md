@@ -204,7 +204,7 @@ The first major release 1.0.0 of "RxJS Debugging for Visual Studio Code" was fin
 
 At the day of release, I announced the extension via its own Twitter account [\@rxjsdebugging](https://twitter.com/rxjsdebugging). Up until the 30th of December 2021, the tweet got a total 77k impressions ([Appendix @sec:release-tweet-stats]). Further, the extension itself was downloaded 954 times ([Appendix @sec:marketplace]), counted 51 unique users based on collected analytics data (see [Appendices @sec:analytics; Appendices @sec:analytics-dashboard] for more details), and got featured in a live Twitch stream by [\@webdave_de](https://twitter.com/webdave_de), a Google Developer Expert specialized on Angular development^[The recording of the stream is unavailable at this time, unfortunately.].
 
-The overall response of the community allows for two interpretations: First, engineers effectivly long for a debugger that works with RxJS-specific RP abstractions, which is integrated with their IDE. Second, .... GAP ANALYSIS based ON FEEDBACK
+I could assume that there was a real need for an integrated RP debugger for RxJS, based on the results of the studies I conducted. The overall positive reception on the public release of RxJS Debugging for vscode was overwhelming nonetheless. However, the major release also revealed bugs and feature gaps of the debugging utility: I was able to fix two critical bugs
 
 ### ISSTA `22 Research Paper
 
