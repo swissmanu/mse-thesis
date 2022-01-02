@@ -36,10 +36,10 @@ Observables are push-based; thus, the observable actively calls the callback han
 
 We can compose observables with other observables using the `pipe` function and operators. An operator is a factory that returns a function that subscribes to an observable, maps its events, and returns a new observable. Two basic operators, `filter` and `map`, are used in [@lst:example-rxjs] on Lines 4-5 to manipulate the stream of emitted values. In addition, there are more complex operators like `mergeMap`^[https://rxjs.dev/api/operators/mergeMap] allowing composition with higher-order observables or `retryWhen`^[https://rxjs.dev/api/operators/retryWhen] to recover an observable after it emitted an `error` event.
 
-"`{
+```{
 	#lst:example-rxjs
 	.typescript
-	caption= "An observable emitting integers 1...8. Two operators process each integer before they are handed to subscriber, printing each to the console."
+	caption="An observable emitting integers 1...8. Two operators process each integer before they are handed to subscriber, printing each to the console."
 }
 import { of, map, filter } from 'rxjs'
 
@@ -53,7 +53,7 @@ of(1, 2, 3, 4, 5, 6, 7, 8).pipe(
 
 [@lst:imperative-program] shows a basic JavaScript program written using an imperative programming style. Software engineers use imperative-oriented debuggers in IDE's to follow the program's execution path. They pause the program's execution at a specific point of interest using breakpoints. Every time the debugger pauses program execution, the stackframe inspector provides details on what function calls lead to the execution of the current stack frame. Further, the values of all variables belonging to a stack frame are shown. Using step controls, the engineer controls further program execution manually or resumes "normal" execution eventually.
 
-"`{
+```{
 	#lst:imperative-program
 	.typescript
 	caption="JavaScript program using imperative programming style."
@@ -67,7 +67,7 @@ for (let i = 0; i < 5; i++) {
 
 [@lst:rp-program] is a reimplementation of [@lst:imperative-program] with RP using RxJS. Using the same imperative debugging techniques and utilities as before, we can add a breakpoint to the anonymous function passed to the `map` operator on Line 5 and start the program.
 
-"`{
+```{
 	#lst:rp-program
 	.typescript
 	caption="JavaScript program using RP programming style with RxJS."
@@ -86,7 +86,7 @@ A common practice [@Alabor_Stolze_2020] to overcome this problem is the introduc
 
 ![The stack trace provided by the Microsoft Visual Studio Code debugger, after pausing program execution within the anonymous function on Line 5 in [@lst:rp-program].](./content/figures/rxjs-stacktrace.png "RxJS stacktrace"){width=60% #fig:rxjs-stacktrace}
 
-"`{
+```{
 	#lst:rp-program-with-print-statements
 	.typescript
 	caption="RxJS-based RP program showing manual print statements."
@@ -119,6 +119,7 @@ content/figures/marble-diagram.tex
 
 Layman et al. [@Layman_Diep_Nagappan_Singer_Deline_Venolia_2013]   looked into how engineers debug programs. Based on previous models and the analysis of their data, they formalized an iterative process model for the activity of debugging. Its goal is to define and refine a hypothesis on the cause that triggered an unexpected behavior in a program. Ultimately, the process seeks to prove that hypothesis. The debugging process after Layman et al. consists of three steps: Engineers start to (i) collect context information on the current situation (e.g., which particular piece of source code might be involved or what input caused the failure). This information allows the software engineers to formulate a hypothesis on how the failure situation can be resolved. Next, with the intent to prove their hypothesis, they (ii) instrument the program, e.g., by adding breakpoints or modifying source code. They then (iii) test this modified system according to their debugging hypothesis. This step either proves their hypothesis correct, ending the debugging process, or yields new information for another iteration of hypothesis refinement and testing.
 
+TODO REFERENCE THIS IN THE RESEARCH PROCESS
 
 # Research Process {#sec:research-process}
 
