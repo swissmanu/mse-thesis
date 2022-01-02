@@ -174,7 +174,7 @@ One of the biggest challenges during the Prototype phase was to build a reliable
 
 With my intent to build a debugger that integrates with the IDE seamlessly, I started to look into how the built-in JavaScript debugger, vscode-js-debug^[https://github.com/microsoft/vscode-js-debug], communicates with the runtime environment. As it turned out, vscode-js-debug uses the Chrome DevTools Protocol^[https://chromedevtools.github.io/devtools-protocol/] (CDP) to communicate with arbitrary JavaScript runtimes. Unfortunately, vscode-js-debug did not offer its CDP connection to be reused by other extensions. So I decided to contribute this particular function to the project ([Appendix @sec:cdp-pull-request]), which then was released with vscodes April 2021 release. I could replace any extraneous communication channel for the RxJS debugger in turn. Furthermore, if a new JavaScript runtime supports CDP, it becomes automatically compatible with the RxJS debugging utility.
 
-[@fig: architecture] provides a complete overview of the system components and communication channels.
+[@fig:architecture] provides a complete overview of the system components and communication channels.
 
 ```{.include}
 content/figures/architecture.tex
