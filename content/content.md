@@ -220,15 +220,29 @@ Operator log points were successfully tested using usability testing methods dur
 
 The debugging extension collects user behavior data since its major release, which is available for further analysis ([Appendix @sec:analytics]). The collected data points allow conclusions on how software engineers use the extension and what kind of applications (i.e., server or web applications) they debug most. The data set might be evaluated on its own to derive improvements for the existing debugging utility, or provide supportive arguments for a broader study as proposed before.
 
-## Open Science
+### Open Science
 
 The designs and results of all conducted studies (interviews, observational study, cognitive walkthrough, and moderated remote usability test) are documented in the respective research papers and their supplementary material available in [Appendices @sec:paper-1; Appendices @sec:user-journey; Appendices @sec:paper-2]) to encourage future research on RP debugging and RP debugging for RxJS specifically. A list of URL's to various GitHub repositories related to my work is available in [Appendix @sec:open-science] further.
 
 ## Open Source
 
-I built the RxJS Debugging for vscode extension with the intention to establish a sustainable open source project. Its Github Rep [Appendices @sec:contributing, Appendices @sec:architecture]
+I developed the RxJS Debugging for vscode extension with the intention to establish a sustainable open source project.
 
-### Visualizer
+The contribution and architecture guides ([Appendices @sec:contributing; Appendices @sec:architecture]) introduce new contributors to the implementation and code organization details of the extension. The transparent project governance is built around the GitHub platform further: The feature backlog and bug tracking is based on GitHub Issues, Discussions help to triage inquiries from users. Unit and integration tests, automatically executed using GitHub Actions, help to keep the extensions main branch stable.
+
+A look into the feature backlog ([Appendix @sec:feature-backlog]) is a good start for more practical oriented future work. I present two features from the backlog in the following, which, depending on skill level, provide a good entry point to contribute to RxJS Debugging for vscode:
+
+### User Onboarding after Installation (Issue #58)
+
+After an engineer installed the extension, they are left on their own to get started with debugging. Even though the readme file provides information up to some extent, the onboarding experience for new users can be improved. With this feature, ways of improving that experience should be explored and implemented eventually.
+
+A contributor needs to understand the vscode extension API. Deep knowledge of the extensions source code is not required, its functionality should be clear however.
+
+### Log Point History (Issue #44)
+
+Instead of only showing the latest emitted event from an enabled operator log point, the debugger should display all previously emitted events additionally. Such a functionality allows engineers the reconstruction of the behavior of an operator without over and over replaying the failure scenario using the live system. An initial contribution might be a list displaying the plain events in textual form and could then be improved towards a graphical representation of the events using marble diagrams.
+
+This feature requires a good understanding of the vscode extension API as well as of the debugging extensions code base itself.
 
 
 # Conclusion {#sec:conclusion}
