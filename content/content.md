@@ -226,7 +226,7 @@ The designs and results of all conducted studies (interviews, observational stud
 
 ## Open Source
 
-I built the RxJS Debugging for vscode extension as a sustainable open source project. In order to 
+I built the RxJS Debugging for vscode extension with the intention to establish a sustainable open source project. Its Github Rep [Appendices @sec:contributing, Appendices @sec:architecture]
 
 ### Visualizer
 
