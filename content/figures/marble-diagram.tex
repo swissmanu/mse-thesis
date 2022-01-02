@@ -2,6 +2,7 @@
   \centering
   \begin{tikzpicture}
     \tikzstyle{marble}=[circle, draw, fill=white, line width=0.3mm, inner sep=2mm]
+    \tikzstyle{line}=[draw,line width=0.3mm]
 
     \node (a) [
         style=marble
@@ -29,13 +30,13 @@
         below=2mm of d
     ] {};
 
-    \path[-,draw] (a) edge (b);
-    \path[-,draw] (b) edge (c);
-    \path[-,draw] (c) edge (d);
-    \path[->,draw] (d) edge (x);
+    \path[-,style=line] (a) edge (b);
+    \path[-,style=line] (b) edge (c);
+    \path[-,style=line] (c) edge (d);
+    \path[->,style=line] (d) edge (x);
 
-    \path[-,draw] (z) edge (d);
-    \path[-,draw] (y) edge (d);
+    \path[-,style=line] (z) edge (d);
+    \path[-,style=line] (y) edge (d);
   \end{tikzpicture}
   \caption[Observable marble diagram]{Marble Diagram visualizing the observable in Listing \ref{lst:rp-program}. From left to right, each marble represents an emitted event. The vertical line at the last marble indicates a complete event after emitting the last next carrying the value 6.}
   \label{fig:marble-diagram}
