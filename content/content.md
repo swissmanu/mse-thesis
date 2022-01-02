@@ -161,7 +161,7 @@ Imperative debuggers provide log points, a utility to print a log statement once
 Using the two inspection methods, I could verify that operator log points fulfill the requirements stated at the beginning of this section. In addition, the cognitive walkthrough further revealed several usability issues as documented in [Appendix @sec:paper-2-supplementary]. These results provided valuable input for the upcoming Prototype phase.
 
 ## Prototype
-Once I was confident that operator log points satisfied an RxJS software engineer's needs, I reimplemented the PoC debugger. For the prototype, I focused on functionality, maintainability, and extensibility. Eventually, I released version 0.1.0 of "RxJS Debugging for Visual Studio Code," the first fully integrated RxJS debugger for an IDE.
+Once I was confident that operator log points satisfied an RxJS software engineer's needs, I reimplemented the PoC debugger. For the prototype, I focused on functionality, maintainability, and extensibility. Eventually, I released version 0.1.0 of "RxJS Debugging for vscode," the first fully integrated RxJS debugger for an IDE.
 
 The initial version of the extension enabled engineers to debug RxJS-based applications running with Node.js. There are no additional setup steps necessary: Once the extension is installed, it suggests operator log points with a small, diamond-shaped icon next to the respective operator. Next, the engineer launches their application using the built-in JavaScript debugger. By doing so, the debugger augments RxJS automatically to provide life-cycle events to vscode. The extension displays these life-cycle events for enabled operator log points in line with the operator in the source code editor.
 
@@ -221,7 +221,7 @@ Since its major release, the debugging extension collects user behavior data, wh
 
 ### Open Science
 
-The designs and results of all conducted studies (interviews, observational study, cognitive walkthrough, and moderated remote usability test) are documented in the respective research papers and their supplementary material available in [Appendices @sec:paper-1; Appendices @sec:user-journey; Appendices @sec:paper-2]) to encourage future research on RP debugging. In addition, a list of URLs to various GitHub repositories related to my work is available in [Appendix @sec:open-science].
+The designs and results of all conducted studies (interviews, observational study, cognitive walkthrough, and moderated remote usability test) are documented in the respective research papers and their supplementary material available in [Appendices @sec:paper-1; Appendices @sec:paper-2; Appendices @sec:user-journey]) to encourage future research on RP debugging. In addition, a list of URLs to various GitHub repositories related to my work is available in [Appendix @sec:open-science].
 
 ## Open Source
 
