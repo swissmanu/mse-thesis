@@ -1,16 +1,16 @@
 # Introduction
 
-Debugging [@CITE IEEE] is an essential part of a software engineer's daily job. Various techniques, some better suited for the task than others, help engineers explore the functionality of an unknown or malfunctioning program. Rather traditional debugging is done by interpreting memory dumps or the analysis of log entries. Sophisticated debugging solutions hook into a program at runtime and allow more detailed inspection and control.
+Debugging [@IEEE_Glossary_1990] is an essential part of a software engineer's daily job. Various techniques, some better suited for the task than others, help engineers explore the functionality of an unknown or malfunctioning program. Rather traditional debugging is done by interpreting memory dumps or the analysis of log entries. Sophisticated debugging solutions hook into a program at runtime and allow more detailed inspection and control.
 
 Imperative programming languages like Java, C#, or Python dominated the mainstream software engineering industry over the last decades [@CITE]. Because of the prevalence of imperative programming languages, integrated development environments (IDE) like Eclipse, Microsoft Visual Studio, or the JetBrains IDE platform provide specialized debugging utilities specifically tailored to imperative programming languages. This results in an excellent, fully integrated developer experience, where tool-supported debugging is only one or two clicks away.
 
-This experience degrades rapidly when software engineers use programming languages and tools based on different programming paradigms such as reactive programming (RP). Because traditional debugging utilities apparently cannot answer what engineers are interested in, engineers tend to use simpler debugging techniques instead.
+This experience degrades rapidly when software engineers use programming languages and tools based on different programming paradigms such as reactive programming (RP). Because of this, engineers tend to use simpler, less capable debugging techniques instead.
 
-Within my master studies research scope, I examined the necessity of paradigm-specific debugging utilities when software engineers debug programs based on RxJS^[https://rxjs.dev/], a library for RP in JavaScript. During my research, I explored how professionals debug RxJS programs, what tools and techniques they employ, and why they prefer to use print statements instead of specialized debugging utilities. In doing so, I identified a key factor for the success of a debugging tool: It needs to be "ready to hand," or its users will not use it at all.
+During my master studies research, I examined the necessity of paradigm-specific debugging utilities when software engineers debug programs based on RxJS^[https://rxjs.dev/], a library for RP in JavaScript. During my research, I explored how professionals debug RxJS programs, what tools and techniques they employ, and why they prefer to use print statements instead of specialized debugging utilities. In doing so, I identified a key factor for the success of a debugging tool: It needs to be *ready-to-hand*, or its users will not use it at all.
 
-Based on the premise of "readiness to hand," I eventually conceptualized a novel debugging utility for RP named *operator log points*. The implementation of an extension for Microsoft Visual Studio named "RxJS Debugging for Visual Studio Code", in conjunction with a usability inspection and a usability test allowed me to verify that the concept can successfully replace manual print statements for debugging RxJS-based applications and indeed is ready to the hands of software engineers.
+Based on the premise of *readiness to hand*, I designed and implemented a novel debugging utility for RP. *Operator log points* are available as extension for Microsoft Visual Studio Code (vscode) and provide the first fully IDE-integrated debugging utilities for RxJS. I successfully verified that operator log points replace the manual print statement as debugging utility using a usability inspection and a usability test. Thus, the presented debugger is proof that a ready-to-hand debugger for RP is feasible.
 
-This summative thesis consolidates my research results documented and published in two research papers. I will complete this introduction with an overview of relevant programming paradigms, a glance at RP with RxJS, and the challenges RP provides for imperative-focused debuggers. Relevant work will be discussed in [@sec:related-work], followed by an overview of the complete research process and its results in [@sec:research-process]. [@sec:future-work] presents a list of opportunities for future work and highlights provisions taken to ensure the sustainability of the demonstrated results. Before the reader is left with the study of the research papers in the appendix, I will wrap up on the topic of debugging support for RP with RxJS in [@sec:conclusion].
+This summative thesis consolidates my research results documented and published in two research papers. I will complete this introduction with an overview of relevant programming paradigms, a glance at RP with RxJS, and the challenges RP provides for imperative-focused debuggers. Relevant work will be discussed in [@sec:related-work], followed by an overview of the complete research process and its results in [@sec:research-process]. [@sec:future-work] presents a list of opportunities for future work and highlights provisions taken to ensure the sustainability of the demonstrated results. Before the reader is left with the study of the research papers in the [Appendix @sec:research-papers], I will wrap up on the topic of debugging support for RP with RxJS in [@sec:conclusion].
 
 ## Programming Paradigms
 
@@ -18,15 +18,15 @@ A program implemented in an imperative language (e.g., Java or C#) modifies impl
 
 The Functional (FP) and the Data-Flow Programming (DFP) paradigm belong to the family of declarative languages.
 
-FP languages (e.g., Haskell or Erlang) are based on the concept of expression evaluation: Flow control statements are replaced with recursive function calls and conditional expressions [@Hudak_1989]. Thus, a program's outcome results from its complete evaluation rather than its implicit state. With DFP, programs are modeled as a directed graph where a node represents an instruction of the program. The graph's edges describe how the data flows between its nodes [@Johnston_Hanna_Millar_2004]. Examples for DFP can be found in visual programming environments like Node-RED^[https://nodered.org/].
+FP languages (e.g., Haskell or Erlang) are based on the concept of expression evaluation: Flow control statements are replaced with recursive function calls and conditional expressions [@Hudak_1989]. Thus, a program's outcome results from its complete evaluation rather than its implicit state. With DFP, programs are modeled as directed graphs where a node represents an instruction of the program. The graph's edges describe how the data flows between its nodes [@Johnston_Hanna_Millar_2004]. Contemporary examples for DFP can be found in visual programming environments like Node-RED^[https://nodered.org/].
 
-Reactive Programming (RP) combines FP and DFP. Software engineers describe time-changing values and how they depend on each other [@Salvaneschi_Mezini_2016], i.e., a data-flow graph, using a Domain Specific Language (DSL). A runtime environment interprets the graph description and establishes a deterministic system state [@Bainomugisha_Carreton_Cutsem_Mostinckx_Meuter_2013] by executing necessary computations and propagating values through the data-flow graph [@Alabor_Stolze_2020]. RP is usually not part of programming languages themselves. Instead, libraries and language extensions (e.g., Reactive for Haskell [@Elliott_2009] or REScala for Scala [@Salvaneschi_Hintz_Mezini_2014]) provide RP features to their respective host programming language.
+Reactive Programming (RP) combines FP and DFP. Software engineers describe time-changing values and how they depend on each other [@Salvaneschi_Mezini_2016], i.e., a data-flow graph, using a Domain Specific Language (DSL). A runtime environment interprets the graph description and establishes a deterministic system state [@Bainomugisha_Carreton_Cutsem_Mostinckx_Meuter_2013] by executing necessary (re-)computations [@Alabor_Stolze_2020]. RP is usually not part of programming languages themselves. Instead, libraries and language extensions (e.g., Reactive for Haskell [@Elliott_2009] or REScala for Scala [@Salvaneschi_Hintz_Mezini_2014]) provide RP features to their respective host programming language.
 
 ## Reactive Programming with RxJS
 
 RxJS provides RP features for JavaScript and TypeScript. It is an implementation of the ReactiveX API specification, where the *Observable*, "[..] a combination of the best ideas from the Observer pattern, the Iterator pattern, and functional programming" [@reactivex], is the core concept.
 
-Similar to the observer in the Observer pattern [@gof], an RxJS observer subscribes and consumes events emitted from an *Observable*:
+Like the observer in the Observer pattern [@gof] subscribes to the notifications of a subject, subscribes an RxJS observer to the events of an observable. Observables *emit* the following three events:
 
 1. A `next` event carries a produced value, e.g., the result of an HTTP request
 2. The `complete` event indicates that the observable finished its processing and will not emit any other events in the future
@@ -34,72 +34,59 @@ Similar to the observer in the Observer pattern [@gof], an RxJS observer subscri
 
 Observables are push-based; thus, the observable actively calls the callback handler of its subscriber(s)^[The Iterator pattern [@gof] is an example for pull-based processing. The consumer has to actively poll the iterators `next` function to receive a value.].
 
-We can compose observables with other observables using the `pipe` function and operators. An operator is a factory that returns a function that subscribes to an observable, maps its events, and returns a new observable. Two basic operators, `filter` and `map`, are used in [@lst:example-rxjs] on Lines 4-5 to manipulate the stream of emitted values. In addition, there are more complex operators like `mergeMap`^[https://rxjs.dev/api/operators/mergeMap] allowing composition with higher-order observables or `retryWhen`^[https://rxjs.dev/api/operators/retryWhen] to recover an observable after it emitted an `error` event.
+Operator functions subscribe to an observable, modify its events, and return a  new observable emitting the modified events. Operator functions are the most powerful, yet most complex tool when working with observables. [@lst:example-rxjs] demonstrates two simple operators for filtering and mapping of values. More complex operators like `mergeMap`^[https://rxjs.dev/api/operators/mergeMap] allow the composition of higher-order observables or `retryWhen`^[https://rxjs.dev/api/operators/retryWhen] even provides a way to recover an observable from an `error` event.
 
 ```{
 	#lst:example-rxjs
 	.typescript
-	caption="An observable emitting integers 1...8. Two operators process each integer before they are handed to subscriber, printing each to the console."
+	caption="An observable emitting integers 1...8. Two operators process the integers before they are handed to the subscriber, which prints them to the console."
 }
 import { of, map, filter } from 'rxjs'
 
 of(1, 2, 3, 4, 5, 6, 7, 8).pipe(
-  filter(i => i % 2 === 0),       // Skip odd ints
-  map(i => i * 2),                // Multiply int with 2
+  filter(i => i % 2 === 0),       // Skip odd Integers
+  map(i => i * 2),                // Multiply Integer with 2
 ).subscribe(i => console.log(i)); // Logs: 4, 8, 12, 16
 ```
 
 ## Debugging Challenges of Reactive Programming
 
-[@lst:imperative-program] shows a basic JavaScript program written using an imperative programming style. Software engineers use imperative-oriented debuggers in IDE's to follow the program's execution path. They pause the program's execution at a specific point of interest using breakpoints. Every time the debugger pauses program execution, the stackframe inspector provides details on what function calls lead to the execution of the current stack frame. Further, the values of all variables belonging to a stack frame are shown. Using step controls, the engineer controls further program execution manually or resumes "normal" execution eventually.
+[@lst:imperative-program] shows a reimplementation of [@lst:example-rxjs] using an imperative programming style. Software engineers use imperative-oriented debuggers in IDE's to follow the program's execution path. They pause the program's execution at a specific point of interest using breakpoints. Every time the debugger pauses program execution, the stack frame inspector provides details on what function calls lead to the execution of the current stack frame. Further, the values of all variables belonging to a stack frame are shown. Using step controls, the engineer controls further program execution manually or resumes "normal" execution eventually.
 
 ```{
 	#lst:imperative-program
 	.typescript
-	caption="JavaScript program using imperative programming style."
+	caption="JavaScript program replicating Listing 1 using an imperative programming style."
 }
-for (let i = 0; i < 5; i++) {
-  if (i < 4) {
-    console.log(i * 2); // Logs: 0, 2, 4, 6
+for (let i = 1; i < 9; i++) {
+  if (i % 2 === 0) {
+    console.log(i * 2); // Logs: 4, 8, 12, 16
   }
 }
 ```
 
-[@lst:rp-program] is a reimplementation of [@lst:imperative-program] with RP using RxJS. Using the same imperative debugging techniques and utilities as before, we can add a breakpoint to the anonymous function passed to the `map` operator on Line 5 and start the program.
+Let's assume an engineer would debug the RP program from [@lst:example-rxjs] using the same imperative debugging techniques and utilities as before. They would add a breakpoint to the anonymous function passed to the `map` operator on Line 5 and start the program.
 
-```{
-	#lst:rp-program
-	.typescript
-	caption="JavaScript program using RP programming style with RxJS."
-}
-import { of, filter, map } from 'rxjs';
+![The stack trace provided by the Microsoft Visual Studio Code debugger, after pausing program execution within the anonymous function on Line 5 in [@lst:example-rxjs].](./content/figures/rxjs-stacktrace.png "RxJS stack trace"){width=60% #fig:rxjs-stacktrace}
 
-of(0, 1, 2, 3, 4).pipe(
-  filter(i => i < 4),
-  map(i => i * 2)
-).subscribe(console.log) // Logs: 0, 2, 4, 6
-```
+The stack trace ([@fig:rxjs-stacktrace]) provided by the imperative debugger reveals the debuggers major shortcoming when used with the RP program: The stack trace does not match the model of the data-flow graph described with the DSL. Instead, it reveals the inner, imperative implementation of RxJS' RP runtime. Furthermore, the debugger's step controls render ineffective since they too operate on the imperative level. In this example, stepping to the following statement does not result in the debugger halting at Line 6. Instead, it leads the engineer to the inner implementation details of RxJS.
 
-The stack trace ([@fig:rxjs-stacktrace]) provided by the imperative debugger reveals its major flaw when used with an RP program: The stack trace does not match the model of the data-flow graph described using the DSL. Instead, it reveals the inner, imperative implementation of RxJS' RP runtime. Furthermore, the debugger's step controls render ineffective since they operate on the imperative level. In this example, stepping to the following statement would not result in the debugger halting at Line 6. Instead, it would lead the engineer somewhere into the inner implementation details of RxJS.
-
-A common practice [@Alabor_Stolze_2020] to overcome this problem is the introduction of manual print statements, as shown in [@lst:rp-program-with-print-statements]. Though often cumbersome to use, they allow tracing an observable's behavior at program execution time.
-
-![The stack trace provided by the Microsoft Visual Studio Code debugger, after pausing program execution within the anonymous function on Line 5 in [@lst:rp-program].](./content/figures/rxjs-stacktrace.png "RxJS stacktrace"){width=60% #fig:rxjs-stacktrace}
+A common practice to overcome this problem is the manual augmentation of the source code with print statements, as shown in [@lst:rp-program-with-print-statements]. Thus perceived as cumbersome and prone to be left in the source code, this technique is often the last resort to debug RxJS programs [@Alabor_Stolze_2020].
 
 ```{
 	#lst:rp-program-with-print-statements
 	.typescript
-	caption="RxJS-based RP program showing manual print statements."
+	caption="RxJS-based program from Listing 1 manually augmented with print statements."
 }
 import { of, filter, map, tap } from 'rxjs';
 
-of(0, 1, 2, 3, 4).pipe(
+of(1, 2, 3, 4, 5, 6, 7, 8).pipe(
   tap(i => console.log(`A: ${i}`)), // <-- Added
-  filter(i => i < 4),
+  filter(i => i % 2 === 0),
   tap(i => console.log(`B: ${i}`)), // <-- Added
   map(i => i * 2),
   tap(i => console.log(`C: ${i}`))  // <-- Added
-).subscribe(console.log)
+).subscribe(i => console.log(i));
 ```
 
 
@@ -156,7 +143,7 @@ Based on the learnings from the first phase, I started to compile ideas to help 
 1. Integrates with an IDE
 2. Requires minimal to no additional learning effort for its users
 
-Imperative debuggers provide log points, a utility to print a log statement once the program execution processes as a specific statement in the source code. I adopted this established concept and transferred it to the world of RP with RxJS: An *operator log point*, enabled for a specific operator in an Observables `pipe` shows in realtime when related operator emits relevant events. I did a PoC implementation in an extension to Microsoft Visual Studio Code (vscode). To verify that the PoC solves the problem of manual code modifications in order to debug RxJS programs, I used a cognitive walkthrough [@Wharton_Rieman_Clayton_Polson_1994] ([Appendix @sec:paper-2-supplementary]). Further, I created a user journey comparing the debugging workflow with and without the PoC debugging extension (see [Appendix @sec:user-journey]).
+Imperative debuggers provide log points, a utility to print a log statement once the program execution processes as a specific statement in the source code. I adopted this established concept and transferred it to the world of RP with RxJS: An *operator log point*, enabled for a specific operator in an Observables `pipe` shows in realtime when related operator emits relevant events. I did a PoC implementation in an extension for vscode. To verify that the PoC solves the problem of manual code modifications in order to debug RxJS programs, I used a cognitive walkthrough [@Wharton_Rieman_Clayton_Polson_1994] ([Appendix @sec:paper-2-supplementary]). Further, I created a user journey comparing the debugging workflow with and without the PoC debugging extension (see [Appendix @sec:user-journey]).
 
 Using the two inspection methods, I could verify that operator log points fulfill the requirements stated at the beginning of this section. In addition, the cognitive walkthrough further revealed several usability issues as documented in [Appendix @sec:paper-2-supplementary]. These results provided valuable input for the upcoming Prototype phase.
 
@@ -184,11 +171,12 @@ content/figures/architecture.tex
 ### Moderated Remote Usability Test
 
 Once the main elements of the debugger prototype were functioning sufficiently, I conducted a remote usability test with three subjects. The goals of this study were:
-To verify that the operator log point utility can replace manual print statements in an actual programming scenario
-To identify usability issues not detected during development
-To collect feedback and ideas for the prototype and its further development
 
-All three goals were successfully verified: No subject used manual print statements during the test sessions. Further, ten usability issues were identified ([Appendix @sec:paper-2-supplementary]), and I could compile valuable feedback, which I translated to tasks for the feature backlog on GitHub ([Appendix @sec:feature-backlog]). The complete result set of the usability test is available in [Appendix @sec:paper-2-supplementary].
+1. To verify that the operator log point utility can replace manual print statements in an actual programming scenario
+2. To identify usability issues not detected during development
+3. To collect feedback and ideas for the prototype and its further development
+
+All three goals were reached: No subject used manual print statements during their test session. Further, ten usability issues were identified ([Appendix @sec:paper-2-supplementary]), and I could compile valuable feedback, which I translated to tasks for the feature backlog on GitHub ([Appendix @sec:feature-backlog]). The complete result set of the usability test is available in [Appendix @sec:paper-2-supplementary].
 
 ## Finalization
 
@@ -250,6 +238,6 @@ In this summative thesis, I presented the condensed results of my research on re
 
 The results of interviews, war story reports, and an observational study revealed the major shortcoming of previously available RxJS debugging utilities. Even though software engineers might know them, they abstain from using them because they are not "ready to hand," i.e., not integrated with the IDE they are working in and accustomed to. Instead, they use manual print statements.
 
-With the concept of "readiness to hand" as a guiding light, I built a proof of concept implementation for a novel debugging utility to find relief to this problem: Operator log points debug RxJS operators without requiring the engineer to leave Microsoft Visual Studio Code. While refining the debugger iteratively, I employed a cognitive walkthrough, a comparative user journey, and a usability test at different stages of development to validate the utility's capability of solving the problem of "ready-to-hand" debugging.
+With the concept of "readiness to hand" as a guiding light, I built a proof of concept implementation for a novel debugging utility to find relief from this problem: Operator log points debug RxJS operators without requiring the engineer to leave Microsoft Visual Studio Code. While refining the debugger iteratively, I employed a cognitive walkthrough, a comparative user journey, and a usability test at different stages of development to validate the utility's capability of solving the problem of "ready-to-hand" debugging.
 
 I documented the results of my research in two research papers: The first paper was published with the proceedings of the ACM REBLS '20 workshop. The second report is in review for the technical papers track of the ACM ISSTA '22 conference when writing this thesis. Furthermore, I released "RxJS Debugging for Visual Studio Code," the first RxJS-specific debugger that fully integrates with an IDE.

@@ -1,24 +1,24 @@
 \begin{figure}
   \centering
   \begin{tikzpicture}
-    \tikzstyle{marble}=[circle, draw, fill=white, line width=0.3mm, inner sep=2mm]
+    \tikzstyle{marble}=[circle, draw, fill=white, line width=0.3mm, inner sep=1.5mm, minimum width=9mm]
     \tikzstyle{line}=[draw,line width=0.3mm]
 
     \node (a) [
         style=marble
-    ] {0};
+    ] {4};
     \node (b) [
         style=marble,
         right=4mm of a
-    ] {2};
+    ] {8};
     \node (c) [
         style=marble,
         right=4mm of b
-    ] {4};
+    ] {12};
     \node (d) [
         style=marble,
         right=4mm of c
-    ] {6};
+    ] {16};
 
     \node (x) [
         right=4mm of d
@@ -38,6 +38,6 @@
     \path[-,style=line] (z) edge (d);
     \path[-,style=line] (y) edge (d);
   \end{tikzpicture}
-  \caption[Observable marble diagram]{Marble Diagram visualizing the observable in Listing \ref{lst:rp-program}. From left to right, each marble represents an emitted event. The vertical line at the last marble indicates a complete event after emitting the last next carrying the value 6.}
+  \caption[Observable marble diagram]{A marble diagram visualizing the observable in Listing \ref{lst:example-rxjs}. From left to right, each marble represents an emitted event. The vertical line at the last marble indicates a complete event after emitting the last next carrying the value 16.}
   \label{fig:marble-diagram}
 \end{figure}
