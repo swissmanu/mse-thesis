@@ -247,5 +247,10 @@ This feature requires a good understanding of the vscode extension API as well a
 
 # Conclusion {#sec:conclusion}
 
-- Recap
-- Contributions
+In this summative thesis, I presented the condensed results of my research on reactive debugging for programs based on RxJS, a popular library for reactive programming with JavaScript.
+
+The combined results from conducted interviews, written war story reports and an observational study with four subjects allowed me to reveal the main short coming of previously available RxJS debugging utilities: Even though software engineers might know them, they abstain from using them because they are not "ready to hand", i.e. not integrated in the IDE they are working in and accustomed to. Instead, they use manual print statements.
+
+With the concept of "readiness to hand" as guiding light, I built a proof of concept implementation for a novel debugging utility: Operator log points debug RxJS operators without requiring the engineer to leave Microsoft Visual Studio Code. While refining the debugger iteratively, I employed a cognitive walkthrough, a comparative user journey, and a usability test at different stages of development to validate the utilities capability of solving the problem of "ready-to-hand" debugging.
+
+I documented the results of my research in two research papers: The first paper was published with the proceedings of the ACM REBLS `20 workshop. The second report is in review for the technical papers track of the ACM ISSTA '22 conference at time of writing this thesis. Furthermore, I released with "RxJS Debugging for Visual Studio Code" the first RxJS-specific debugger that fully integrates with an IDE.
