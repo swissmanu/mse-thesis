@@ -128,7 +128,7 @@ Throughout my own research, the debugging process model by Layman et al. helped 
 content/figures/research-process.tex
 ```
 
-The research process follows the principles of empirical software engineering and applies methods of the user-centered design approach. Its results are documented in two research papers. The process is structured in four distinct phases: (i) Exploration, (ii) Proof of Concept (PoC), (iii) Prototype, and (iv) Finalize. This section gives an overview of every stage, presents the most important insights, and lists the developed artifacts.
+The research process follows the principles of empirical software engineering and applies methods of the user-centered design approach. Its results are documented in two research papers. The process is structured in four distinct phases: (i) Exploration, (ii) Proof of Concept (PoC), (iii) Prototype, and (iv) Finalization. This section gives an overview of every stage, presents the most important insights, and lists the developed artifacts.
 
 ```{.include}
 content/tables/artifact-overview.tex
@@ -191,7 +191,7 @@ Once I got the main elements of the new debugger working, I conducted a remote u
 
 All three goals were successfully verified: No subject used manual print statements during the test sessions. Further, 10 usability issues were identified ([Appendix @sec:paper-2-supplementary]) and I could compile valuable feedback which I translated to tasks for the feature backlog on GitHub ([Appendix @sec:feature-backlog]). The complete result set of the usability test is available in [Appendix @sec:paper-2-supplementary].
 
-## Finalize
+## Finalization
 
 With the results from the usability test and a roadmap for version 1.0.0 ([Appendix @sec:major-milestone]) of my RxJS debugger, I was prepared for the last phase. The most crucial improvements I was able to implement included:
 
@@ -214,7 +214,7 @@ Beside the practical effort done, I wrote another research paper with Markus Sto
 
 ## Empirical Software Engineering
 
-I provided with RxJS Debugging for vscode a practical solution to the problems identified throughout the presented research process and further empirical verifications can now be carried out. 
+I provided with RxJS Debugging for vscode a practical solution to the problems identified throughout the presented research process and further empirical verifications can now be carried out.
 
 Operator log points were successfully tested using usability testing methods during their development. However, a formal verification using an empirical will yield valuable insight on the presented debugging utility. The most important research question to answer in these regards is, how effectively can operator log points replace existing debugging tools (i.e., manual print statements and the built-in, imperative debugger tools) for engineers debugging RxJS programs.
 
