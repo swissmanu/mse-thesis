@@ -232,13 +232,13 @@ The contribution and architecture guides ([Appendices @sec:contributing; Appendi
 
 A look into the feature backlog ([Appendix @sec:feature-backlog]) is a good start for more practical oriented future work. I present two features from the backlog in the following, which, depending on skill level, provide a good entry point to contribute to RxJS Debugging for vscode:
 
-### User Onboarding after Installation (Issue #58)
+### User Onboarding after Installation ([Issue #58](https://github.com/swissmanu/rxjs-debugging-for-vscode/issues/58))
 
 After an engineer installed the extension, they are left on their own to get started with debugging. Even though the readme file provides information up to some extent, the onboarding experience for new users can be improved. With this feature, ways of improving that experience should be explored and implemented eventually.
 
 A contributor needs to understand the vscode extension API. Deep knowledge of the extensions source code is not required, its functionality should be clear however.
 
-### Log Point History (Issue #44)
+### Log Point History ([Issue #44](https://github.com/swissmanu/rxjs-debugging-for-vscode/issues/44))
 
 Instead of only showing the latest emitted event from an enabled operator log point, the debugger should display all previously emitted events additionally. Such a functionality allows engineers the reconstruction of the behavior of an operator without over and over replaying the failure scenario using the live system. An initial contribution might be a list displaying the plain events in textual form and could then be improved towards a graphical representation of the events using marble diagrams.
 
