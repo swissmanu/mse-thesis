@@ -128,7 +128,7 @@ Throughout my own research, the debugging process model by Layman et al. helped 
 content/figures/research-process.tex
 ```
 
-The iterative research process follows the principles of empirical software engineering and applies methods of the user-centered design approach. Its results are documented in two research papers. The process is structured in four distinct phases: (i) Exploration, (ii) Proof of Concept (PoC), (iii) Prototype, and (iv) Finalize. This section gives an overview of every stage, presents the most important insights, and lists the developed artifacts.
+The research process follows the principles of empirical software engineering and applies methods of the user-centered design approach. Its results are documented in two research papers. The process is structured in four distinct phases: (i) Exploration, (ii) Proof of Concept (PoC), (iii) Prototype, and (iv) Finalize. This section gives an overview of every stage, presents the most important insights, and lists the developed artifacts.
 
 ```{.include}
 content/tables/artifact-overview.tex
@@ -189,7 +189,7 @@ content/figures/architecture.tex
 
 Once I got the main elements of the new debugger working, I conducted a remote usability test with three subjects. The goals of this study were (i) to verify that the operator log point utility can replace manual print statements in an actual programming scenario, (ii) to identify usability issues not detected during development, and (iii) to collect feedback and ideas for the prototype and its further development.
 
-All three goals were successfully verified: No subject used manual print statements during the test sessions. Further, 10 usability issues were identified and I could compile valuable feedback which I translated to tasks for the feature backlog on GitHub ([Appendix @sec:feature-backlog]). The complete result set of the usability test is available in [Appendix @sec:paper-2-supplementary].
+All three goals were successfully verified: No subject used manual print statements during the test sessions. Further, 10 usability issues were identified ([Appendix @sec:paper-2-supplementary]) and I could compile valuable feedback which I translated to tasks for the feature backlog on GitHub ([Appendix @sec:feature-backlog]). The complete result set of the usability test is available in [Appendix @sec:paper-2-supplementary].
 
 ## Finalize
 
@@ -212,17 +212,29 @@ Beside the practical effort done, I wrote another research paper with Markus Sto
 
 # Future Work {#sec:future-work}
 
-## Sustainability of Work
+## Empirical Software Engineering
 
-- Open Science
-	- Why?
-	- Where to get data?
+I provided with RxJS Debugging for vscode a practical solution to the problems identified throughout the presented research process and further empirical verifications can now be carried out. I see two promising ways, how this might be approached:
+
+1. Operator log points were successfully tested using usability testing methods during their development. However, a formal verification using an empirical will yield valuable insight on the presented debugging utility. The most important research question to answer in these regards is, how effectively can operator log points replace existing debugging tools (i.e., manual print statements and the built-in, imperative debugger tools) for engineers debugging RxJS programs.
+2. The debugging extension collects user behavior data since its major release, which is available for further analysis ([Appendix @sec:analytics]). The collected data points allow conclusions on how software engineers use the extension and what kind of applications (i.e., server or web applications) they debug most. The data set might be evaluated on its own to derive improvements for the existing debugging utility, or provide supportive insight for a bigger study as proposed in Point 1.
+
+## Open Science
+
+The designs and results of all conducted studies (interviews, observational study, cognitive walkthrough, and moderated remote usability test) are documented in the respective research papers and their supplementary material ([Appendices @sec:paper-1, Appendices @sec:user-journey, Appendices @sec:paper-2]). The URL's to the applications presented to my test subjects are compiled in [Appendix @sec:open-science].
+
+TODO SURVEY RESULTS
+TODO OBSERVATIONAL STUDY RESULTS
+
+## Open Source
+
 - Where to pick things up
 - Sustainability of Work
 	- Testing
 	- Open Source Community
 	- Analytics Data Collection
 - Project ideas for other student contributors?
+
 
 # Conclusion {#sec:conclusion}
 
