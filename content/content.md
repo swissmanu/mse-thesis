@@ -214,26 +214,21 @@ Beside the practical effort done, I wrote another research paper with Markus Sto
 
 ## Empirical Software Engineering
 
-I provided with RxJS Debugging for vscode a practical solution to the problems identified throughout the presented research process and further empirical verifications can now be carried out. I see two promising ways, how this might be approached:
+I provided with RxJS Debugging for vscode a practical solution to the problems identified throughout the presented research process and further empirical verifications can now be carried out. 
 
-1. Operator log points were successfully tested using usability testing methods during their development. However, a formal verification using an empirical will yield valuable insight on the presented debugging utility. The most important research question to answer in these regards is, how effectively can operator log points replace existing debugging tools (i.e., manual print statements and the built-in, imperative debugger tools) for engineers debugging RxJS programs.
-2. The debugging extension collects user behavior data since its major release, which is available for further analysis ([Appendix @sec:analytics]). The collected data points allow conclusions on how software engineers use the extension and what kind of applications (i.e., server or web applications) they debug most. The data set might be evaluated on its own to derive improvements for the existing debugging utility, or provide supportive insight for a bigger study as proposed in Point 1.
+Operator log points were successfully tested using usability testing methods during their development. However, a formal verification using an empirical will yield valuable insight on the presented debugging utility. The most important research question to answer in these regards is, how effectively can operator log points replace existing debugging tools (i.e., manual print statements and the built-in, imperative debugger tools) for engineers debugging RxJS programs.
+
+The debugging extension collects user behavior data since its major release, which is available for further analysis ([Appendix @sec:analytics]). The collected data points allow conclusions on how software engineers use the extension and what kind of applications (i.e., server or web applications) they debug most. The data set might be evaluated on its own to derive improvements for the existing debugging utility, or provide supportive arguments for a broader study as proposed before.
 
 ## Open Science
 
-The designs and results of all conducted studies (interviews, observational study, cognitive walkthrough, and moderated remote usability test) are documented in the respective research papers and their supplementary material ([Appendices @sec:paper-1, Appendices @sec:user-journey, Appendices @sec:paper-2]). The URL's to the applications presented to my test subjects are compiled in [Appendix @sec:open-science].
-
-TODO SURVEY RESULTS
-TODO OBSERVATIONAL STUDY RESULTS
+The designs and results of all conducted studies (interviews, observational study, cognitive walkthrough, and moderated remote usability test) are documented in the respective research papers and their supplementary material available in [Appendices @sec:paper-1; Appendices @sec:user-journey; Appendices @sec:paper-2]) to encourage future research on RP debugging and RP debugging for RxJS specifically. A list of URL's to various GitHub repositories related to my work is available in [Appendix @sec:open-science] further.
 
 ## Open Source
 
-- Where to pick things up
-- Sustainability of Work
-	- Testing
-	- Open Source Community
-	- Analytics Data Collection
-- Project ideas for other student contributors?
+I built the RxJS Debugging for vscode extension as a sustainable open source project. In order to 
+
+### Visualizer
 
 
 # Conclusion {#sec:conclusion}
