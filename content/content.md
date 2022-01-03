@@ -94,9 +94,9 @@ of(1, 2, 3, 4, 5, 6, 7, 8).pipe(
 
 ## Reactive Debugging
 
-When confronted with RP programs, the mismatch between an imperative debugger's expected and actual behavior was subject to various research efforts before. Salvaneschi et al. [@Salvaneschi_Mezini_2016, @Salvaneschi_Proksch_Amann_Nadi_Mezini_2017] coined the term *Reactive Debugging* and described a debugging utility and its requirements specifically tailored to work with RP programs for the first time. They provided the first implementation of such a debugger for REScala with the name *Reactive Inspector* further.
+The case of imperative debuggers interpreting RP source code using the wrong model was subject to various research before. Salvaneschi et al. [@Salvaneschi_Mezini_2016, @Salvaneschi_Proksch_Amann_Nadi_Mezini_2017] coined the term *Reactive Debugging* and described a debugging utility specifically tailored to work with RP programs for the first time in their work. They provided the first implementation of such a debugger named *Reactive Inspector* for REScala.
 
-Banken et al. [@Banken_Meijer_Gousios_2018] transferred former findings to RxJS. Their browser-based visualizer *RxFiddle* takes a piece of isolated RxJS source code and allows the software engineer to display its runtime behavior in two dimensions: A flow-graph shows when observables are created, and how they depend on and interact with each other. The utility further renders a marble diagram ([@fig:marble-diagram]) for each observable, showing what events got emitted at which point in time.
+Banken et al. [@Banken_Meijer_Gousios_2018] transferred former findings to RxJS. *RxFiddle* is a browser-based visualizer that takes a piece of isolated RxJS source code and displays its runtime behavior in two dimensions: A flow-graph shows all observables that get created and how they depend on each other. Additionally, the utility  uses a marble diagrams to show what events get emitted by an observable over time. [@fig:marble-diagram] shows an example of such a diagram.
 
 ```{.include}
 content/figures/marble-diagram.tex
@@ -104,9 +104,14 @@ content/figures/marble-diagram.tex
 
 ## Debugging as a Process
 
-Layman et al. [@Layman_Diep_Nagappan_Singer_Deline_Venolia_2013]   looked into how engineers debug programs. Based on previous models and the analysis of their data, they formalized an iterative process model for the activity of debugging. Its goal is to define and refine a hypothesis on the cause that triggered an unexpected behavior in a program. Ultimately, the process seeks to prove that hypothesis. The debugging process after Layman et al. consists of three steps: Engineers start to (i) collect context information on the current situation (e.g., which particular piece of source code might be involved or what input caused the failure). This information allows the software engineers to formulate a hypothesis on how the failure situation can be resolved. Next, with the intent to prove their hypothesis, they (ii) instrument the program, e.g., by adding breakpoints or modifying source code. They then (iii) test this modified system according to their debugging hypothesis. This step either proves their hypothesis correct, ending the debugging process, or yields new information for another iteration of hypothesis refinement and testing.
+Layman et al. [@Layman_Diep_Nagappan_Singer_Deline_Venolia_2013]   looked into how engineers debug programs. Based on previous models and the analysis of their data, they formalized an iterative process model for the activity of debugging. Its goal is to define and refine a hypothesis on the cause that triggered an unexpected behavior in a program. Ultimately, the process seeks to prove that hypothesis. The debugging process after Layman et al. consists of three steps: Engineers start to (i) collect context information on the current situation (e.g., which particular program statements might be involved or what input caused the failure). This information then allows the software engineers to formulate a hypothesis on how the failure situation might be resolved. Next, with the intent to prove their hypothesis, they (ii) instrument the program, e.g., by adding breakpoints or modifying source code. They then (iii) test this modified system according to their debugging hypothesis. This step either proves their hypothesis correct, ending the debugging process, or yields new information for another iteration of hypothesis refinement and testing.
 
 TODO REFERENCE THIS IN THE RESEARCH PROCESS
+
+### Developer Experience
+
+- Human Computer Interaction (HCI) for software engineers
+- Prevent Context Switches [@Nadeem_2021]
 
 # Research Process {#sec:research-process}
 
@@ -114,7 +119,7 @@ TODO REFERENCE THIS IN THE RESEARCH PROCESS
 content/figures/research-process.tex
 ```
 
-The research process follows the principles of empirical software engineering and applies user-centered design methods [CITE]. The process is structured in four distinct phases: (i) Exploration, (ii) Proof of Concept (PoC), (iii) Prototype, and (iv) Finalization. This section gives an overview of every stage, presents the most important insights, and lists the developed artifacts.
+The research process is structured in four phases: (i) Exploration, (ii) Proof of Concept (PoC), (iii) Prototype, and (iv) Finalization. Various empirical software engineering [@wohlin2012experimentation] and HCI [@Goodwin_2009] methods were applied to verify the artifacts delivered shown in [@tbl:artifact-overview]. The following four subsections highlight the most important results and deliveries of each project stage.
 
 ```{.include}
 content/tables/artifact-overview.tex
@@ -122,41 +127,45 @@ content/tables/artifact-overview.tex
 
 ## Exploration
 
-The Exploration phase was all about empirical software engineering. Based on the data collected from five informal interviews and the sentiment of five written "war story" reports, I set up a remote observational study with four subjects. The study was designed to verify the debugging tools and techniques the subjects use when confronted with an unknown, malfunctioning RxJS program. As shown in [@fig:result-observational-study], all of the subjects used manual code modifications (i.e., print statements) to understand the behavior of the presented problems. Over half of them tried to use a traditional, imperative debugger. It was surprising that, even though two subjects stated to know about specialized RxJS debugging tools, none of them used such during the study.
+The research started with an in-depth analysis of what debugging tools and techniques the user population uses in their daily jobs. Data from five informal interviews and the sentiment of five written "war story" reports allowed me to build a first intuition in these regards. To verify the collected data points, I set up a remote observational study with four subjects. In the study, a two malfunctioning RxJS programs were presented to the subjects. The subjects were asked to locate and fix the problems in the applications source code. To do so, they should use the debugging utilities they would use in their daily jobs as well. [@fig:result-observational-study] summarizes the results. All subjects used manual code modifications (i.e., print statements) to understand the behavior of the presented problems. Over half of them tried to use the imperative debugger of their IDE. The most remarkable insight was that, even though two subjects stated to know about specialized RxJS debugging tools, none of them used such during the study.
 
 ```{.include}
 content/figures/result-observational-study.tex
 ```
 
-The results of the interviews, the analysis of the war story reports, and the interpretation of the observed behaviors during the observational study combined lead to the following two key take-aways:
+The results of the interviews, the analysis of the war story reports, and the interpretation of the observed behaviors during the observational study lead to the following two key take-aways:
 
-1. The most significant challenge software engineers face when debugging RxJS-based programs is to know *when* they should apply *what* tool to resolve their current problem in the *most efficient way*
-2. Can one find a way to improve the developer experience by providing RxJS-specific debugging utilities where software engineers expect them the most, ready to hand and fully integrated, with their IDE?
+1. The most significant challenge software engineers face when debugging RxJS-based programs is to know *when* they should apply *what* tool to resolve a problem the *best* way
+2. Since engineers abstained from using specific RxJS debuggers, how can such tools be provided without requiring them to swic ready to hand?
 
-The primary artifact produced during the Exploration phase is the research paper "Debugging of RxJS-Based Applications," [@Alabor_Stolze_2020] published with the proceedings of the 7th ACM SIGPLAN International Workshop
-on Reactive and Event-Based Languages and Systems (REBLS' 20) and available in [Appendix @sec:paper-1].
+We summarized the results of this first stage in the research process in the workshop paper "Debugging of RxJS-Based Applications," [@Alabor_Stolze_2020]. This paper was published with the proceedings of the 7th ACM SIGPLAN International Workshop
+on Reactive and Event-Based Languages and Systems (REBLS' 20) and is available in [Appendix @sec:paper-1].
 
 ## Proof Of Concept
 
 Based on the learnings from the first phase, I started to compile ideas to help software engineers debug RxJS programs. It was essential that a potential solution:
 
-1. Integrates with an IDE
-2. Requires minimal to no additional learning effort for its users
+1. Integrates seamlessly with an IDE
+2. Is ready to hand, i.e. requires minimal to no effort from its users to get started with debugging
 
-Imperative debuggers provide log points, a utility to print a log statement once the program execution processes as a specific statement in the source code. I adopted this established concept and transferred it to the world of RP with RxJS: An *operator log point*, enabled for a specific operator in an Observables `pipe` shows in realtime when related operator emits relevant events. I did a PoC implementation in an extension for vscode. To verify that the PoC solves the problem of manual code modifications in order to debug RxJS programs, I used a cognitive walkthrough [@Wharton_Rieman_Clayton_Polson_1994] ([Appendix @sec:paper-2-supplementary]). Further, I created a user journey comparing the debugging workflow with and without the PoC debugging extension (see [Appendix @sec:user-journey]).
+McDirmid [@McDirmid_2013] proposed with the concept of "probes" for live programming environments a way to trace variable values during runtime directly in the source code editor. Similarly, imperative debuggers provide log points, a special type of "breakpoint". Instead of halting the program, they print an arbitrary log entry to the debugging console. I combined the two concepts and transferred them to the world of RP debugging for RxJS: The *operator log point*^[The PoC and early prototype of the extension called them *probes*, inspired by McDirmid [@McDirmid_2013]. This caused confusion with the test subjects in a later usability test. I renamed them to *Operator Log Point* based on the received feedback in turn.] shows the events emitted by an operator during program execution in realtime.
 
-Using the two inspection methods, I could verify that operator log points fulfill the requirements stated at the beginning of this section. In addition, the cognitive walkthrough further revealed several usability issues as documented in [Appendix @sec:paper-2-supplementary]. These results provided valuable input for the upcoming Prototype phase.
+After establishing the PoC for operator log points as an extension for vscode, I used the cognitive walkthrough method after Wharton et al. [@Wharton_Rieman_Clayton_Polson_1994] to verify the utility. The results ([Appendix @sec:paper-2-supplementary]) demonstrated succcessfully that the proposed debugging utility replaces manual print statements in a scenario where engineers debug RxJS programs.
+
+A user journey maps the touch points of a user with a product [@richardson2010using]. I used this format to show how a software engineer solves an RxJS debugging task with an imperative debugger. In addition, I created one more journey demonstrating how the same task can be solved using operator log points. I combined the two user journeys in a "comparative user journey" ([Appendix @sec:user-journey]). The resulting format allowed me to convey the improvement achieved through operator log points over imperative debuggers and manual print statements effectively.
+
 
 ## Prototype
-Once I was confident that operator log points satisfied an RxJS software engineer's needs, I reimplemented the PoC debugger. For the prototype, I focused on functionality, maintainability, and extensibility. Eventually, I released version 0.1.0 of "RxJS Debugging for vscode," the first fully integrated RxJS debugger for an IDE.
 
-The initial version of the extension enabled engineers to debug RxJS-based applications running with Node.js. There are no additional setup steps necessary: Once the extension is installed, it suggests operator log points with a small, diamond-shaped icon next to the respective operator. Next, the engineer launches their application using the built-in JavaScript debugger. By doing so, the debugger augments RxJS automatically to provide life-cycle events to vscode. The extension displays these life-cycle events for enabled operator log points in line with the operator in the source code editor.
+After I showed that operator log points satisfy all requirements defined in the previous process stage, I started with the actual implementation work for a production-ready vscode extension. Eventually, I released version 0.1.0 of "RxJS Debugging for vscode." This marked the availability of the first complete integrated RxJS debugger for an IDE.
+
+The prototype of the extension enabled engineers to debug RxJS-based applications running with Node.js. There were no additional setup steps necessary: Once the debugger was installed, it suggested operator log points with a small, diamond-shaped icon next to the respective operator. Next, the engineer launched their application using vscode's built-in JavaScript debugger. The RP debugger automatically augmented RxJS so it started to send event telemetry to vscode. The extension then displayed events for enabled operator log points in-line with the respective operator in the source code editor.
 
 TODO Screenshot of Prototype
 
-There were various challenges and tasks to solve during the Prototype phase. The following two sub-sections present two highlights.
+There were various challenges and tasks to solve during the Prototype phase. The following two sections present two highlights.
 
-### Communicate with Node.js
+### Communication with Node.js
 
 One of the biggest challenges during the Prototype phase was to build a reliable way to communicate with RxJS running in Node.js. For example, I initially used a WebSocket to exchange messages with the JavaScript runtime. However, this proved to be tedious in numerous ways (e.g., how can the extension discover the host and port where the WebSocket is running or what if network infrastructure prevents the extension from connecting to the WebSocket), so I wanted to replace this essential component in my system.
 
@@ -176,7 +185,7 @@ Once the main elements of the debugger prototype were functioning sufficiently, 
 2. To identify usability issues not detected during development
 3. To collect feedback and ideas for the prototype and its further development
 
-All three goals were reached: No subject used manual print statements during their test session. Further, ten usability issues were identified ([Appendix @sec:paper-2-supplementary]), and I could compile valuable feedback, which I translated to tasks for the feature backlog on GitHub ([Appendix @sec:feature-backlog]). The complete result set of the usability test is available in [Appendix @sec:paper-2-supplementary].
+All three goals were reached: No subject used manual print statements during their test session. Further, ten usability issues were identified ([Appendix @sec:paper-2-supplementary]), four major usability issues fixed, and I could compile valuable feedback, which I translated to tasks for the feature backlog on GitHub ([Appendix @sec:feature-backlog]). The complete result set of the usability test is available in [Appendix @sec:paper-2-supplementary].
 
 ## Finalization
 
