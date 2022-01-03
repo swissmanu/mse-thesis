@@ -167,11 +167,13 @@ There were various challenges and tasks to solve during the Prototype phase. The
 
 ### Communication with Node.js
 
-One of the biggest challenges during the Prototype phase was to build a reliable way to communicate with RxJS running in Node.js. For example, I initially used a WebSocket to exchange messages with the JavaScript runtime. However, this proved to be tedious in numerous ways (e.g., how can the extension discover the host and port where the WebSocket is running or what if network infrastructure prevents the extension from connecting to the WebSocket), so I wanted to replace this essential component in my system.
+One of the biggest challenges implementing the prototype was to build a reliable way to communicate with RxJS running inside the Node.js process. For example, I initially used a WebSocket to exchange messages with the JavaScript runtime. However, this proved to be tedious in numerous ways: E.g., how should the extension discover the WebSocket server running in the other process, what if the network infrastructure prevents vscode from connecting to the WebSocket in the first place, or how would such a solution even work at all when RxJS is running in a browser? I decided to look for a way to replace the WebSocket-based communication with something more suitable.
 
-With my intent to build a debugger that integrates with the IDE seamlessly, I started to look into how the built-in JavaScript debugger, vscode-js-debug^[https://github.com/microsoft/vscode-js-debug], communicates with the runtime environment. As it turned out, vscode-js-debug uses the Chrome DevTools Protocol^[https://chromedevtools.github.io/devtools-protocol/] (CDP) to communicate with arbitrary JavaScript runtimes. Unfortunately, vscode-js-debug did not offer its CDP connection to be reused by other extensions. So I decided to contribute this particular function to the project ([Appendix @sec:cdp-pull-request]), which then was released with vscodes April 2021 release. I could replace any extraneous communication channel for the RxJS debugger in turn. Furthermore, if a new JavaScript runtime supports CDP, it becomes automatically compatible with the RxJS debugging utility.
+With the intent to build a debugger that integrates with the IDE seamlessly, I started to look into how the built-in JavaScript debugger, vscode-js-debug^[https://github.com/microsoft/vscode-js-debug], communicates with the runtime environment. As it turned out, vscode-js-debug uses the Chrome DevTools Protocol^[https://chromedevtools.github.io/devtools-protocol/] (CDP) to communicate with arbitrary JavaScript runtimes. Unfortunately, the debugger did not offer its CDP connection for reuse to other extensions. I reached out to the project maintainer and contributed this particular functionality as a new feature ([Appendix @sec:cdp-pull-request]). By the time my contribution was released in April 2021, I had replaced the previous WebSocket-based communication channel with CDP. Furthermore, I had now a future-proof solution, which not only worked with RxJS running inside of a Node.js process, but also in any other JavaScript virtual machine that supports CDP (e.g., web browsers like Mozilla Firefox and Google Chrome).
 
-[@fig:architecture] provides a complete overview of the system components and communication channels.
+[@fig:architecture] presents an overview on all relevant components involved in an RxJS RP debugging session. More details to the extensions architecture is available in [Appendix @sec:architecture].
+
+TODO redo diagram so it uses the same names as in the text (vscode-js-debug)
 
 ```{.include}
 content/figures/architecture.tex
@@ -179,32 +181,41 @@ content/figures/architecture.tex
 
 ### Moderated Remote Usability Test
 
-Once the main elements of the debugger prototype were functioning sufficiently, I conducted a remote usability test with three subjects. The goals of this study were:
+Once the main elements of the prototype were working sufficiently, I conducted a remote usability test [@CITE] with three subjects. The goals of this study were:
 
-1. To verify that the operator log point utility can replace manual print statements in an actual programming scenario
+1. To verify that operator log points can replace manual print statements in an actual programming scenario
 2. To identify usability issues not detected during development
-3. To collect feedback and ideas for the prototype and its further development
+3. To collect unstructured feedback on prototype and gather ideas for its further development
 
-All three goals were reached: No subject used manual print statements during their test session. Further, ten usability issues were identified ([Appendix @sec:paper-2-supplementary]), four major usability issues fixed, and I could compile valuable feedback, which I translated to tasks for the feature backlog on GitHub ([Appendix @sec:feature-backlog]). The complete result set of the usability test is available in [Appendix @sec:paper-2-supplementary].
+Unfortunately, one subject could not get the extension prototype running on their machine. With the other two subjects left, I was able to verify the first two goals nonetheless. None of them used manual print statements during the usability test. Additionally, the evaluation of the test sessions revealed ten new usability issues. Four of them prevailed for both subjects, hence I classified them as major. The complete list of identified usability issues is available in [Appendix @sec:paper-2-supplementary].
+
+I triaged the feedback from all three subjects and created items in the feature backlog for the upcoming Finalization phase accordingly. With this, the last goal was reached as well.
+
 
 ## Finalization
 
-With the results from the usability test and a roadmap for version 1.0.0 ([Appendix @sec:major-milestone]) of my RxJS debugger, I was prepared for the last phase. The most crucial improvements I was able to implement include:
+The last process phase had two overarching goals:
 
-- Support for the latest RxJS 7.x versions (only 6.6.7 with the prototype)
-- Debugging of web applications bundled with Webpack (only Node.js with the prototype)
+1. To finalize the RP debugger prototype and release it to the community
+2. To publish another research paper documenting the feasibility of an IDE-integrated RP debugger
 
-The first major release, 1.0.0 of "RxJS Debugging for vscode," was finally released in Fall 2021, followed by three minor bugfix releases.
+To get started, I defined the roadmap for the extensions 1.0.0 release, which is available in [Appendix @sec:major-milestone]. The following list presents its highlights:
+
+- Support the latest RxJS 7.x versions (only 6.6.7 was supported with the prototype)
+- Debugging of web applications bundled with Webpack (only the Node.js virtual machine was supported so far)
+- Resolve the four major usability issues identified during the Prototype stage
+
+Version 1.0.0 of "RxJS Debugging for vscode" was finally released on the 2nd of December 2021 and was followed by three minor bugfix releases within six days.
 
 ### Community Reception
 
-On the day of release, I announced the extension via its own Twitter account [\@rxjsdebugging](https://twitter.com/rxjsdebugging). Until the 30th of December 2021, the tweet got 77k impressions ([Appendix @sec:release-tweet-stats]). Further, the extension itself was downloaded 954 times ([Appendix @sec:marketplace]), counted 51 unique users based on collected analytics data (see [Appendices @sec:analytics; Appendices @sec:analytics-dashboard] for more details), and was featured in a Twitch stream^[[\@webdave_de](https://twitter.com/webdave_de), a Google Developer Expert specialized on Angular development, hosted the live reaction stream. Unfortunately, the recording of the stream is unavailable at this time.].
+On the day of release, I announced the debugger extension via its own Twitter account [\@rxjsdebugging](https://twitter.com/rxjsdebugging). Until the 30th of December 2021, the tweet got 77k impressions ([Appendix @sec:release-tweet-stats]). Further, the extension was downloaded 954 times ([Appendix @sec:marketplace]), counted 51 unique users ([Appendices @sec:analytics; Appendices @sec:analytics-dashboard]), and was featured in a live stream on Twitch^[David Müllerchen aka [\@webdave_de](https://twitter.com/webdave_de), a Google Developer Expert specialized on Angular development, hosted the live reaction stream on Twitch. Unfortunately, the recording of the stream is unavailable at this time.].
 
-Based on the results of the studies I conducted, I could assume that there was a real need for an integrated RP debugger for RxJS. The overall positive reception on RxJS Debugging for vscode was overwhelming nonetheless. However, the release also revealed bugs and feature gaps in the extension. Nevertheless, I resolved the most critical problems within a few days (see the changelog in [Appendix @sec:changelog]). In addition, I triaged other valuable feedback via GitHub Discussions^[https://github.com/swissmanu/rxjs-debugging-for-vscode/discussions] and the feature backlog ([Appendix @sec:feature-backlog]).
+I assumed that there was a real need for an integrated RP debugger for RxJS based on the results of the studies conducted before. The overall positive reception on RxJS Debugging for vscode was overwhelming nonetheless. However, the major release also revealed bugs and feature gaps in the extension. Nevertheless, I resolved the most critical problems within a few days (see the changelog in [Appendix @sec:changelog]). In addition, I triaged valuable feedback using GitHub Discussions^[https://github.com/swissmanu/rxjs-debugging-for-vscode/discussions] and the feature backlog ([Appendix @sec:feature-backlog]).
 
 ### ISSTA `22 Research Paper
 
-Besides the practical effort, I wrote another research paper with Markus Stolze documenting the latest proceedings on RP debugging for RxJS. When writing this thesis, the latest version of this paper, containing revisions based on the feedback of a double-blind review with three reviewers, was submitted to the technical papers track of the 31st ACM SIGSOFT International Symposium on Software Testing and Analysis 2022 (ISSTA `22). The submitted version of the paper, along with the relevant supplementary material, is available in [Appendix @sec:paper-2].
+In contrast to the delivered practical effort, I wrote a new research paper with Markus Stolze. The paper documents the latest proceedings on the feasibility of an RP debugger that is ready to hand and fully integrated with an IDE. The latest version of this paper was submitted to the technical papers track of the 31st ACM SIGSOFT International Symposium on Software Testing and Analysis 2022 (ISSTA `22) at the time of publishing this thesis. This version contains revisions based on the feedback of a double-blind review with three reviewers and is available in [Appendix @sec:paper-2].
 
 # Future Work {#sec:future-work}
 
@@ -212,33 +223,35 @@ Besides the practical effort, I wrote another research paper with Markus Stolze 
 
 RxJS Debugging for vscode provides a practical solution to the problems identified throughout the presented research process, and further empirical verifications can now be carried out.
 
-Operator log points were successfully tested using usability testing methods during their development. However, a formal verification using empirical methods will yield valuable insight into the presented debugging utility. The most important research question to answer in these regards is, how effectively can operator log points replace existing debugging tools (i.e., manual print statements and the built-in, imperative debugger tools) for engineers debugging RxJS programs.
+Operator log points were successfully tested using usability testing methods during their development. However, a formal verification using empirical methods will yield useful insight into the presented debugging utility. The most important research question to answer in these regards is, how effectively operator log points can replace existing debugging tools (i.e., manual print statements and the built-in, imperative debugger tools).
 
-Since its major release, the debugging extension collects user behavior data, which is available for further analysis ([Appendix @sec:analytics]). The accumulated data points allow conclusions on how software engineers use the extension. The data set might be evaluated on its own to derive improvements for the existing debugging utility or provide supportive arguments for a broader study as proposed before.
+The shown debugging extension collects user behavior data since its major release. This data is available for further analysis ([Appendix @sec:analytics]). The accumulated data points allow conclusions on how software engineers use the extension. The data set might be evaluated on its own to derive improvements for the presented debugging utility or provide supportive arguments for a broader study as proposed above.
 
 ### Open Science
 
-The designs and results of all conducted studies (interviews, observational study, cognitive walkthrough, and moderated remote usability test) are documented in the respective research papers and their supplementary material available in [Appendices @sec:paper-1; Appendices @sec:paper-2; Appendices @sec:user-journey]) to encourage future research on RP debugging. In addition, a list of URLs to various GitHub repositories related to my work is available in [Appendix @sec:open-science].
+All conducted studies (interviews, observational study, cognitive walkthrough and moderated remote usability test) and their results are documented in the respective research papers and their supplementary material available in [Appendices @sec:paper-1; Appendices @sec:paper-2; Appendices @sec:user-journey]) to encourage future research on RP debugging. In addition, a list of URLs leading to various GitHub repositories containing relevant artifacts and data sets is available in [Appendix @sec:open-science].
 
 ## Open Source
 
-I developed the RxJS Debugging for vscode extension with the intention to establish a sustainable open source project.
+I developed the presented RxJS debugging extension with the intention to establish a sustainable open source project.
 
 The contribution and architecture guides ([Appendices @sec:contributing; Appendices @sec:architecture]) introduce new contributors to the extension's implementation and code organization details. The transparent project governance is built around the GitHub platform: The feature backlog and bug-tracking are based on GitHub Issues, Discussions help triage inquiries from users. Unit and integration tests, automatically executed using GitHub Actions, help keep the extension's main branch stable.
 
-A look into the feature backlog ([Appendix @sec:feature-backlog]) is a good start for practical-oriented future work. I present two features from the backlog in the following, which, depending on skill level, provide a good entry point to contribute to RxJS Debugging for vscode:
+The feature backlog in [Appendix @sec:feature-backlog] contains various ideas for practical-oriented future work. I present two features from this backlog in the following.
 
 ### User Onboarding after Installation ([Issue #58](https://github.com/swissmanu/rxjs-debugging-for-vscode/issues/58))
 
-After an engineer installed the extension, they are left on their own to get started with debugging. Even though the readme file provides information to some extent, the onboarding experience for new users can be improved. With this feature, enhancing that experience should be explored and implemented eventually.
+After an engineer installed the extension, they are left on their own to get started with debugging. Even though the readme file provides information to some extent, the onboarding experience for new users can be improved. With this feature, ways to enhance that experience should be explored and suitable measures be implemented eventually.
 
-A contributor needs to understand the vscode extension API. However, profound knowledge of the extension's source code is not required; its functionality should be clear.
+A contributor needs to understand the vscode extension API. However, profound knowledge of the extension's source code is not required.
 
 ### Log Point History ([Issue #44](https://github.com/swissmanu/rxjs-debugging-for-vscode/issues/44))
 
-Instead of only showing the latest emitted event from an enabled operator log point, the debugger should also display all previously emitted events. This functionality allows engineers to reconstruct the behavior of an operator without over and over replaying the failure scenario using the live system. For example, a contribution might start with a list displaying events in textual form and then gradually improve towards a graphical representation of the events using marble diagrams.
+Instead of showing only the latest emitted event from an enabled operator log point, the debugger should display all previously emitted events. This functionality would allow engineers to reconstruct the behavior of an operator without over and over replaying the failure scenario using the live system.
 
-This feature requires a good understanding of the vscode extension API and the debugging extensions codebase itself.
+A contribution could start simple by implementing a list displaying historic events in textual form. The list could then be gradually improved towards a graphical representation of the events using marble diagrams.
+
+This feature requires a good understanding of the vscode extension API as well as in-depth knowledge of the debugging extensions codebase.
 
 
 # Conclusion {#sec:conclusion}
@@ -249,4 +262,6 @@ The results of interviews, war story reports, and an observational study reveale
 
 With the concept of "readiness to hand" as a guiding light, I built a proof of concept implementation for a novel debugging utility to find relief from this problem: Operator log points debug RxJS operators without requiring the engineer to leave Microsoft Visual Studio Code. While refining the debugger iteratively, I employed a cognitive walkthrough, a comparative user journey, and a usability test at different stages of development to validate the utility's capability of solving the problem of "ready-to-hand" debugging.
 
-I documented the results of my research in two research papers: The first paper was published with the proceedings of the ACM REBLS '20 workshop. The second report is in review for the technical papers track of the ACM ISSTA '22 conference when writing this thesis. Furthermore, I released "RxJS Debugging for Visual Studio Code," the first RxJS-specific debugger that fully integrates with an IDE.
+I documented the results of my research together with Markus Stolze in two research papers: The first paper was published with the proceedings of the ACM REBLS '20 workshop. The second report is in review for the technical papers track of the ACM ISSTA '22 conference when publishing this thesis. Furthermore, I released "RxJS Debugging for Visual Studio Code," the first RxJS-specific debugger that fully integrates with an IDE at the end of 2021.
+
+By providing open access to all relevant material (studies, results, papers, source code, and project governance), academical- and practical-oriented future work is encouraged. To facilitate potential contributions further, I suggested concrete topics for researchers and engineers likewise in [@sec:future-work].
