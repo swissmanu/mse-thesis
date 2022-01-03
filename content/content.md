@@ -104,14 +104,13 @@ content/figures/marble-diagram.tex
 
 ## Debugging as a Process
 
-Layman et al. [@Layman_Diep_Nagappan_Singer_Deline_Venolia_2013]   looked into how engineers debug programs. Based on previous models and the analysis of their data, they formalized an iterative process model for the activity of debugging. Its goal is to define and refine a hypothesis on the cause that triggered an unexpected behavior in a program. Ultimately, the process seeks to prove that hypothesis. The debugging process after Layman et al. consists of three steps: Engineers start to (i) collect context information on the current situation (e.g., which particular program statements might be involved or what input caused the failure). This information then allows the software engineers to formulate a hypothesis on how the failure situation might be resolved. Next, with the intent to prove their hypothesis, they (ii) instrument the program, e.g., by adding breakpoints or modifying source code. They then (iii) test this modified system according to their debugging hypothesis. This step either proves their hypothesis correct, ending the debugging process, or yields new information for another iteration of hypothesis refinement and testing.
+Layman et al. [@Layman_Diep_Nagappan_Singer_Deline_Venolia_2013] looked into how engineers debug programs. Based on previous models and the analysis of their data, they formalized an iterative process model for the activity of debugging. Its goal is to define and refine a hypothesis on the cause that triggered an unexpected behavior in a program. Ultimately, the process seeks to prove that hypothesis. The debugging process after Layman et al. consists of three steps: Engineers start to (i) collect context information on the current situation (e.g., which particular program statements might be involved or what input caused the failure). This information then allows the software engineers to formulate a hypothesis on how the failure situation might be resolved. Next, with the intent to prove their hypothesis, they (ii) instrument the program, e.g., by adding breakpoints or modifying source code. They then (iii) test this modified system according to their debugging hypothesis. This step either proves their hypothesis correct, ending the debugging process, or yields new information for another iteration of hypothesis refinement and testing.
 
-TODO REFERENCE THIS IN THE RESEARCH PROCESS
+## TODO Developer Experience
 
-### Developer Experience
-
-- Human Computer Interaction (HCI) for software engineers
-- Prevent Context Switches [@Nadeem_2021]
+- TODO [@Goodwin_2009]
+- TODO Human Computer Interaction (HCI) for software engineers
+- TODO Prevent Context Switches [@Nadeem_2021]
 
 # Research Process {#sec:research-process}
 
@@ -119,7 +118,7 @@ TODO REFERENCE THIS IN THE RESEARCH PROCESS
 content/figures/research-process.tex
 ```
 
-The research process is structured in four phases: (i) Exploration, (ii) Proof of Concept (PoC), (iii) Prototype, and (iv) Finalization. Various empirical software engineering [@wohlin2012experimentation] and HCI [@Goodwin_2009] methods were applied to verify the artifacts delivered shown in [@tbl:artifact-overview]. The following four subsections highlight the most important results and deliveries of each project stage.
+The research process is structured in four phases: (i) Exploration, (ii) Proof of Concept (PoC), (iii) Prototype, and (iv) Finalization. Various empirical software engineering [@wohlin2012experimentation] and HCI methods were applied to verify the artifacts delivered shown in [@tbl:artifact-overview]. The following four subsections highlight the most important results and deliveries of each project stage.
 
 ```{.include}
 content/tables/artifact-overview.tex
@@ -150,7 +149,7 @@ Based on the learnings from the first phase, I started to compile ideas to help 
 
 McDirmid [@McDirmid_2013] proposed with the concept of "probes" for live programming environments a way to trace variable values during runtime directly in the source code editor. Similarly, imperative debuggers provide log points, a special type of "breakpoint". Instead of halting the program, they print an arbitrary log entry to the debugging console. Using the debugging process by Layman et al. [@Layman_Diep_Nagappan_Singer_Deline_Venolia_2013] as a mental model, I combined the two concepts and transferred them to the world of RP debugging for RxJS: The *operator log point*^[The PoC and early prototype of the extension called them *probes*, inspired by McDirmid [@McDirmid_2013]. This caused confusion with the test subjects in a later usability test. I renamed them to *Operator Log Point* based on the received feedback in turn.] shows the events emitted by an operator during program execution in realtime.
 
-After establishing the PoC for operator log points as an extension for vscode, I used the cognitive walkthrough method after Wharton et al. [@Wharton_Rieman_Clayton_Polson_1994] to verify the utility. The results ([Appendix @sec:paper-2-supplementary]) demonstrated succcessfully that the proposed debugging utility replaces manual print statements in a scenario where engineers debug RxJS programs.
+After establishing the PoC for operator log points as an extension for vscode, I used the cognitive walkthrough method after Wharton et al. [@Wharton_Rieman_Clayton_Polson_1994] to verify the utility. The results ([Appendix @sec:paper-2-supplementary]) demonstrated successfully that the proposed debugging utility replaces manual print statements in a scenario where engineers debug RxJS programs.
 
 A user journey maps the touch points of a user with a product [@richardson2010using]. I used this format to show how a software engineer solves an RxJS debugging task with an imperative debugger. In addition, I created one more journey demonstrating how the same task can be solved using operator log points. I combined the two user journeys in a "comparative user journey" ([Appendix @sec:user-journey]). The resulting format allowed me to convey the improvement achieved through operator log points over imperative debuggers and manual print statements effectively.
 
@@ -181,7 +180,7 @@ content/figures/architecture.tex
 
 ### Moderated Remote Usability Test
 
-Once the main elements of the prototype were working sufficiently, I conducted a remote usability test [@CITE] with three subjects. The goals of this study were:
+Once the main elements of the prototype were working sufficiently, I conducted a remote usability test [@Nielsen_Participants_1994; @Boren_Ramey_2000; @Norgaard_Hornbaek_2006] with three subjects. The goals of this study were:
 
 1. To verify that operator log points can replace manual print statements in an actual programming scenario
 2. To identify usability issues not detected during development
@@ -264,4 +263,4 @@ With the concept of "readiness to hand" as a guiding light, I built a proof of c
 
 I documented the results of my research together with Markus Stolze in two research papers: The first paper was published with the proceedings of the ACM REBLS '20 workshop. The second report is in review for the technical papers track of the ACM ISSTA '22 conference when publishing this thesis. Furthermore, I released "RxJS Debugging for Visual Studio Code," the first RxJS-specific debugger that fully integrates with an IDE at the end of 2021.
 
-By providing open access to all relevant material (studies, results, papers, source code, and project governance), academical- and practical-oriented future work is encouraged. To facilitate potential contributions further, I suggested concrete topics for researchers and engineers likewise in [@sec:future-work].
+By providing open access to all relevant material (studies, results, papers, source code, and project governance), academical- and practical-oriented future work is encouraged. To facilitate potential contributions further, I suggested concrete topics for researchers and engineers likewise.
