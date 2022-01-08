@@ -2,10 +2,10 @@
 title: Debugging Support for Reactive Programming with RxJS
 # subtitle: tbd
 author: Manuel Alabor
-advisor: Markus Stolze
+advisor: Prof. Dr. Markus Stolze
 expertReviewer: Johannes Rieken
 degree: Master of Science in Engineering
-department: Information and Communication Technologies
+department: Computer Science
 institution: Eastern Switzerland University of Applied Sciences
 country: Switzerland
 publicationMonth: January 2022
@@ -17,7 +17,7 @@ keywords:
   - user centered design
 
 # Review Mode: Show line numbers
-review: true
+review: false
 
 # Document:
 lang: en-US
