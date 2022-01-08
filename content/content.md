@@ -32,7 +32,7 @@ Like the observer in the Observer pattern [@gof] subscribes to the notifications
 2. The `complete` event indicates that the observable finished its processing and will not emit any other events in the future
 3. If the observable encountered a problem, the `error` event notifies its subscribers about the underlying error
 
-Observables are push-based; thus, the observable actively calls the callback handler of its subscriber(s)^[The Iterator pattern [@gof] is an example for pull-based processing. The consumer has to actively poll the iterators `next` function to receive a value.].
+Observables are push-based; thus, the observable actively calls the callback handler of its subscriber(s)^[*Pull*-based is the opposite of push-based processing. E.g., the Iterator pattern [@gof] is an example for a pull-based mechanism: The consumer has to actively poll (i.e., pull) the iterators `next` function to fetch a value.].
 
 Operator functions subscribe to an observable, modify its events, and return a  new observable emitting the modified events. Operator functions are the most powerful, yet most complex tool when working with observables. [@lst:example-rxjs] demonstrates two simple operators for filtering and mapping of values. More complex operators like `mergeMap`^[https://rxjs.dev/api/operators/mergeMap] allow the composition of higher-order observables or `retryWhen`^[https://rxjs.dev/api/operators/retryWhen] even provides a way to recover an observable from an `error` event.
 
@@ -96,7 +96,7 @@ of(1, 2, 3, 4, 5, 6, 7, 8).pipe(
 
 The case of imperative debuggers interpreting RP source code using the wrong model was subject to various research before. Salvaneschi et al. [@Salvaneschi_Mezini_2016, @Salvaneschi_Proksch_Amann_Nadi_Mezini_2017] coined the term *Reactive Debugging* and described a debugging utility specifically tailored to work with RP programs for the first time in their work. They provided the first implementation of such a debugger named *Reactive Inspector* for REScala.
 
-Banken et al. [@Banken_Meijer_Gousios_2018] transferred former findings to RxJS. *RxFiddle* is a browser-based visualizer that takes a piece of isolated RxJS source code and displays its runtime behavior in two dimensions: A flow-graph shows all observables that get created and how they depend on each other. Additionally, the utility  uses a marble diagrams to show what events get emitted by an observable over time. [@fig:marble-diagram] shows an example of such a diagram.
+Banken et al. [@Banken_Meijer_Gousios_2018] transferred former findings to RxJS. *RxFiddle* is a browser-based visualizer that takes a piece of isolated RxJS source code and displays its runtime behavior in two dimensions: A flow-graph shows all observables that get created and how they depend on each other. Additionally, the utility uses marble diagrams to show what events get emitted by an observable over time. [@fig:marble-diagram] shows an example of such a diagram.
 
 ```{.include}
 content/figures/marble-diagram.tex
@@ -135,9 +135,9 @@ content/figures/result-observational-study.tex
 The results of the interviews, the analysis of the war story reports, and the interpretation of the observed behaviors during the observational study lead to the following two key take-aways:
 
 1. The most significant challenge software engineers face when debugging RxJS-based programs is to know *when* they should apply *what* tool to resolve a problem the *best* way
-2. Since engineers abstained from using specific RxJS debuggers, how can such tools be provided without requiring them to swic ready to hand?
+2. Since engineers abstained from using specific RxJS debuggers, how can such tools be provided without requiring them to switch context, thus be ready to hand?
 
-We summarized the results of this first stage in the research process in the workshop paper "Debugging of RxJS-Based Applications," [@Alabor_Stolze_2020]. This paper was published with the proceedings of the 7th ACM SIGPLAN International Workshop
+I summarized the results of this first stage in the research process in the workshop paper "Debugging of RxJS-Based Applications" [@Alabor_Stolze_2020] together with Markus Stolze. This paper was published with the proceedings of the 7th ACM SIGPLAN International Workshop
 on Reactive and Event-Based Languages and Systems (REBLS' 20) and is available in [Appendix @sec:paper-1].
 
 ## Proof Of Concept
