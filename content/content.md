@@ -178,8 +178,6 @@ With the intent to build a debugger that integrates with the IDE seamlessly, I s
 
 [@fig:architecture] presents an overview on all relevant components involved in an RxJS RP debugging session. More details to the extensions architecture is available in [Appendix @sec:architecture].
 
-TODO redo diagram so it uses the same names as in the text (vscode-js-debug)
-
 ```{.include}
 content/figures/architecture.tex
 ```

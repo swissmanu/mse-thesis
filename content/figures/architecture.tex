@@ -10,8 +10,8 @@
     % Node styles
     \tikzstyle{taskstep}=[fill=white, draw=black, shape=circle]
     \tikzstyle{processstep}=[fill=white, draw=black, shape=circle, text width=1.5cm, align=center]
-    \tikzstyle{process}=[draw=black, shape=rectangle, text width=20mm, text depth=28mm, align=left, anchor=north]
-    \tikzstyle{component}=[fill=white, draw=black, shape=rectangle, text width=15mm, align=center]
+    \tikzstyle{process}=[draw=black, shape=rectangle, text width=30mm, text depth=28mm, align=left, anchor=north]
+    \tikzstyle{component}=[fill=white, draw=black, shape=rectangle, text width=25mm, align=center]
 
     % Edge styles
     \tikzstyle{line}=[->, line width=0.35mm]
@@ -25,25 +25,25 @@
     \pgfsetlayers{background,edgelayer,nodelayer,main}
 
     \begin{pgfonlayer}{nodelayer}
-      \node [style=process] (0) at (-5, 2) {\small{vscode}};
-      \node [style=component] (1) at (-5, 0) {\small{js-debug Extension}};
+      \node [style=process] (0) at (-7, 2) {\small{vscode}};
+      \node [style=component] (1) at (-7, 0) {\small{vscode-js-debug Extension}};
       \node [style=component, below of=1, node distance=14mm] (2) {\small{RxJS Debugger Extension}};
 
-      \node [style=component, right of=1, node distance=30mm] (3) {\small{js-debug Adapter}};
+      \node [style=component, right=17.5mm of 1] (3) {\small{vscode-js-debug\\Adapter}};
 
-      \node [style=process] (4) at (7, 2) {\small{Node.js}};
-      \node [style=component, right of=3, node distance=30mm] (5) {\small{RxJS Program}};
+      \node [style=process] (4) at (11, 2) {\small{Node.js}};
+      \node [style=component, right=17.5mm of 3] (5) {\small{RxJS Program}};
       \node [style=component, below of=5, node distance=14mm] (6) {\small{Telemetry}};
     \end{pgfonlayer}
 
     \begin{pgfonlayer}{edgelayer}
-      \path (1) edge[style=biline] node[above, font=\tiny, pos=0.5] {DAP} (3);
-      \path (3) edge[style=biline] node[above, font=\tiny, pos=0.5] {CDP} (4.75, 0);
-      \draw [style=dashedbiline] (2.east) -- (-2, -2.8) -- (-2, -0.5) -- (4, -0.5) -- (4, -2.8) -- (6.west);
+      \path (1.east) edge[style=biline] node[above, font=\tiny, pos=0.5] {DAP} (3.west);
+      \path (3) edge[style=biline] node[above, font=\tiny, pos=0.5] {CDP} (7.75, 0);
+      \draw [style=dashedbiline] (2.east) -- (-2.6, -2.8) -- (-2.6, -0.5) -- (6.5, -0.5) -- (6.5, -2.8) -- (6.west);
       \draw [style=biline] (6) to (5);
     \end{pgfonlayer}
   \end{tikzpicture}
 
-  \caption[System architecture]{The \emph{Telemetry} component instruments the \emph{RxJS program} (right). The \emph{RxJS Debugger Extension} runs inside of the vscode process. The two components communicate with each other by reusing the CDP communication channel established by \emph{js-debug}.}
+  \caption[System architecture]{The \emph{Telemetry} component instruments the \emph{RxJS Program} (right). The \emph{RxJS Debugger Extension} runs inside of the \emph{vscode} process. The two components communicate with each other by reusing the \emph{CDP} communication channel established by \emph{vscode-js-debug}.}
   \label{fig:architecture}
 \end{figure}
