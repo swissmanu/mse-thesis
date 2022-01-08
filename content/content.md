@@ -73,7 +73,7 @@ for (let i = 1; i < 9; i++) {
 
 Let's assume an engineer would debug the RP program from [@lst:example-rxjs] using the same imperative debugging techniques and utilities as before. They would add a breakpoint to the anonymous function passed to the `map` operator on Line 5 and start the program.
 
-![The stack trace provided by the Microsoft Visual Studio Code debugger, after pausing program execution within the anonymous function on Line 5 in [@lst:example-rxjs].](./content/figures/rxjs-stacktrace.png "RxJS stack trace"){width=60% #fig:rxjs-stacktrace}
+![The stack trace provided by the Microsoft Visual Studio Code debugger, after pausing program execution within the anonymous function on Line 5 in [@lst:example-rxjs].](./content/figures/rxjs-stacktrace.png "RxJS stack trace"){width=90% #fig:rxjs-stacktrace}
 
 The stack trace ([@fig:rxjs-stacktrace]) provided by the imperative debugger reveals the debuggers major shortcoming when used with the RP program: The stack trace does not match the model of the data-flow graph described with the DSL. Instead, it reveals the inner, imperative implementation of RxJS' RP runtime. Furthermore, the debugger's step controls render ineffective since they too operate on the imperative level. In this example, stepping to the following statement does not result in the debugger halting at Line 6. Instead, it leads the engineer to the inner implementation details of RxJS.
 

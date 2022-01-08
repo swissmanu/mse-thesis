@@ -21,6 +21,7 @@ build_thesis_pdf:
 		--metadata-file=./metadata_thesis.yml \
 		--from markdown+raw_tex \
 		--lua-filter=lib/lua-filters/include-files/include-files.lua \
+		--lua-filter=lib/short-figure-caption.lua \
 		--filter pandoc-crossref \
 		--citeproc \
 		--output=out/${thesis_filename}.pdf \
