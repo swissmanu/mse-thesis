@@ -124,7 +124,7 @@ Layman et al. [@Layman_Diep_Nagappan_Singer_Deline_Venolia_2013] looked into how
 content/figures/research-process.tex
 ```
 
-The research process is structured in four phases: (i) Exploration, (ii) Proof of Concept (PoC), (iii) Prototype, and (iv) Finalization. Various empirical software engineering [@wohlin2012experimentation] and HCI methods were applied to verify the artifacts delivered shown in [@tbl:artifact-overview]. The following four subsections highlight the most important results and deliveries of each project stage.
+The research process is structured in four phases: (i) Exploration, (ii) Proof of Concept (PoC), (iii) Prototype, and (iv) Distribution. Various empirical software engineering [@wohlin2012experimentation] and HCI methods were applied to verify the artifacts delivered shown in [@tbl:artifact-overview]. The following four subsections highlight the most important results and deliveries of each project stage.
 
 ```{.include}
 content/tables/artifact-overview.tex
@@ -194,10 +194,10 @@ Once the main elements of the prototype were working sufficiently, I conducted a
 
 Unfortunately, one subject could not get the extension prototype running on their machine. With the other two subjects left, I was able to verify the first two goals nonetheless. None of them used manual print statements during the usability test. Additionally, the evaluation of the test sessions revealed ten new usability issues. Four of them prevailed for both subjects, hence I classified them as major. The complete list of identified usability issues is available in [Appendix @sec:paper-2-supplementary].
 
-I triaged the feedback from all three subjects and created items in the feature backlog for the upcoming Finalization phase accordingly. With this, the last goal was reached as well.
+I triaged the feedback from all three subjects and created items in the feature backlog for the upcoming Distribution phase accordingly. With this, the last goal was reached as well.
 
 
-## Finalization
+## Distribution
 
 The last process phase had two overarching goals:
 
