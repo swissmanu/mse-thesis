@@ -38,7 +38,7 @@ Like the observer in the Observer pattern [@gof] subscribes to the notifications
 2. The `complete` event indicates that the observable finished its processing and will not emit any other events in the future
 3. If the observable encountered a problem, the `error` event notifies its subscribers about the underlying error
 
-Observables are push-based; thus, the observable actively calls the callback handler of its subscriber(s)^[*Pull*-based is the opposite of push-based processing. E.g., the Iterator pattern [@gof] is an example for a pull-based mechanism: The consumer has to actively poll (i.e., pull) the iterators `next` function to fetch a value.].
+Observables are push-based; thus, the observable actively calls the callback handler of its subscriber(s)^[The Iterator pattern [@gof] is pull-based, thus a counterexample to push-based mechanisms like the observable: The consumer has to actively poll (i.e., pull) the iterators `next` function to fetch a value.].
 
 Operator functions subscribe to an observable, modify its events, and return a  new observable emitting the modified events. Operator functions are the most powerful, yet most complex tool when working with observables. [@lst:example-rxjs] demonstrates two simple operators for filtering and mapping of values. More complex operators like `mergeMap`^[https://rxjs.dev/api/operators/mergeMap] allow the composition of higher-order observables or `retryWhen`^[https://rxjs.dev/api/operators/retryWhen] even provides a way to recover an observable from an `error` event.
 
