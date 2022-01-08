@@ -12,7 +12,11 @@ Based on the premise of *readiness to hand*, I designed and implemented a novel 
 
 This summative thesis contextualizes my research results documented and published in two research papers. I will complete this introduction with an overview of relevant programming paradigms, a glance at RP with RxJS, and the challenges RP provides for imperative-focused debuggers. Relevant work will be discussed in [@sec:related-work], followed by an overview of the complete research process and its results in [@sec:research-process]. [@sec:future-work] presents a list of opportunities for future work and highlights provisions taken to ensure the sustainability of the demonstrated results. Before the reader is left with the study of the research papers in the [Appendix @sec:research-papers], I will wrap up on the topic of debugging support for RP with RxJS in [@sec:conclusion].
 
-## Programming Paradigms
+## Relevant Programming Paradigms
+
+```{.include}
+content/figures/paradigm-taxonomy.tex
+```
 
 On the way of producing the output for a given input, an imperatively implemented program keeps intermediate and final computational results in its state. The key concept of imperative programming languages like Java and C# is the assignment command to update that state. The assignment command modifies the value assigned to a variable. Execution flow control commands, e.g. `if` and `while`, allow conditional and repeated execution of commands. [@Watt_Findlay_Hughes_1990]
 

@@ -20,6 +20,9 @@
         right=4mm of c
     ] {16};
 
+    \node (w) [
+      left=4mm of a
+  ] {};
     \node (x) [
         right=4mm of d
     ] {};
@@ -30,6 +33,7 @@
         below=2mm of d
     ] {};
 
+    \path[-,style=line] (w) edge (a);
     \path[-,style=line] (a) edge (b);
     \path[-,style=line] (b) edge (c);
     \path[-,style=line] (c) edge (d);

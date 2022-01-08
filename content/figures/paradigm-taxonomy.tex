@@ -1,14 +1,36 @@
 \begin{figure}
   \centering
   \begin{tikzpicture}
-    \node {Paradigms}
-      [edge from parent fork down]
-      child {node {Imperative}}
-      child {node {Declarative}
-        child[child anchor=north east] {node {Functional}}
-        child {node {Data-Flow}}
-      };
+    %% Nodes
+    % Root
+    \node (paradigms) {Programming Paradigms};
+
+    % Level 1
+    \node (imp) [below left=4mm of paradigms, xshift=4mm] {Imperative};
+    \node (decl) [below right=4mm of paradigms, xshift=-5mm] {Declarative};
+
+    % Level 2
+    \node (fp) [below left=4mm of decl, xshift=5mm, yshift=-1mm] {Functional (FP)};
+    \node (dfp) [below right=4mm of decl, xshift=-6mm, yshift=-1mm] {Data-Flow (DFP)};
+
+    % Level 3
+    \node (rp) [below=12mm of decl] {Reactive (RP)};
+
+    %% Edges
+    % Root
+    \draw [->, rounded corners=1pt] (paradigms.west) -| (imp.north);
+    \draw [->, rounded corners=1pt] (paradigms.east) -| (decl.north);
+
+    % Level 2
+    \draw [->, rounded corners=1pt] (decl.west) -| (fp.north);
+    \draw [->, rounded corners=1pt] (decl.east) -| (dfp.north);
+
+    % Level 3
+    \draw [->, rounded corners=1pt] (fp.south) |- (rp.west);
+    \draw [->, rounded corners=1pt] (dfp.south) |- (rp.east);
   \end{tikzpicture}
-  \caption{Programming Paradigm Taxonomy}
+  \caption[Relevant programming paradigms]{
+    Overview on relevant programming paradigms. \emph{Imperative} branch pruned.
+  }
   \label{fig:paradigm-taxonomy}
 \end{figure}
