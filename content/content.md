@@ -55,15 +55,15 @@ of(1, 2, 3, 4, 5, 6, 7, 8).pipe(
 ).subscribe(i => console.log(i)); // Logs: 3, 5, 7, 9
 ```
 
-### Visualizing Observables with Marble Diagrams
+### Visualizing Observables with Marble Diagrams{.unlisted .unnumbered}
 
-Marble diagrams are the accepted way to visualize observables graphically. These diagrams help to understand the runtime behavior of an observable and its operators, thus they are extensively used in the RxJS documentation. [@fig:marble-diagram] shows a marble diagram for the observable implemented in [@lst:example-rxjs].
+Marble diagrams are the accepted way to visualize observables graphically. These diagrams help to understand the runtime behavior of an observable and its operators, thus they are extensively used in the RxJS documentation.
+
+[@fig:marble-diagram] shows the marble diagram for the observable implemented in [@lst:example-rxjs]. Please refer to [Appendix @sec:marble-diagram-syntax] for an in-depth look at the marble diagram syntax.
 
 ```{.include}
 content/figures/marble-diagram.tex
 ```
-
-
 
 ## Debugging Challenges of Reactive Programming
 

@@ -43,6 +43,22 @@ The Comparative User Journey is publicly accessible on alabor.me and GitHub as w
 
 
 
+\section{Marble Diagram Syntax}
+\label{sec:marble-diagram-syntax}
+
+In a marble diagram, a horizontal arrow \raisebox{2pt}{\tikz[scale=0.35]{\draw[line width=0.4mm] (0,0) edge[->] (2,0)}} pointing from left to right represents the timeline of an observable. Such a timeline uses following depictions to show when the observable emitted an event:
+
+\begin{itemize}
+  \item A marble \raisebox{-2pt}{\tikz{\node [shape=circle, draw, line width=0.3mm, inner sep=0.6mm, font=\footnotesize] {v};}} indicates a \texttt{next} event carrying the displayed value
+  \item A vertical bar \raisebox{-3pt}{\tikz[scale=0.36]{\draw[line width=0.4mm] (0,0) -- (0,1);}} shows a \texttt{complete} event
+  \item \texttt{next} and \texttt{complete} can take place at the same time, thus are shown as the combination of the marble and the vertical bar: \raisebox{-5pt}{\tikz{\draw[line width=0.3mm] (0,0.28) -- (0,-0.28); \node [shape=circle, draw, fill=white, line width=0.3mm, inner sep=0.6mm, font=\footnotesize] {v};}}
+  \item Finally, the cross \raisebox{-3pt}{\tikz[scale=0.35]{\draw[line width=0.4mm] (0,0) -- (1,1); \draw[line width=0.4mm] (0,1) -- (1,0);}} indicates that an \texttt{error} occurred
+\end{itemize}
+
+
+
+\newpage
+
 
 \section{RxJS Debugging for vscode}
 
