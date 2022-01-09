@@ -155,7 +155,7 @@ Based on the learnings from the first phase, I started to compile ideas to help 
 
 McDirmid [@McDirmid_2013] proposed with the concept of "probes" for live programming environments a way to trace variable values during runtime directly in the source code editor. Similarly, imperative debuggers provide log points, a special type of "breakpoint". Instead of halting the program, they print an arbitrary log entry to the debugging console. Using the debugging process by Layman et al. [@Layman_Diep_Nagappan_Singer_Deline_Venolia_2013] as a mental model, I combined the two concepts and transferred them to the world of RP debugging for RxJS: The *operator log point*^[Inspired by McDirmid [@McDirmid_2013], *operator log points* were called *probes* in the PoC and the early prototype of the extension. This name caused confusion with the test subjects in a later usability test. I renamed the utility based on the received feedback in turn.] shows the events emitted by an operator during program execution in realtime.
 
-After establishing the PoC for operator log points as an extension for vscode, I used the cognitive walkthrough method after Wharton et al. [@Wharton_Rieman_Clayton_Polson_1994] to verify the utility. The results ([Appendix @sec:paper-2-supplementary]) demonstrated successfully that the proposed debugging utility replaces manual print statements in a scenario where engineers debug RxJS programs.
+After establishing the PoC for operator log points as an extension for vscode, I used the cognitive walkthrough method [@Wharton_Rieman_Clayton_Polson_1994; @Lazar_Feng_Hochheiser_2017] to verify the utility. The results ([Appendix @sec:paper-2-supplementary]) demonstrated successfully that the proposed debugging utility replaces manual print statements in a scenario where engineers debug RxJS programs.
 
 A user journey maps the touch points of a user with a product [@richardson2010using]. I used this format to show how a software engineer solves an RxJS debugging task with an imperative debugger. In addition, I created one more journey demonstrating how the same task can be solved using operator log points. I combined the two user journeys in a "comparative user journey" ([Appendix @sec:user-journey]). The resulting format allowed me to convey the improvement achieved through operator log points over imperative debuggers and manual print statements effectively.
 
@@ -184,7 +184,7 @@ content/figures/architecture.tex
 
 ### Moderated Remote Usability Test
 
-Once the main elements of the prototype were working sufficiently, I conducted a remote usability test [@Nielsen_Participants_1994; @Boren_Ramey_2000; @Norgaard_Hornbaek_2006] with three subjects. The goals of this study were:
+Once the main elements of the prototype were working sufficiently, I conducted a remote usability test [@Nielsen_Participants_1994; @Boren_Ramey_2000; @Norgaard_Hornbaek_2006; @Lazar_Feng_Hochheiser_2017] with three subjects. The goals of this study were:
 
 1. To verify that operator log points can replace manual print statements in an actual programming scenario
 2. To identify usability issues not detected during development
