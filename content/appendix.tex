@@ -43,23 +43,6 @@ The Comparative User Journey is publicly accessible on alabor.me and GitHub as w
 
 
 
-\section{Marble Diagram Syntax}
-\label{sec:marble-diagram-syntax}
-
-In a marble diagram, a horizontal arrow \raisebox{2pt}{\tikz[scale=0.35]{\draw[line width=0.4mm] (0,0) edge[->] (2,0)}} pointing from left to right represents the timeline of an observable. Such a timeline uses following depictions to show when the observable emitted an event:
-
-\begin{itemize}
-  \item A marble \raisebox{-2pt}{\tikz{\node [shape=circle, draw, line width=0.3mm, inner sep=0.6mm, font=\footnotesize] {v};}} indicates a \texttt{next} event carrying the displayed value
-  \item A vertical bar \raisebox{-3pt}{\tikz[scale=0.36]{\draw[line width=0.4mm] (0,0) -- (0,1);}} shows a \texttt{complete} event
-  \item \texttt{next} and \texttt{complete} can take place at the same time, thus are shown as the combination of the marble and the vertical bar: \raisebox{-5pt}{\tikz{\draw[line width=0.3mm] (0,0.28) -- (0,-0.28); \node [shape=circle, draw, fill=white, line width=0.3mm, inner sep=0.6mm, font=\footnotesize] {v};}}
-  \item Finally, the cross \raisebox{-3pt}{\tikz[scale=0.35]{\draw[line width=0.4mm] (0,0) -- (1,1); \draw[line width=0.4mm] (0,1) -- (1,0);}} indicates that an \texttt{error} occurred
-\end{itemize}
-
-
-
-\newpage
-
-
 \section{RxJS Debugging for vscode}
 
 
@@ -179,6 +162,153 @@ The following document was created at the 31th of December, 10:00 CET and is pub
 \end{itemize}
 
 \includepdf[pages=-, landscape=true, nup=2, frame=true]{content/pdfs/cdp-pull-request.pdf}
+
+
+
+\section{Marble Diagram Syntax}
+\label{sec:marble-diagram-syntax}
+
+
+\subsection*{Observables}
+
+In a marble diagram, a horizontal arrow \raisebox{2pt}{\tikz[scale=0.35]{\draw[line width=0.4mm] (0,0) edge[->] (2,0)}} pointing from left to right represents the timeline of an observable. Such a timeline uses following depictions to show when the observable emitted an event:
+
+\begin{itemize}
+  \item A marble \raisebox{-2pt}{\tikz{\node [shape=circle, draw, line width=0.3mm, inner sep=0.6mm, font=\footnotesize] {v};}} indicates a \texttt{next} event carrying the displayed value \texttt{v}
+  \item A vertical bar \raisebox{-3pt}{\tikz[scale=0.36]{\draw[line width=0.4mm] (0,0) -- (0,1);}} shows a \texttt{complete} event
+  \item \texttt{next} and \texttt{complete} can take place at the same time, thus are shown as the combination of a marble and a vertical bar: \raisebox{-5pt}{\tikz{\draw[line width=0.3mm] (0,0.28) -- (0,-0.28); \node [shape=circle, draw, fill=white, line width=0.3mm, inner sep=0.6mm, font=\footnotesize] {v};}}
+  \item Finally, the cross \raisebox{-3pt}{\tikz[scale=0.35]{\draw[line width=0.4mm] (0,0) -- (1,1); \draw[line width=0.4mm] (0,1) -- (1,0);}} indicates that an \texttt{error} occurred
+\end{itemize}
+
+\subsection*{Operators}
+
+Operators project events from a source to target observable. In a marble diagram, operators are depicted using a rectangular box \raisebox{-3pt}{\tikz{\node [shape=rectangle, draw, line width=0.3mm, inner sep=0.8mm, font=\footnotesize] {operator}}}.
+
+An event consumed by an operator is indicated with a vertical arrow \raisebox{-3pt}{\tikz[scale=0.36]{\draw[line width=0.4mm, gray, dotted] (0,1) edge[->] (0,0)}} pointing from the source observable to the operator.
+
+An event projected to the target observable is shown using vertical arrow \raisebox{-3pt}{\tikz[scale=0.36]{\draw[line width=0.4mm, gray, dotted] (0,1) edge[->] (0,0)}} pointing from the operator to the target observable.
+
+\subsection*{Examples}
+
+\subsubsection*{Integers}
+A simple observable emitting integers from 1 through 4 that completes eventually.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[node distance=6mm]
+    \pgfdeclarelayer{edgelayer}
+    \pgfdeclarelayer{nodelayer}
+    \pgfsetlayers{background,edgelayer,nodelayer,main}
+
+    \tikzstyle{marble}=[circle, draw, fill=white, line width=0.3mm, inner sep=2mm, font=\small]
+    \tikzstyle{operator}=[rectangle, draw, fill=white, line width=0.3mm, inner sep=2mm, minimum width=120mm, xshift=-5mm]
+    \tikzstyle{observable}=[->, line width=0.3mm]
+    \tikzstyle{complete}=[line width=0.3mm]
+    \tikzstyle{project}=[->, dotted, gray, line width=0.3mm]
+
+    \begin{pgfonlayer}{nodelayer}
+        \node (1) [style=marble] {1};
+        \node (2) [style=marble, right=of 1] {2};
+        \node (3) [style=marble, right=of 2] {3};
+        \node (4) [style=marble, right=of 3] {4};
+    \end{pgfonlayer}
+
+    \begin{pgfonlayer}{edgelayer}
+        \draw ($(1)   -(9mm,0)$)      edge[style=observable]   ($(4)    +(14.5mm,0)$);
+        \draw ($(4)   +(+9mm,0) -(0,4mm)$)  edge[style=complete] ($(4)   +(+9mm,4mm)$);
+    \end{pgfonlayer}
+  \end{tikzpicture}
+\end{figure}
+
+\subsubsection*{Operator}
+
+A marble diagram showing a source observable emitting the integers from 1 through 6. The source completes immediately after its last value was emitted. The \texttt{take} operator projects the first four values and then completes the target observable.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[node distance=6mm]
+      \pgfdeclarelayer{edgelayer}
+      \pgfdeclarelayer{nodelayer}
+      \pgfsetlayers{background,edgelayer,nodelayer,main}
+
+      \tikzstyle{marble}=[circle, draw, fill=white, line width=0.3mm, inner sep=2mm,
+      font=\small]
+      \tikzstyle{operator}=[rectangle, draw, fill=white, line width=0.3mm, inner sep=2mm, minimum width=90mm, xshift=-5mm]
+      \tikzstyle{observable}=[->, line width=0.3mm]
+      \tikzstyle{complete}=[line width=0.3mm]
+      \tikzstyle{project}=[->, dotted, gray, line width=0.3mm]
+
+      \begin{pgfonlayer}{nodelayer}
+          \node (1) [style=marble] {1};
+          \node (2) [style=marble, right=of 1] {2};
+          \node (3) [style=marble, right=of 2] {3};
+          \node (4) [style=marble, right=of 3] {4};
+          \node (5) [style=marble, right=of 4] {5};
+          \node (6) [style=marble, right=of 5] {6};
+
+          \node (filter) [style=operator, below=13mm of 1.west, anchor=west] {take(4)};
+
+          \node (1_t) [style=marble, below=17mm of 1] {1};
+          \node (2_t) [style=marble, below=17mm of 2] {2};
+          \node (3_t) [style=marble, below=17mm of 3] {3};
+          \node (4_t) [style=marble, below=17mm of 4] {4};
+
+      \end{pgfonlayer}
+
+      \begin{pgfonlayer}{edgelayer}
+          \draw ($(1)   -(9mm,0)$)    edge[style=observable]   ($(6)    +(8.5mm,0)$);
+          \draw ($(1_t) -(9mm,0)$)    edge[style=observable]   ($(4_t)  +(37.5mm,0)$);
+
+          \draw (1)                   edge[style=project]     ($(1) -(0,9mm)$);
+          \draw (2)                   edge[style=project]     ($(2) -(0,9mm)$);
+          \draw (3)                   edge[style=project]     ($(3) -(0,9mm)$);
+          \draw (4)                   edge[style=project]     ($(4) -(0,9mm)$);
+          \draw (5)                   edge[style=project]     ($(5) -(0,9mm)$);
+          \draw (6)                   edge[style=project]     ($(6) -(0,9mm)$);
+
+          \draw ($(1_t) +(0,9mm)$)    edge[style=project]     (1_t);
+          \draw ($(2_t) +(0,9mm)$)    edge[style=project]     (2_t);
+          \draw ($(3_t) +(0,9mm)$)    edge[style=project]     (3_t);
+          \draw ($(4_t) +(0,9mm)$)    edge[style=project]     (4_t);
+
+          \draw ($(6) -(0,6mm)$)      edge[style=complete]    ($(6) +(0,6mm)$);
+          \draw ($(4_t) -(0,6mm)$)    edge[style=complete]    ($(4_t) +(0,6mm)$);
+      \end{pgfonlayer}
+  \end{tikzpicture}
+\end{figure}
+
+\subsubsection*{Error}
+
+The following marble diagrams shows an observable that failed with an \texttt{error} event after it emitted the integers 1 and 2.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[node distance=6mm]
+    \pgfdeclarelayer{edgelayer}
+    \pgfdeclarelayer{nodelayer}
+    \pgfsetlayers{background,edgelayer,nodelayer,main}
+
+    \tikzstyle{marble}=[circle, draw, fill=white, line width=0.3mm, inner sep=2mm, font=\small]
+    \tikzstyle{operator}=[rectangle, draw, fill=white, line width=0.3mm, inner sep=2mm, minimum width=120mm, xshift=-5mm]
+    \tikzstyle{observable}=[->, line width=0.3mm]
+    \tikzstyle{complete}=[line width=0.3mm]
+    \tikzstyle{project}=[->, dotted, gray, line width=0.3mm]
+
+    \begin{pgfonlayer}{nodelayer}
+        \node (1) [style=marble] {1};
+        \node (2) [style=marble, right=of 1] {2};
+    \end{pgfonlayer}
+
+    \begin{pgfonlayer}{edgelayer}
+        \draw ($(1)   -(9mm,0)$)      edge[style=observable]   ($(2)    +(18.5mm,0)$);
+        \draw ($(2)   +(+8mm,0) -(0,3mm)$)  edge[style=complete] ($(2)   +(+14mm,3mm)$);
+        \draw ($(2)   +(+14mm,0) -(0,3mm)$)  edge[style=complete] ($(2)   +(+8mm,3mm)$);
+    \end{pgfonlayer}
+  \end{tikzpicture}
+\end{figure}
+
+
+\newpage
 
 
 

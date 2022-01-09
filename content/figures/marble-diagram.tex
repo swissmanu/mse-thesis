@@ -21,14 +21,14 @@
         \node (7) [style=marble, right=of 6] {7};
         \node (8) [style=marble, right=of 7] {8};
 
-        \node (filter) [style=operator, below=13mm of 1.west, anchor=west] {filter};
+        \node (filter) [style=operator, below=13mm of 1.west, anchor=west] {filter(i => i \% 2 === 0)};
 
         \node (2_f) [style=marble, below=17mm of 2] {2};
         \node (4_f) [style=marble, below=17mm of 4] {4};
         \node (6_f) [style=marble, below=17mm of 6] {6};
         \node (8_f) [style=marble, below=17mm of 8] {8};
 
-        \node (map) [style=operator, below=38mm of 1.west, anchor=west] {map};
+        \node (map) [style=operator, below=38mm of 1.west, anchor=west] {map(i => i + 1)};
 
         \node (2_m) [style=marble, below=17mm of 2_f] {3};
         \node (4_m) [style=marble, below=17mm of 4_f] {5};
