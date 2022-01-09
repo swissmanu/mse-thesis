@@ -51,8 +51,14 @@ import { of, map, filter } from 'rxjs'
 
 of(1, 2, 3, 4, 5, 6, 7, 8).pipe(
   filter(i => i % 2 === 0),       // Skip odd Integers
-  map(i => i * 2),                // Multiply Integer with 2
-).subscribe(i => console.log(i)); // Logs: 4, 8, 12, 16
+  map(i => i + 1),                // Add 1 to Integer
+).subscribe(i => console.log(i)); // Logs: 3, 5, 7, 9
+```
+
+[@fig:marble-diagram]
+
+```{.include}
+content/figures/marble-diagram.tex
 ```
 
 ## Debugging Challenges of Reactive Programming
@@ -66,7 +72,7 @@ of(1, 2, 3, 4, 5, 6, 7, 8).pipe(
 }
 for (let i = 1; i < 9; i++) {
   if (i % 2 === 0) {
-    console.log(i * 2); // Logs: 4, 8, 12, 16
+    console.log(i + 1); // Logs: 3, 5, 7, 9
   }
 }
 ```
@@ -90,7 +96,7 @@ of(1, 2, 3, 4, 5, 6, 7, 8).pipe(
   tap(i => console.log(`A: ${i}`)), // <-- Added
   filter(i => i % 2 === 0),
   tap(i => console.log(`B: ${i}`)), // <-- Added
-  map(i => i * 2),
+  map(i => i + 1),
   tap(i => console.log(`C: ${i}`))  // <-- Added
 ).subscribe(i => console.log(i));
 ```
@@ -102,11 +108,7 @@ of(1, 2, 3, 4, 5, 6, 7, 8).pipe(
 
 The problem of imperative debuggers interpreting RP source code using the wrong model was subject to various research before. Salvaneschi et al. [@Salvaneschi_Mezini_2016, @Salvaneschi_Proksch_Amann_Nadi_Mezini_2017] coined the term *Reactive Debugging* and described a debugging utility specifically tailored to work with RP programs for the first time in their work. They provided the first implementation of such a debugger named *Reactive Inspector* for REScala.
 
-Banken et al. [@Banken_Meijer_Gousios_2018] transferred former findings to RxJS. *RxFiddle* is a browser-based visualizer that takes a piece of isolated RxJS source code and displays its runtime behavior in two dimensions: A flow-graph shows all observables that get created and how they depend on each other. Additionally, the utility uses marble diagrams to show what events get emitted by an observable over time. [@fig:marble-diagram] shows an example of such a diagram.
-
-```{.include}
-content/figures/marble-diagram.tex
-```
+Banken et al. [@Banken_Meijer_Gousios_2018] transferred former findings to RxJS. *RxFiddle* is a browser-based visualizer that takes a piece of isolated RxJS source code and displays its runtime behavior in two dimensions: A flow-graph shows all observables that get created and how they depend on each other. Additionally, the utility uses marble diagrams to show what events get emitted by an observable over time.
 
 ## Debugging as a Process
 

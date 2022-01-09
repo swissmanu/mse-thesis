@@ -1,46 +1,73 @@
 \begin{figure}[H]
   \centering
-  \begin{tikzpicture}
-    \tikzstyle{marble}=[circle, draw, fill=white, line width=0.3mm, inner sep=1.5mm, minimum width=9mm]
-    \tikzstyle{line}=[draw,line width=0.3mm]
+  \begin{tikzpicture}[node distance=6mm]
+    \pgfdeclarelayer{edgelayer}
+    \pgfdeclarelayer{nodelayer}
+    \pgfsetlayers{background,edgelayer,nodelayer,main}
 
-    \node (a) [
-        style=marble
-    ] {4};
-    \node (b) [
-        style=marble,
-        right=4mm of a
-    ] {8};
-    \node (c) [
-        style=marble,
-        right=4mm of b
-    ] {12};
-    \node (d) [
-        style=marble,
-        right=4mm of c
-    ] {16};
+    \tikzstyle{marble}=[circle, draw, fill=white, line width=0.3mm, inner sep=2mm, font=\small]
+    \tikzstyle{operator}=[rectangle, draw, fill=white, line width=0.3mm, inner sep=2mm, minimum width=120mm, xshift=-5mm]
+    \tikzstyle{observable}=[->, line width=0.3mm]
+    \tikzstyle{complete}=[line width=0.3mm]
+    \tikzstyle{project}=[->, dotted, gray, line width=0.3mm]
 
-    \node (w) [
-      left=4mm of a
-  ] {};
-    \node (x) [
-        right=4mm of d
-    ] {};
-    \node (y) [
-        above=2mm of d
-    ] {};
-    \node (z) [
-        below=2mm of d
-    ] {};
+    \begin{pgfonlayer}{nodelayer}
+        \node (1) [style=marble] {1};
+        \node (2) [style=marble, right=of 1] {2};
+        \node (3) [style=marble, right=of 2] {3};
+        \node (4) [style=marble, right=of 3] {4};
+        \node (5) [style=marble, right=of 4] {5};
+        \node (6) [style=marble, right=of 5] {6};
+        \node (7) [style=marble, right=of 6] {7};
+        \node (8) [style=marble, right=of 7] {8};
 
-    \path[-,style=line] (w) edge (a);
-    \path[-,style=line] (a) edge (b);
-    \path[-,style=line] (b) edge (c);
-    \path[-,style=line] (c) edge (d);
-    \path[->,style=line] (d) edge (x);
+        \node (filter) [style=operator, below=13mm of 1.west, anchor=west] {filter};
 
-    \path[-,style=line] (z) edge (d);
-    \path[-,style=line] (y) edge (d);
+        \node (2_f) [style=marble, below=17mm of 2] {2};
+        \node (4_f) [style=marble, below=17mm of 4] {4};
+        \node (6_f) [style=marble, below=17mm of 6] {6};
+        \node (8_f) [style=marble, below=17mm of 8] {8};
+
+        \node (map) [style=operator, below=38mm of 1.west, anchor=west] {map};
+
+        \node (2_m) [style=marble, below=17mm of 2_f] {3};
+        \node (4_m) [style=marble, below=17mm of 4_f] {5};
+        \node (6_m) [style=marble, below=17mm of 6_f] {7};
+        \node (8_m) [style=marble, below=17mm of 8_f] {9};
+    \end{pgfonlayer}
+
+    \begin{pgfonlayer}{edgelayer}
+        \draw ($(1)   -(9mm,0)$)    edge[style=observable]   ($(8)    +(8.5mm,0)$);
+        \draw ($(2_f) -(23.5mm,0)$)  edge[style=observable]  ($(8_f)  +(8.5mm,0)$);
+        \draw ($(2_m) -(23.5mm,0)$)  edge[style=observable]  ($(8_m)  +(8.5mm,0)$);
+
+        \draw (1)                   edge[style=project]     ($(1) -(0,9mm)$);
+        \draw (2)                   edge[style=project]     ($(2) -(0,9mm)$);
+        \draw (3)                   edge[style=project]     ($(3) -(0,9mm)$);
+        \draw (4)                   edge[style=project]     ($(4) -(0,9mm)$);
+        \draw (5)                   edge[style=project]     ($(5) -(0,9mm)$);
+        \draw (6)                   edge[style=project]     ($(6) -(0,9mm)$);
+        \draw (7)                   edge[style=project]     ($(7) -(0,9mm)$);
+        \draw (8)                   edge[style=project]     ($(8) -(0,9mm)$);
+
+        \draw ($(2_f) +(0,9mm)$)    edge[style=project]     (2_f);
+        \draw ($(4_f) +(0,9mm)$)    edge[style=project]     (4_f);
+        \draw ($(6_f) +(0,9mm)$)    edge[style=project]     (6_f);
+        \draw ($(8_f) +(0,9mm)$)    edge[style=project]     (8_f);
+        \draw (2_f)                 edge[style=project]     ($(2_f) -(0,9mm)$);
+        \draw (4_f)                 edge[style=project]     ($(4_f) -(0,9mm)$);
+        \draw (6_f)                 edge[style=project]     ($(6_f) -(0,9mm)$);
+        \draw (8_f)                 edge[style=project]     ($(8_f) -(0,9mm)$);
+
+        \draw ($(2_m) +(0,9mm)$)    edge[style=project]     (2_m);
+        \draw ($(4_m) +(0,9mm)$)    edge[style=project]     (4_m);
+        \draw ($(6_m) +(0,9mm)$)    edge[style=project]     (6_m);
+        \draw ($(8_m) +(0,9mm)$)    edge[style=project]     (8_m);
+
+        \draw ($(8) -(0,6mm)$)      edge[style=complete]    ($(8) +(0,6mm)$);
+        \draw ($(8_f) -(0,6mm)$)    edge[style=complete]    ($(8_f) +(0,6mm)$);
+        \draw ($(8_m) -(0,6mm)$)    edge[style=complete]    ($(8_m) +(0,6mm)$);
+    \end{pgfonlayer}
   \end{tikzpicture}
   \caption[Observable marble diagram]{A marble diagram visualizing the observable in Listing \ref{lst:example-rxjs}. From left to right, each marble represents an emitted event. The vertical line at the last marble indicates a complete event after emitting the last next carrying the value 16.}
   \label{fig:marble-diagram}
