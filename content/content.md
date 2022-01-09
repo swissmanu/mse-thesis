@@ -71,7 +71,7 @@ for (let i = 1; i < 9; i++) {
 }
 ```
 
-Let's assume an engineer would debug the RP program from [@lst:example-rxjs] using the same imperative debugging techniques and utilities as before. They would add a breakpoint to the anonymous function passed to the `map` operator on Line 5 and start the program.
+Using the same imperative debugging techniques and utilities as before, software engineers debug the RP program from [@lst:example-rxjs]. They add a breakpoint to the anonymous function passed to the `map` operator on Line 5 and run the program.
 
 ![The stack trace provided by the Microsoft Visual Studio Code debugger, after pausing program execution within the anonymous function on Line 5 in [@lst:example-rxjs].](./content/figures/rxjs-stacktrace.png "RxJS stack trace"){#fig:rxjs-stacktrace width=90%}
 
