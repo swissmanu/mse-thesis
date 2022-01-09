@@ -114,7 +114,9 @@ Layman et al. [@Layman_Diep_Nagappan_Singer_Deline_Venolia_2013] looked into how
 
 ## TODO Developer Experience
 
-- TODO [@Goodwin_2009]
+- Define DX [@Fagerholm_Munch_2012]
+- TODO [@Goodwin_2009] UCD
+- TODO [@Lazar_Feng_Hochheiser_2017] HCI Methods
 - TODO Human Computer Interaction (HCI) for software engineers
 - TODO Prevent Context Switches [@Nadeem_2021]
 
