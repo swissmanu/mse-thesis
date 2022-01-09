@@ -69,6 +69,6 @@
         \draw ($(8_m) -(0,6mm)$)    edge[style=complete]    ($(8_m) +(0,6mm)$);
     \end{pgfonlayer}
   \end{tikzpicture}
-  \caption[Observable marble diagram]{A marble diagram visualizing the observable in Listing \ref{lst:example-rxjs}. From left to right, each marble represents an emitted event. The vertical line at the last marble indicates a complete event after emitting the last next carrying the value 16.}
+  \caption[Marble diagram of an observable]{The marble diagram for \ref{lst:example-rxjs} shows three observables. From top to bottom: The input observable emitting the integers from 1 to 8, the intermediate result observable for the \verb|filter| operator emitting only even integers, and the output observable emitting all even integers plus 1. The two operators \verb|filter| and \verb|map| projecting the events from the observables are shown in between. The vertical line through the last marble of the input observable indicates that the observable completed. The two operators forwarded this event accordingly to the output observable.}
   \label{fig:marble-diagram}
 \end{figure}
