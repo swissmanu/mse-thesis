@@ -1,6 +1,6 @@
 # Metadata
 title: Debugging Support for Reactive Programming with RxJS
-# subtitle: tbd
+# subtitle:
 author: Manuel Alabor
 advisor: Prof. Dr. Markus Stolze
 expertReviewer: Johannes Rieken
@@ -14,6 +14,7 @@ keywords:
   - reactive programming
   - reactive debugging
   - human computer interaction
+  - developer experience
   - user centered design
 
 # Review Mode: Show line numbers
