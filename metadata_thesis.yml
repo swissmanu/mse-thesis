@@ -4,7 +4,7 @@ title: Debugging Support for Reactive Programming with RxJS
 author: Manuel Alabor
 advisor: Prof. Dr. Markus Stolze
 expertReviewer: Johannes Rieken
-degree: Master of Science in Engineering
+degree: Master of Science FHO in Engineering
 department: Computer Science
 institution: Eastern Switzerland University of Applied Sciences
 country: Switzerland
@@ -26,7 +26,7 @@ papersize: A4
 
 # Table of Contents:
 toc: true
-toc-title: Table of Contents
+toc-title: Contents
 numbersections: true
 
 # List of Figures
@@ -65,7 +65,7 @@ abstract: |
 
 # Acknowledgments:
 acknowledgments: |
-  First and foremost, I would like to thank my advisor Prof. Dr. Markus Stolze for many hours of inspiring discussions, his sincere feedback, and his constant support for my endeavors leading to this thesis. Thank you for sparking my enthusiasm for empirical research.
+  First and foremost, I would like to thank my supervisor Prof. Dr. Markus Stolze for many hours of inspiring discussions, his sincere feedback, and his constant support for my endeavors leading to this thesis. Thank you for sparking my enthusiasm for empirical research.
 
   My further gratitude goes to all people who helped me during my research in any way: Thank you to all study participants, proofreaders, and everyone who sparred with me in numerous discussions.
 
