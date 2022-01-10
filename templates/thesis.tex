@@ -1,3 +1,8 @@
+%
+% It started with a few modifications of the default template and ended, of course, a bit messy.
+%   ¯\_(ツ)_/¯    But it's okay.
+%
+
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode$for(hyperrefoptions)$,$hyperrefoptions$$endfor$}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
@@ -390,6 +395,7 @@ $if(dir)$
   \newenvironment{LTR}{\beginL}{\endL}
 \fi
 $endif$
+
 $if(natbib)$
 \usepackage[$natbiboptions$]{natbib}
 \bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
@@ -542,8 +548,9 @@ $endif$
 
 \newpage
 
+
 $if(abstract)$
-\section*{Abstract}
+\addsec{Abstract}
 
 $abstract$
 
@@ -551,7 +558,7 @@ $abstract$
 $endif$
 
 $if(acknowledgments)$
-\section*{Acknowledgments}
+\addsec{Acknowledgments}
 
 $acknowledgments$
 
@@ -563,6 +570,8 @@ $for(include-before)$
 $include-before$
 
 $endfor$
+
+
 $if(toc)$
 $if(toc-title)$
 \renewcommand*\contentsname{$toc-title$}
@@ -585,22 +594,14 @@ $endif$
 }
 $endif$
 $endif$
-$if(lot)$
-\listoftables
-$endif$
-$if(lof)$
-\listoffigures
-$endif$
-$if(lol)$
-\listoflistings
-$endif$
-\newpage %%%%%%%%%%%%%%%%%% BEGIN ADDED, lof, lot, and lol expected to be true
 $if(linestretch)$
 \setstretch{$linestretch$}
 $endif$
 $if(has-frontmatter)$
 \mainmatter
 $endif$
+
+\pagenumbering{arabic} %%%%%%%%%% ADDED
 
 $if(review)$\begin{linenumbers}$endif$
 $body$
@@ -637,21 +638,16 @@ $if(beamer)$
   \printbibliography[heading=none]
 \end{frame}
 $else$
-\newpage %%%%%%%%%%%% ADDED
 \printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
 $endif$
 
-$endif$
-$for(include-after)$
-$include-after$
+\newpage
+%%%%%%%%%%%%%%%%%% END ADDED, lof, lot, and lol expected to be true
+
+% $endif$
+% $for(include-after)$
+% $include-after$
 
 $endfor$
-
-
-\newpage
-
-\appendix
-
-\input{./content/appendix.tex}
 
 \end{document}
