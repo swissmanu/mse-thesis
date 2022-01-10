@@ -1,0 +1,37 @@
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    [every node/.style={signal, draw, line width=0.3mm, minimum height=8.5mm, minimum width=2.5cm, inner sep=3mm}]
+    \node (exploration) [
+        fill=white,
+        signal,
+        very nearly transparent
+    ] {...};
+    \node (poc) [
+        fill=gray!20,
+        signal from=west,
+        right=2mm of exploration,
+        very nearly transparent
+    ] {...};
+    \node (prototype) [
+        fill=gray!40,
+        signal from=west,
+        right=2mm of poc,
+        very nearly transparent
+    ] {...};
+    \node (finalize) [
+        fill=gray!60,
+        signal from=west,
+        right=2mm of prototype,
+        very nearly transparent
+    ] {...};
+    \node (validation) [
+        fill=gray!60,
+        signal from=west,
+        signal to=nowhere,
+        right=2mm of finalize
+    ] {Validation};
+  \end{tikzpicture}
+  \caption{Validation as the next step in a future follow-up.}
+  \label{fig:validation-step}
+\end{figure}

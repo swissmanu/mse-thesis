@@ -233,7 +233,11 @@ In contrast to the delivered practical effort, I wrote a new research paper with
 
 ## Empirical Software Engineering
 
-RxJS Debugging for vscode provides a practical solution to the problems identified throughout the presented research process, and further empirical verifications can now be carried out.
+```{.include}
+content/figures/validation-step.tex
+```
+
+RxJS Debugging for vscode provides a practical solution to the problems identified throughout the presented research process, and further empirical validation can now be carried out.
 
 Operator log points were successfully tested using usability testing methods during their development. However, a formal verification using empirical methods will yield useful insight into the presented debugging utility. The most important research question to answer in these regards is, how effectively operator log points can replace existing debugging tools (i.e., manual print statements and the built-in, imperative debugger tools).
 
