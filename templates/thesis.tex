@@ -436,6 +436,8 @@ $endif$
 \usepackage{pdfpages}
 \usepackage{multirow} % Merged Table Cells
 
+\usepackage{templates/unnumberedtotoc}
+
 % tikz specifics:
 \usepackage{tikz}
 \usepackage{pgfplots}
@@ -514,18 +516,22 @@ $endif$
   \end{center}
 \end{titlepage}
 
-\section*{Declaration}
+\pagenumbering{roman}
 
-TODO Rewrite
+\addsec{Declaration of Authorship}
 
-I hereby declare that this submission is my own work and to the best of my knowledge it contains no materials previously
-published or written by another person, or substantial proportions of material which have been accepted for the award of
-any other degree or diploma at $institution$ or any other educational institution, except where due acknowledgement is
-made in the thesis.
+I, $author$, declare that this thesis titled, ``$title$'' and the work presented in it are my own work. I confirm that:
 
-I further declare that the intellectual content of this thesis is the product of my own work, except to the extent that
-assistance from others in the project's design and conception or in style, presentation and linguistic expression is
-acknowledged.
+\begin{itemize}
+  \item This work was done wholly or mainly while in candidature for a research degree at the $institution$.
+  \item Where any part of this thesis has previously been submitted for a degree or any other qualification at the $institution$ or any other institution, this has been clearly stated.
+  \item Where I have consulted the published work of others, this is always clearly attributed.
+  \item Where I have quoted from the work of others, the source is always given. With the exception of such quotations, this thesis is entirely my own work.
+  \item I have acknowledged all main sources of help.
+  \item Where the thesis is based on work done by myself jointly with others, I have clarified what others did and what I have contributed myself.
+\end{itemize}
+
+\vspace{0.5cm}
 
 \hfill $author$, $publicationMonth$
 
