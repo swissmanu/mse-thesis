@@ -59,11 +59,17 @@ lstPrefix:
   - Listing
   - Listings
 
-# Abstract:
-abstract: |
-  tbd.
 
-# Acknowledgments:
+
+abstract: |
+  Software engineers use countless different tools in their daily working routine. These tools help them to streamline complex and repetitive tasks. IDE's bundle such utilities ready-to-hand in one fully integrated development environment. This way, engineers benefit from a blended developer experience where every utility \emph{feels} and \emph{looks} like a part of its host application. Of course, debuggers are a vital component of this toolset.
+
+  Debugging utilities built into contemporary IDE's are tailored to work best with programs implemented using an imperative programming style. However, software engineers stretch to use these debuggers with different programming paradigms nonetheless. Programs using reactive programming complicate the debugging process considerably. In turn, engineers use more simple debugging techniques like manual print statements.
+
+  This summative thesis documents the debugging techniques engineers employ to debug programs implemented using RxJS, a popular library providing reactive programming functionality for JavaScript. First, it reveals why engineers abstain from using specialized reactive debugging tools by identifying a critical success factor for such utilities: A reactive debugger must be ready to hand, integrating with the engineers' overall developer experience. Subsequently, the thesis illustrates the iterative research and development process of a ready-to-hand debugging utility for Microsoft Visual Studio Code using Human-Computer Interaction methods. As a result, the extension ``RxJS Debugging for Visual Studio Code'' provides \emph{Operator Log Points} to its host application. This debugging utility allows engineers to inspect RxJS applications' runtime behavior without leaving their editor or adding manual print statements for the first time.
+
+
+
 acknowledgments: |
   First and foremost, I would like to thank my supervisor Prof. Dr. Markus Stolze for many hours of inspiring discussions, his sincere feedback, and his constant support for my endeavors leading to this thesis. Thank you for sparking my enthusiasm for empirical research.
 
