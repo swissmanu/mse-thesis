@@ -8,6 +8,6 @@
 # Once:
 docker run -it --rm -v `pwd`:/data ghcr.io/swissmanu/pandoc make
 
-# Continously on change (requires nodemon):
-nodemon --watch "content" --ext md,tex --exec "docker run --rm -v `pwd`:/data ghcr.io/swissmanu/pandoc make
+# Continuously on change (requires nodemon):
+nodemon --watch metadata_thesis.yml --watch "content" --ext md,tex,png --exec "docker run --rm -v `pwd`:/data ghcr.io/swissmanu/pandoc make"
 ```
