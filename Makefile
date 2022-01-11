@@ -16,7 +16,7 @@ build: build_thesis_pdf
 build_thesis_pdf:
 	@echo "Build out/${thesis_filename}.pdf"
 	@pandoc \
-		--template=./templates/thesis.tex \
+		--template=./template/thesis.tex \
 		--metadata=version=${VERSION} \
 		--metadata-file=./metadata_thesis.yml \
 		--from markdown+raw_tex \

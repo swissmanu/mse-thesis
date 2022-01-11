@@ -40,7 +40,7 @@ lol: true
 
 # References and Citations:
 reference-section-title: References
-csl: templates/transactions-on-programming-languages-and-systems
+csl: template/transactions-on-programming-languages-and-systems
 link-citations: true
 bibliography: bibliography.bib
 
