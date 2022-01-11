@@ -3,11 +3,17 @@ content/thesis.md
 ```
 
 \cleardoublepage
+\thispagestyle{empty}
+\mbox{}
+\cleardoublepage
 
 ``` {.include}
 content/appendix.tex
 ```
 
+\cleardoublepage
+\thispagestyle{empty}
+\mbox{}
 \cleardoublepage
 
 \addcontentsline{toc}{section}{\listfigurename}
