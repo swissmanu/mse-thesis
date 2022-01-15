@@ -54,10 +54,10 @@
         \draw ($(4_f) +(0,9mm)$)    edge[style=project]     (4_f);
         \draw ($(6_f) +(0,9mm)$)    edge[style=project]     (6_f);
         \draw ($(8_f) +(0,9mm)$)    edge[style=project]     (8_f);
-        \draw (2_f)                 edge[style=project]     ($(2_f) -(0,9mm)$);
-        \draw (4_f)                 edge[style=project]     ($(4_f) -(0,9mm)$);
-        \draw (6_f)                 edge[style=project]     ($(6_f) -(0,9mm)$);
-        \draw (8_f)                 edge[style=project]     ($(8_f) -(0,9mm)$);
+        \draw (2_f)                 edge[style=project]     ($(2_f) -(0,8.5mm)$);
+        \draw (4_f)                 edge[style=project]     ($(4_f) -(0,8.5mm)$);
+        \draw (6_f)                 edge[style=project]     ($(6_f) -(0,8.5mm)$);
+        \draw (8_f)                 edge[style=project]     ($(8_f) -(0,8.5mm)$);
 
         \draw ($(2_m) +(0,9mm)$)    edge[style=project]     (2_m);
         \draw ($(4_m) +(0,9mm)$)    edge[style=project]     (4_m);
@@ -69,7 +69,7 @@
         \draw ($(8_m) -(0,6mm)$)    edge[style=complete]    ($(8_m) +(0,6mm)$);
     \end{pgfonlayer}
   \end{tikzpicture}
-  \caption[Marble diagram of an observable]{
+  \caption[Marble diagram visualizing an observable]{
     The marble diagram for Listing \ref{lst:example-rxjs} shows three observables from top to bottom: The input
     observable emitting integers from 1 to 8, the intermediate result observable of the
     \texttt{filter} operator emitting only even integers, and the output observable emitting the even integers ``plus 1''.
