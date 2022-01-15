@@ -1,6 +1,6 @@
 # Introduction
 
-Debugging is an essential part of a software engineer's daily job. Various techniques, some better suited for the task than others, help engineers explore the functionality of an unknown or malfunctioning program. Rather traditional debugging is done by interpreting memory dumps or the analysis of log entries. Sophisticated debugging solutions hook into a program at runtime and allow more detailed inspection and control [@IEEE_Glossary_1990].
+Debugging is an essential part of a software engineer's daily job. Various techniques, some better suited for the task than others, help engineers explore the functionality of an unknown or malfunctioning program. Rather traditional debugging is done by interpreting memory dumps or the analysis of log entries. Sophisticated debugging solutions hook into a program at runtime and allow more detailed inspection and control [@IEEE_Glossary_1990; @Layman_Diep_Nagappan_Singer_Deline_Venolia_2013].
 
 Imperative programming languages like Java, C#, and Python dominated the mainstream software engineering industry over the last decades [@Yaofei_Chen_Dios_Mili_Lan_Wu_Kefei_Wang_2005; @Meyerovich_Rabkin_2013]. Because of the prevalence of imperative programming languages, integrated development environments like Eclipse, the JetBrains platform, or Microsoft Visual Studio provide specialized debugging utilities specifically tailored to imperative programming languages. This results in an excellent, fully integrated developer experience, where tool-supported debugging is only a keypress away.
 
