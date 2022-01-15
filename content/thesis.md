@@ -109,6 +109,7 @@ of(1, 2, 3, 4, 5, 6, 7, 8).pipe(
 ).subscribe(i => console.log(i));
 ```
 
+\clearpage
 
 # Related Work {#sec:related-work}
 
@@ -177,9 +178,9 @@ A user journey maps the touch points of a user with a product [@richardson2010us
 
 Certain that operator log points satisfy all requirements defined in the previous stage of the process, I started with the actual implementation work for a production-ready vscode extension. Eventually, I released version 0.1.0 of "RxJS Debugging for vscode".
 
-The prototype of the extension enabled engineers to debug RxJS-based applications running with Node.js. After they installed the extension, the debugger started to suggest operator log points with a small, diamond-shaped icon next to the respective operator. Next, the engineer launched their application using vscode's built-in JavaScript debugger. The RP debugger automatically augmented RxJS so it started to send event telemetry to vscode. The extension then displayed events (e.g., "Next: 4" in [@fig:prototype] at the end of Line 8) for enabled operator log points in-line with the respective operator in the source code editor.
-
 ![A screenshot of the debugger extension prototype. Line 8 shows an enabled operator log point including a logged *Next: 4* event. Operator log points are managed by hovering a log point suggestion with the cursor.](./figures/prototype.png "Screenshot RxJS Debugging for vscode Prototype"){#fig:prototype width=90%}
+
+The prototype of the extension enabled engineers to debug RxJS-based applications running with Node.js. After they installed the extension, the debugger started to suggest operator log points with a small, diamond-shaped icon next to the respective operator. Next, the engineer launched their application using vscode's built-in JavaScript debugger. The RP debugger automatically augmented RxJS so it started to send event telemetry to vscode. The extension then displayed events (e.g., "Next: 4" in [@fig:prototype] at the end of Line 8) for enabled operator log points in-line with the respective operator in the source code editor.
 
 There were various challenges and tasks to solve during the Prototype phase. The following two sections present two highlights.
 
