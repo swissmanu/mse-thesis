@@ -8,7 +8,7 @@ degree: Master of Science FHO in Engineering
 department: Computer Science
 institution: Eastern Switzerland University of Applied Sciences
 country: Switzerland
-publicationMonth: January 2022
+publicationDate: 15 January 2022
 license: \ccby\thinspace\thinspace This work is licensed under a \href{https://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0 International License}.
 keywords:
   - reactive programming
@@ -66,13 +66,13 @@ abstract: |
 
   Debuggers built into contemporary development environments are tailored to work best with programs following an imperative programming style. However, when used with different programming paradigms, such as reactive programming, these tools do not adequately assist the engineers. This is why software engineers resort to more simple debugging techniques like manual print statements instead.
 
-  This summative thesis documents the debugging techniques engineers employ to debug programs implemented using RxJS, a popular library providing reactive programming functionality for JavaScript. First, it reveals why engineers abstain from using specialized reactive debugging tools by identifying a critical success factor for such utilities: A reactive debugger must be ready-to-hand, integrating with the engineers' overall developer experience. Subsequently, the thesis illustrates the iterative research and development process of a ready-to-hand reactive debugger for Microsoft Visual Studio Code. ``RxJS Debugging for Visual Studio Code'' provides with \emph{Operator Log Points} a novel reactive debugging utility. To our knowledge, this is the first reactive debugger that allows engineers to inspect RxJS applications' runtime behavior without leaving their development environment or adding manual print statements.
+  This summative thesis documents the debugging techniques engineers employ to debug programs implemented using RxJS, a popular library providing reactive programming functionality for JavaScript. First, it reveals why engineers abstain from using specialized reactive debugging tools by identifying a critical success factor for such utilities: A reactive debugger must be ready-to-hand, integrating with the engineers' overall developer experience. Subsequently, the thesis illustrates the iterative research and development process of a ready-to-hand reactive debugger for Microsoft Visual Studio Code. ``RxJS Debugging for Visual Studio Code'' provides with \emph{Operator Log Points} a novel reactive debugging utility. To my knowledge, this is the first reactive debugger that allows engineers to inspect RxJS applications' runtime behavior without leaving their development environment or adding manual print statements.
 
 
 
 acknowledgments: |
   First and foremost, I would like to thank my supervisor Prof. Dr. Markus Stolze for many hours of inspiring discussions, his sincere feedback, and his constant support for my endeavors leading to this thesis. Thank you for sparking my enthusiasm for empirical research.
 
-  My further gratitude goes to all people who helped me during my research in any way: Thank you to all study participants, proofreaders, and everyone who sparred with me in numerous discussions.
+  My further gratitude goes to all people who helped me during my research in any way. Thank you to all study participants, proofreaders, and everyone else I might have forgotten about.
 
   Thank you to my wife and my daughter. You make all the things count.
