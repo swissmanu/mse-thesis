@@ -61,7 +61,7 @@ of(1, 2, 3, 4, 5, 6, 7, 8).pipe(
 
 ### Visualizing Observables with Marble Diagrams{.unlisted .unnumbered}
 
-Marble diagrams visualize observables graphically. Such diagrams help understand the runtime behavior of an observable and its operators. Thus they are extensively used in the RxJS documentation.
+Marble diagrams visualize observables graphically. Such diagrams help to understand the runtime behavior of an observable and its operators. Thus they are extensively used in the RxJS documentation.
 
 [@fig:marble-diagram] shows the marble diagram for the observable implemented in [@lst:example-rxjs]. Please refer to [Appendix @sec:marble-diagram-syntax] for an in-depth look at the marble diagram syntax.
 
@@ -234,7 +234,7 @@ Version 1.0.0 of "RxJS Debugging for vscode" was finally released on the 2nd of 
 
 On the day of release, I announced the debugger extension via its own Twitter account [\@rxjsdebugging](https://twitter.com/rxjsdebugging). Until the 30th of December 2021, the tweet reached 77k impressions ([Appendix @sec:release-tweet-stats]). \clearpage Further, the extension was downloaded 954 times ([Appendix @sec:marketplace]), counted 51 unique users ([Appendices @sec:analytics; Appendices @sec:analytics-dashboard]), and was featured in a live stream on Twitch^[David Müllerchen aka [\@webdave_de](https://twitter.com/webdave_de), a Google Developer Expert specialized on Angular development, hosted the live reaction stream on Twitch. Unfortunately, the recording of the stream is unavailable at this time.].
 
-Based on the results of the studies conducted before, I concluded that there was a real need for an integrated RP debugger for RxJS. The overall positive reception on RxJS Debugging for vscode was overwhelming nonetheless. However, the major release also revealed bugs and feature gaps in the extension. Nevertheless, I resolved the most critical problems within a few days (see the changelog in [Appendix @sec:changelog]). In addition, I processed feedback using GitHub Discussions^[https://github.com/swissmanu/rxjs-debugging-for-vscode/discussions] and the feature backlog ([Appendix @sec:feature-backlog]).
+Based on the results of the studies conducted before, I concluded that there was a real need for an integrated RP debugger for RxJS. The overall positive reception on RxJS Debugging for vscode was overwhelming nonetheless. However, the major release also revealed bugs and feature gaps in the extension. I resolved the most critical problems within a few days (see the changelog in [Appendix @sec:changelog]). In addition, I processed feedback using GitHub Discussions^[https://github.com/swissmanu/rxjs-debugging-for-vscode/discussions] and the feature backlog ([Appendix @sec:feature-backlog]).
 
 ### ISSTA `22 Research Paper
 
