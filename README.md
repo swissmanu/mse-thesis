@@ -2,7 +2,13 @@
 
 > A summative master thesis presented for the degree of Master of Science in Engineering
 
-## Build in Docker Container
+## PDF Access
+
+This master thesis was published in the official [Eastern Switzerland University of Applied Sciences (OST) eprints](https://eprints.ost.ch/id/eprint/1031/) repository. It is further available via this Git repositories [Releases](https://github.com/swissmanu/mse-thesis/releases) page.
+
+## Guides
+
+### Build in Docker Container
 
 ```shell
 # Once:
